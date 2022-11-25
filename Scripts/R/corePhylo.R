@@ -91,8 +91,6 @@ names(cnt) <- samples
 write.table(cnt, "output/Counts/RawReads/All_rawCounts_CorePhylo_PhyloCollapsed_Nov22.tsv",
             sep = "\t", col.names = T, row.names = T, quote = F)
 
-
-
 cnt
 cnt2 <- cnt
 cnt2[cnt2 > 0] <- 1
