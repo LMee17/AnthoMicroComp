@@ -638,8 +638,8 @@ cnt.v <- cnt[rownames(cnt) %in% ext,]
 Write up
 
 ```{r}
-dir.create("output/Counts/RawReads")
-path <- "output/Counts/RawReads/"
+dir.create("input/Counts/RawReads")
+path <- "input/Counts/RawReads/"
 
 cnt.list <- list(cnt, cnt.ab, cnt.fe, cnt.v)
 
@@ -651,8 +651,8 @@ for (i in 1:length(cnt.list)){
               sep = "\t", row.names = T, col.names = T, quote = F)
 }
 
-dir.create("output/Keys/")
-write.table(microkey, "output/Keys/MicrobialSpeciesKey.tsv",
+dir.create("input/Keys/")
+write.table(microkey, "input/Keys/MicrobialSpeciesKey.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 ```
 
@@ -854,7 +854,7 @@ genkey
 ```
 
 ```{r}
-write.table(genkey, "output/Keys/GenusFamilySpeciesKey.tsv",
+write.table(genkey, "input/Keys/GenusFamilySpeciesKey.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 ```
 
@@ -936,7 +936,7 @@ ext <- unique(genkey$GenHitID[genkey$Class == "viruses"])
 cnt.v <- cnt[rownames(cnt) %in% ext,]
 
 #set path
-path <- "output/Counts/RawReads/"
+path <- "input/Counts/RawReads/"
 
 #make list of the count dataframes
 cnt.list <- list(cnt, cnt.ab, cnt.fe, cnt.v)
@@ -1002,8 +1002,8 @@ cnt.fe <- cnt[rownames(cnt) %in% ext,]
 ext <- unique(microkey$HitID[microkey$Class == "viruses"])
 cnt.v <- cnt[rownames(cnt) %in% ext,]
 
-dir.create("output/Counts/Raw_rPM")
-path <- "output/Counts/Raw_rPM/"
+dir.create("input/Counts/Raw_rPM")
+path <- "input/Counts/Raw_rPM/"
 
 cnt.list <- list(cnt, cnt.ab, cnt.fe, cnt.v)
 
@@ -1064,7 +1064,7 @@ ext <- unique(genkey$GenHitID[genkey$Class == "viruses"])
 cnt.v <- cnt[rownames(cnt) %in% ext,]
 
 #set path
-path <- "output/Counts/Raw_rPM/"
+path <- "input/Counts/Raw_rPM/"
 
 #make list of the count dataframes
 cnt.list <- list(cnt, cnt.ab, cnt.fe, cnt.v)
@@ -1155,8 +1155,8 @@ ext <- unique(microkey$HitID[microkey$Class == "viruses"])
 cnt.v <- cnt[rownames(cnt) %in% ext,]
 
 #create directory to save reads into
-dir.create("output/Counts/Incidence")
-path <- "output/Counts/Incidence/"
+dir.create("input/Counts/Incidence")
+path <- "input/Counts/Incidence/"
 
 #compile the count tables
 cnt.list <- list(cnt, cnt.ab, cnt.fe, cnt.v)
@@ -1230,7 +1230,7 @@ ext <- unique(genkey$GenHitID[genkey$Class == "viruses"])
 cnt.v <- cnt[rownames(cnt) %in% ext,]
 
 #set path
-path <- "output/Counts/Incidence/"
+path <- "input/Counts/Incidence/"
 
 #make list of the count dataframes
 cnt.list <- list(cnt, cnt.ab, cnt.fe, cnt.v)
@@ -1260,7 +1260,7 @@ Check that I have appropriate metadata for the samples.
 
 ```{r}
 #load the correct count table
-cnt <- read.table("output/Counts/RawReads/All_rawCounts_PhyloCollapsed_Nov22.tsv")
+cnt <- read.table("input/Counts/RawReads/All_rawCounts_PhyloCollapsed_Nov22.tsv")
 
 #remove DNA entries cos I know now they are too different
 dna <- met$Sample.ID[met$NucleotideType =="DNA"]
@@ -1389,8 +1389,8 @@ That's encouraging at least.
 Anyhoo.
 
 ```{r}
-dir.create("output/Counts/EdgeR")
-write.table(cnt.tmm, "output/Counts/EdgeR/AllMicrobials_TMM.tsv",
+dir.create("input/Counts/EdgeR")
+write.table(cnt.tmm, "input/Counts/EdgeR/AllMicrobials_TMM.tsv",
             sep = "\t", col.names = T, row.names = T, quote = F)
 ```
 
@@ -1409,7 +1409,7 @@ DESEQ2 doesn't seem to let me extract its count so .... I'm going to just look a
 
 ```{r}
 #read in the raw reads, all kingdoms file
-cnt <- read.table("output/Counts/RawReads/All_rawCounts_PhyloCollapsed_Nov22.tsv")
+cnt <- read.table("input/Counts/RawReads/All_rawCounts_PhyloCollapsed_Nov22.tsv")
 
 #remove DNA entries cos I know now they are too different
 dna <- met$Sample.ID[met$NucleotideType =="DNA"]
@@ -1597,7 +1597,7 @@ ggplot(pca,
 
 ```{r}
 #read in the raw reads, all kingdoms file
-cnt <- read.table("output/Counts/RawReads/Prokaryote_rawCounts_PhyloCollapsed_Nov22.tsv")
+cnt <- read.table("input/Counts/RawReads/Prokaryote_rawCounts_PhyloCollapsed_Nov22.tsv")
 
 #remove DNA entries cos I know now they are too different
 dna <- met$Sample.ID[met$NucleotideType =="DNA"]
@@ -1801,7 +1801,7 @@ New Zealand samples seem to be different to everything else ... all Apis.
 
 ```{r}
 #read in the raw reads, all kingdoms file
-cnt <- read.table("output/Counts/RawReads/Eukaryote_rawCounts_PhyloCollapsed_Nov22.tsv")
+cnt <- read.table("input/Counts/RawReads/Eukaryote_rawCounts_PhyloCollapsed_Nov22.tsv")
 
 #remove DNA entries cos I know now they are too different
 dna <- met$Sample.ID[met$NucleotideType =="DNA"]
@@ -1998,7 +1998,7 @@ Only half the Apis samples in New Zealand seem weird here
 
 ```{r}
 #read in the raw reads, all kingdoms file
-cnt <- read.table("output/Counts/RawReads/Viral_rawCounts_PhyloCollapsed_Nov22.tsv")
+cnt <- read.table("input/Counts/RawReads/Viral_rawCounts_PhyloCollapsed_Nov22.tsv")
 
 #remove DNA entries cos I know now they are too different
 dna <- met$Sample.ID[met$NucleotideType =="DNA"]
