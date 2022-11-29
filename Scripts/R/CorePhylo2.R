@@ -9,6 +9,20 @@ library(RColorBrewer)
 dir.create("output/Plots/")
 dir.create("output/Plots/CorePhylo/")
 
+#####Functions#####
+plotGen <- function(microbes,samples,cntmat){
+  ex.cnt <- cntmat[rownames(cntmat) %in% microbes,
+                   names(cntmat) %in% samples]
+  ex.cnt <- ex.cnt[,!colSums(ex.cnt) == 0]
+  ex.cnt$MicroID <- rownames(ex.cnt)
+  tmp <- melt(ex.cnt)
+  ex.melt <- merge(tmp, met, by.x = "variable", by.y = "Sample.ID")
+  names(ex.melt)[c(1,3)] <- c("Sample", "Count")
+  return(ex.melt)
+}
+
+
+
 #####Load Necessary Counts and Metadata####
 #Sample metadata
 met <- read.table("input/SRA/MetaData_Edit_Oct22.tsv",
@@ -80,6 +94,7 @@ cnt.rpm <- read.table("input/Counts/Raw_rPM/All_raw_rPM_CorePhylo_PhyloCollapsed
 #remove DNA samples
 dna <- met$Sample.ID[met$NucleotideType =="DNA"]
 cnt.inc <- cnt.inc[,! names(cnt.inc) %in% dna]
+cnt.rpm <- cnt.rpm[,! names(cnt.rpm) %in% dna]
 
 #extract the core microbiota phylotypes
 beecore <- c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillus",
@@ -299,7 +314,7 @@ gen.melt$Sociality[gen.melt$variable == "Solitary\nSpecies"] <- "Solitary"
 #get the number of samples per genera class ready
 #pull out the column names of the genus dataframe, but remove the Microbial Hit column
 genmet <- data.frame(GenClass = names(gen.df2)[-6])
-#empty vector read to be filled - one per classification outlined above (5, 3 tribes
+#empty vector ready to be filled - one per classification outlined above (5, 3 tribes
 #plus all polymorphic and all solitary)
 totsamp <- vector(length = nrow(genmet))
 #use the wantedGen list object as a tool to count how many samples there are per 
@@ -404,7 +419,6 @@ gen.melt %>%
 #Frischella is found quite prevalently in Bombus, despite it apparently not being 
 #found previously in literature (from a very shallow reading)
 #Where do I find it?
-names(bc.melt)
 bom.fri <- bc.melt %>%
   subset(PhyloHit == "Frischella" & Genus == "Bombus" & Inc == "Present") %>%
   select(Sample)
@@ -496,7 +510,304 @@ api.melt %>%
   group_by(Species2) %>%
   summarise(average = mean(rPM), max(rPM), min(rPM))
 
-######Prevalence of the CorePhylo Species Across Social Bees#####
+#####Gilliamella and Snodgrassella #####
+#both of these are found to be more at higher abundance in bumbles than honeys
+#do we replicate that ? 
+#will also add meliponini samples in for completeness
+#snod = GRH8, gill = GRH7
+#looking at reads per million
+
+#extract bombus samples IDs
+bombus <- met$Sample.ID[met$Genus == "Bombus"]
+meli <- met$Sample.ID[met$Tribe == "Meliponini"]
+
+sg.rpm <- cnt.rpm[rownames(cnt.rpm) == "GRH8" | rownames(cnt.rpm) == "GRH7",
+                  names(cnt.rpm) %in% bombus | names(cnt.rpm) %in% apis |
+                    names(cnt.rpm) %in% meli]
+
+#remove samples that have no counts
+sg.rpm <- sg.rpm[,!colSums(sg.rpm) == 0]
+
+#make plottable and add metadata
+sg.rpm$MicrobeID <- rownames(sg.rpm)
+tmp <- melt(sg.rpm)
+sg.melt <- merge(tmp, met, by.x = "variable", by.y = "Sample.ID")
+#add microbiota phylo labels
+sg.melt$MicroPhylo[sg.melt$MicrobeID == "GRH8"] <- "Snodgrassella"
+sg.melt$MicroPhylo[sg.melt$MicrobeID == "GRH7"] <- "Gilliamella"
+#make more informative column headers
+names(sg.melt)[c(1,3)] <- c("Sample", "rPM")
+
+#plot (boxplot)
+ggplot(data = sg.melt, aes(x = Genus, y = log(rPM), fill = MicroPhylo)) +
+  geom_boxplot() +
+  theme(axis.line = element_line(colour = "black"),
+        legend.text = element_text(face = "italic"),
+        axis.text.x = element_text(face = "italic"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank() ,
+        panel.background = element_blank()) +
+  scale_fill_manual(values = c("#e6e600", "#0000e6")) +
+  labs(fill = "Microbial Genus", 
+       x = "Host Genus")
+
+#woop. We do recapture it.
+ggsave("output/Plots/CorePhylo/ApisVBombus_GillnSnod.pdf")
+
+
+
+#assess average rPM between the two genera (where these microbes are found)
+
+
+#####Assessing potential species-level differences in Bombilactobacillus####
+#make species-level incidence table
+spec.inc <- spec.rpm
+spec.inc[spec.inc > 0] <- 1
+#remove DNA samples
+spec.inc <- spec.inc[, !names(spec.inc) %in% dna]
+
+#extract species of bactobacillus
+blID <- genkey$MicroHitID[genkey$PhyloHit == "Bombilactobacillus"]
+#combine previous lists of corb samples
+corb <- c(apis, bombus, meli)
+
+#make amenable for plotting
+#going to make this a function as I'm sick of redoing it
+plotGen <- function(microbes,samples,cntmat){
+  ex.cnt <- cntmat[rownames(cntmat) %in% microbes,
+                   names(cntmat) %in% samples]
+  ex.cnt <- ex.cnt[,!colSums(ex.cnt) == 0]
+  ex.cnt$MicroID <- rownames(ex.cnt)
+  tmp <- melt(ex.cnt)
+  ex.melt <- merge(tmp, met, by.x = "variable", by.y = "Sample.ID")
+  names(ex.melt)[c(1,3)] <- c("Sample", "Count")
+  return(ex.melt)
+}
+
+bl.melt <- plotGen(blID, corb, spec.inc)
+
+#add species information
+microkey[microkey$HitID %in% bl.melt$MicroID,]
+for (i in 1:nrow(bl.melt)){
+  bl.melt$MicroPhylo[i] <- unique(microkey$TaxHit[microkey$HitID == bl.melt$MicroID[i]])
+}
+
+#order by genus
+bl.melt$Sample <- factor(bl.melt$Sample, 
+                          levels = c(#Apis cerana
+                            "SRR10034516", "SRR10034523",
+                            #Apis mellifera
+                            "SRR13189057", "SRR13189058", "SRR13189059", "SRR13404632", 
+                            "SRR13404636", "SRR13404641", "SRR13442819", "SRR18500042", 
+                            "SRR18500043", "SRR18500044", "SRR18500045", "SRR18500050", 
+                            "SRR18500061", "SRR18500072", "SRR18500076", "SRR18500077", 
+                            "SRR18500078", "SRR18500079", "SRR18500080", "SRR18500081", 
+                            "SRR18500082", "SRR18500083", "SRR18500084", "SRR18500085",
+                            "SRR18500086", "SRR18500087", "SRR18500088", "SRR18500090",
+                            "SRR5109820",  "SRR5109826",  "SRR5109829",  "SRR5109831", 
+                            "SRR5109832",  "SRR5109833",
+                            #bombus lucorum
+                            "SRR13769016",
+                            #Bombus pascurorum
+                            "SRR13769014",
+                            #Bombus terrestris
+                            "SRR11445089", "SRR11445090", "SRR11445091", "SRR11448239", 
+                            "SRR11448240", "SRR11448241", "SRR13769018","SRR2396655"))
+
+
+#plot
+ggplot(data = bl.melt, aes(x = Sample, y = Count, fill = Species)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(MicroPhylo~.) +
+  theme(legend.text = element_text(face = "italic"),
+        strip.text = element_text(face = "italic"),
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(fill = "Host Species",
+       y = "") +
+  scale_fill_manual(values = c("red",
+                               "orange",
+                               "skyblue",
+                               "navy",
+                               "blue"))
+
+ggsave("output/Plots/CorePhylo/Bombilactobacillus_ByMicrobeSpecies.pdf")
+
+#####Lactobacillus Firm-5#####
+#extract firm-5 ids
+f5 <- genkey$MicroHitID[genkey$PhyloHit == "Lactobacillus: Firm-5"]
+
+#make plottable df, but with 0s kept in
+plotGen0 <- function(microbes,samples,cntmat){
+  ex.cnt <- cntmat[rownames(cntmat) %in% microbes,
+                   names(cntmat) %in% samples]
+  ex.cnt$MicroID <- rownames(ex.cnt)
+  tmp <- melt(ex.cnt)
+  ex.melt <- merge(tmp, met, by.x = "variable", by.y = "Sample.ID")
+  names(ex.melt)[c(1,3)] <- c("Sample", "Count")
+  return(ex.melt)
+}
+
+
+#make plottable df
+f5.melt <- plotGen0(f5, corb, spec.inc)
+
+#make stacked barchart with presence / absence (prevalence) per species
+#start a new dataframe based off the unique species included in the extracted count table
+#I need a proportion per host species per microbe (ie 24 * 7)
+f5.stat <- data.frame(Species = rep(unique(f5.melt$Species),length(f5)),
+                      MicroID = rep(unique(f5.melt$MicroID),24))
+#add total count of species from the melt dataframe
+for (i in 1:nrow(f5.stat)){
+  f5.stat$Total[i] <- nrow(f5.melt[f5.melt$Species == f5.stat$Species[i],])/7  
+  x <- subset(f5.melt, Species == f5.stat$Species[i] & MicroID == f5.stat$MicroID[i])
+  f5.stat$Present[i] <- sum(x$Count)
+  f5.stat$PresProp[i] <- sum(x$Count)/f5.stat$Total[i]
+  f5.stat$Absent[i] <- f5.stat$Total[i] - f5.stat$Present[i]
+  f5.stat$AbsProp[i] <- 1 - f5.stat$PresProp[i]
+}
+
+f5.df2 <- data.frame(Species = rep(unique(f5.melt$Species),length(f5)),
+                    MicroID = rep(unique(f5.melt$MicroID),24),
+                    Prop = f5.stat$PresProp,
+                    Inc = paste("Present"))
+tmp <- data.frame(Species = rep(unique(f5.melt$Species),length(f5)),
+                   MicroID = rep(unique(f5.melt$MicroID),24),
+                   Prop = f5.stat$AbsProp,
+                   Inc = paste("Absent"))
+f5.df2 <- rbind(f5.df2, tmp)
+
+#add microbe phylo labels
+for (i in 1:nrow(f5.df2)){
+  f5.df2$MicroPhy[i] <- microkey$TaxHit[microkey$HitID == f5.df2$MicroID[i]]
+}
+
+#remove any species that have no hits anywhere
+tmp <- f5.df2 %>%
+  filter(Inc == "Present") %>%
+  group_by(Species) %>%
+  summarise(sum(Prop))
+remove <- tmp$Species[tmp$`sum(Prop)` == 0]
+f5.df3 <- f5.df2[!f5.df2$Species %in% remove,]
+
+#plot
+ggplot(data = f5.df3, aes(x = Species, y = Prop, fill = Inc)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  facet_wrap(MicroPhy~.) +
+  theme(axis.text.y = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.text = element_text(face = "italic")) + 
+  labs(x = "Host Species",
+       fill = "",
+       y = "Prevalence")
+
+ggsave("output/Plots/CorePhylo/Lactobacillus_speciesBreakdown_Corb.pdf")
+
+#####Bifidobacterium#####
+#extract bifo ids
+bifo <- unique(genkey$MicroHitID[genkey$PhyloHit == "Bifidobacterium"])
+
+#make plottable df
+bifo.melt <- plotGen0(bifo, corb, spec.inc)
+
+#make stacked barchart with presence / absence (prevalence) per species
+#start a new dataframe based off the unique species included in the extracted count table
+#I need a proportion per host species per microbe (ie 24 * 7)
+bifo.stat <- data.frame(Tribe = rep(unique(bifo.melt$Tribe),length(bifo)),
+                      MicroID = rep(unique(bifo.melt$MicroID),length(unique(bifo.melt$Tribe))))
+#add total count of species from the melt dataframe
+for (i in 1:nrow(bifo.stat)){
+  bifo.stat$Total[i] <- nrow(bifo.melt[bifo.melt$Tribe == bifo.stat$Tribe[i],])/length(bifo) 
+  x <- subset(bifo.melt, Tribe == bifo.stat$Tribe[i] & MicroID == bifo.stat$MicroID[i])
+  bifo.stat$Present[i] <- sum(x$Count)
+  bifo.stat$PresProp[i] <- (sum(x$Count)/bifo.stat$Total[i])
+  bifo.stat$Absent[i] <- bifo.stat$Total[i] - bifo.stat$Present[i]
+  bifo.stat$AbsProp[i] <- 1 - bifo.stat$PresProp[i]
+}
+
+bifo.df2 <- data.frame(Tribe = rep(unique(bifo.melt$Tribe),length(bifo)),
+                       MicroID = rep(unique(bifo.melt$MicroID),length(unique(bifo.melt$Tribe))),
+                       Prop = bifo.stat$PresProp,
+                       Inc = paste("Present"))
+tmp <- data.frame(Tribe = rep(unique(bifo.melt$Tribe),length(bifo)),
+                  MicroID = rep(unique(bifo.melt$MicroID),length(unique(bifo.melt$Tribe))),
+                  Prop = bifo.stat$AbsProp,
+                  Inc = paste("Absent"))
+bifo.df2 <- rbind(bifo.df2, tmp)
+
+#add microbe phylo labels
+for (i in 1:nrow(bifo.df2)){
+  bifo.df2$MicroPhy[i] <- microkey$TaxHit[microkey$HitID == bifo.df2$MicroID[i]]
+}
+
+#plot
+ggplot(data = bifo.df2, aes(x = Tribe, y = Prop, fill = Inc)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  theme(axis.text.y = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.text = element_text(face = "italic")) + 
+  labs(x = "Host Species",
+       fill = "",
+       y = "Prevalence") +
+  facet_wrap(~MicroPhy)
+
+ggsave("output/Plots/CorePhylo/Bifido_SpeciesBreakdown_Corbs.pdf")
+
+#####Assessing Variability across Apis, Bombus, Meliponini#####
+bi.gen <- genkey$GenHitID[genkey$PhyloHit == "Bifidobacterium"]
+bi.melt <- plotGen(bi.gen, corb, cnt.rpm)
+
+#arrange samples
+bi.melt$Sample <- factor(bi.melt$Sample,
+                         levels = c(#apis mellifera
+                           "SRR12097444", "SRR13189057", "SRR13189058", "SRR13189059", 
+                           "SRR13404632", "SRR13404634", "SRR13404636", "SRR13404641", 
+                           "SRR13442815", "SRR13442828", "SRR18500042", "SRR18500043", 
+                           "SRR18500044", "SRR18500045", "SRR18500050", "SRR18500061", 
+                           "SRR18500072", "SRR18500076", "SRR18500077", "SRR18500079",
+                           "SRR18500080", "SRR18500081", "SRR18500082", "SRR18500083", 
+                           "SRR18500084", "SRR18500085", "SRR18500086", "SRR18500087",
+                           "SRR18500088", "SRR18500090", "SRR18500091", "SRR5109820",
+                           "SRR5109826","SRR5109829", "SRR5109831", "SRR5109832",
+                           "SRR5109833","SRR8754036", "SRR8754038","SRR8754040",
+                           "SRR8754042","SRR8754043", "SRR8754044", 
+                           #apis cerana
+                           "SRR10034517", "SRR10034518", "SRR10034523",
+                           #tetragonisca angustula
+                           "SRR11426431", "SRR11426432", "SRR11440494", "SRR11440496",
+                           #Tetragonula carbonaria
+                           "SRR13442818",
+                           #Bombus
+                           "SRR13769013",
+                           #Bombus haemorrhoidalis
+                           "SRR12527929",
+                           #Bombus lucorum
+                           "SRR13769016", "SRR13769017",
+                           #Bombus pascuorum
+                           "SRR13769015",
+                           #Bombus pyrosoma
+                           "SRR12245523",
+                           #Bombus superbus
+                           "SRR12527932",
+                           #Bombus terrestris
+                           "SRR11448240", "SRR13769018", "SRR13769019", "SRR2396641",
+                           "SRR2396656","SRR6148368", 
+                           #Bombus terricola
+                           "SRR14567222"))
+
+#plot
+ggplot(bi.melt, aes(x = Species, y = log(Count), fill = Tribe))+
+  geom_boxplot() +
+  labs(y = "Log(rPM)") +
+  theme(axis.text.y = element_text(face = "italic")) +
+  coord_flip() 
+
+ggsave("output/Plots/CorePhylo/Bifi_byrPM_corbs.pdf")
+
+#####Prevalence of the CorePhylo Species Across Social Bees#####
 #starting with the social tribes versus poly / social
 tmp <- data.frame(Sociality = gen.melt$variable, 
                         MicrobialGenus = gen.melt$MicroPhyLabel,
