@@ -10,6 +10,7 @@ dir.create("output/Plots/")
 dir.create("output/Plots/CorePhylo/")
 
 #####Functions#####
+#make plottable df, removing samples that have no counts at all
 plotGen <- function(microbes,samples,cntmat){
   ex.cnt <- cntmat[rownames(cntmat) %in% microbes,
                    names(cntmat) %in% samples]
@@ -21,7 +22,61 @@ plotGen <- function(microbes,samples,cntmat){
   return(ex.melt)
 }
 
+#make plottable df, but with 0s kept in
+plotGen0 <- function(microbes,samples,cntmat){
+  ex.cnt <- cntmat[rownames(cntmat) %in% microbes,
+                   names(cntmat) %in% samples]
+  ex.cnt$MicroID <- rownames(ex.cnt)
+  tmp <- melt(ex.cnt)
+  ex.melt <- merge(tmp, met, by.x = "variable", by.y = "Sample.ID")
+  names(ex.melt)[c(1,3)] <- c("Sample", "Count")
+  return(ex.melt)
+}
 
+#make plot showing the prevalence of each microbial species per host taxonomic specification
+#make sure that host taxonomic specification is input in quotes
+#requires melted dataframe such as those made above
+plotPrev <- function(df.melt,microbes,HostTax, key){
+  stat <- data.frame(Host = rep(unique(df.melt[,HostTax]), length(microbes)),
+                     MicroID = rep(unique(df.melt$MicroID), length(unique(df.melt[,HostTax]))))
+  for (i in 1:nrow(stat)){
+    stat$Total[i] <- nrow(df.melt[df.melt[,HostTax] == stat$Host[i],])/length(microbes) 
+    x <- df.melt[df.melt[,HostTax] == stat$Host[i] & df.melt$MicroID == stat$MicroID[i],]
+    stat$Present[i] <- sum(x$Count)
+    stat$PresProp[i] <- (sum(x$Count)/stat$Total[i])
+    stat$Absent[i] <- stat$Total[i] - stat$Present[i]
+    stat$AbsProp[i] <- 1 - stat$PresProp[i]
+  }
+  plot.df <- data.frame(Host = rep(unique(df.melt[,HostTax]),length(microbes)),
+                        MicroID = rep(unique(df.melt$MicroID),length(unique(df.melt[,HostTax]))),
+                        Prop = stat$PresProp,
+                        Inc = paste("Present"))
+  tmp <- data.frame(Host = rep(unique(df.melt[,HostTax]),length(microbes)),
+                    MicroID = rep(unique(df.melt$MicroID),length(unique(df.melt[,HostTax]))),
+                    Prop = stat$AbsProp,
+                    Inc = paste("Absent"))
+  plot.df <- rbind(plot.df, tmp)
+  if (key == "genus"){
+    for (i in 1:nrow(plot.df)){
+      plot.df$MicroPhy[i] <- unique(genkey$PhyloHit[genkey$GenHitID == plot.df$MicroID[i]])  
+    }
+  }
+  if (key == "micro"){
+    for (i in 1:nrow(plot.df)){
+      plot.df$MicroPhy[i] <- microkey$TaxHit[microkey$HitID == plot.df$MicroID[i]]
+    }
+  }
+  ggplot(data = plot.df, aes(x = Host, y = Prop, fill = Inc)) +
+    geom_bar(stat = "identity") +
+    coord_flip() +
+    theme(axis.text.y = element_text(face = "italic"),
+          legend.text = element_text(face = "italic"),
+          strip.text = element_text(face = "italic")) + 
+    labs(x = paste("Host", HostTax),
+         fill = "",
+         y = "Prevalence") +
+    facet_wrap(~MicroPhy, labeller = label_wrap_gen(width = 2, multi_line = TRUE))
+}
 
 #####Load Necessary Counts and Metadata####
 #Sample metadata
@@ -712,7 +767,7 @@ bifo <- unique(genkey$MicroHitID[genkey$PhyloHit == "Bifidobacterium"])
 #make plottable df
 bifo.melt <- plotGen0(bifo, corb, spec.inc)
 
-#make stacked barchart with presence / absence (prevalence) per species
+#make stacked barchart with presence / absence (prevalence) per tribe
 #start a new dataframe based off the unique species included in the extracted count table
 #I need a proportion per host species per microbe (ie 24 * 7)
 bifo.stat <- data.frame(Tribe = rep(unique(bifo.melt$Tribe),length(bifo)),
@@ -760,44 +815,6 @@ ggsave("output/Plots/CorePhylo/Bifido_SpeciesBreakdown_Corbs.pdf")
 bi.gen <- genkey$GenHitID[genkey$PhyloHit == "Bifidobacterium"]
 bi.melt <- plotGen(bi.gen, corb, cnt.rpm)
 
-#arrange samples
-bi.melt$Sample <- factor(bi.melt$Sample,
-                         levels = c(#apis mellifera
-                           "SRR12097444", "SRR13189057", "SRR13189058", "SRR13189059", 
-                           "SRR13404632", "SRR13404634", "SRR13404636", "SRR13404641", 
-                           "SRR13442815", "SRR13442828", "SRR18500042", "SRR18500043", 
-                           "SRR18500044", "SRR18500045", "SRR18500050", "SRR18500061", 
-                           "SRR18500072", "SRR18500076", "SRR18500077", "SRR18500079",
-                           "SRR18500080", "SRR18500081", "SRR18500082", "SRR18500083", 
-                           "SRR18500084", "SRR18500085", "SRR18500086", "SRR18500087",
-                           "SRR18500088", "SRR18500090", "SRR18500091", "SRR5109820",
-                           "SRR5109826","SRR5109829", "SRR5109831", "SRR5109832",
-                           "SRR5109833","SRR8754036", "SRR8754038","SRR8754040",
-                           "SRR8754042","SRR8754043", "SRR8754044", 
-                           #apis cerana
-                           "SRR10034517", "SRR10034518", "SRR10034523",
-                           #tetragonisca angustula
-                           "SRR11426431", "SRR11426432", "SRR11440494", "SRR11440496",
-                           #Tetragonula carbonaria
-                           "SRR13442818",
-                           #Bombus
-                           "SRR13769013",
-                           #Bombus haemorrhoidalis
-                           "SRR12527929",
-                           #Bombus lucorum
-                           "SRR13769016", "SRR13769017",
-                           #Bombus pascuorum
-                           "SRR13769015",
-                           #Bombus pyrosoma
-                           "SRR12245523",
-                           #Bombus superbus
-                           "SRR12527932",
-                           #Bombus terrestris
-                           "SRR11448240", "SRR13769018", "SRR13769019", "SRR2396641",
-                           "SRR2396656","SRR6148368", 
-                           #Bombus terricola
-                           "SRR14567222"))
-
 #plot
 ggplot(bi.melt, aes(x = Species, y = log(Count), fill = Tribe))+
   geom_boxplot() +
@@ -807,24 +824,136 @@ ggplot(bi.melt, aes(x = Species, y = log(Count), fill = Tribe))+
 
 ggsave("output/Plots/CorePhylo/Bifi_byrPM_corbs.pdf")
 
-#####Prevalence of the CorePhylo Species Across Social Bees#####
-#starting with the social tribes versus poly / social
-tmp <- data.frame(Sociality = gen.melt$variable, 
-                        MicrobialGenus = gen.melt$MicroPhyLabel,
-                        Prop = gen.melt$PercPresent / 100,
-                        Inc = paste("Present"))
-#need to also have prop absent as a variable
-gen.melt2 <- data.frame(Sociality = gen.melt$variable, 
-                                    MicrobialGenus = gen.melt$MicroPhyLabel,
-                                    Prop = 1 - tmp$Prop,
-                                    Inc = paste("Absent"))
-gen.melt2 <- rbind(gen.melt2, tmp)
-gen.melt2
+#####Apibacter: Prevalence Across Honey and BumbleBees#####
+#make plottable dataframe
+apib <- genkey$MicroHitID[genkey$PhyloHit == "Apibacter"]
+#make list of samples for honey and bumble bees only
+apinae <- c(apis, bombus)
+apib.melt <- plotGen0(microbes = apib,
+                      samples = apinae,
+                      cntmat = spec.inc)
 
 #plot
-ggplot(data = gen.melt2, aes(x = Sociality, y = Prop, fill = Inc)) +
-  geom_bar(stat = "identity") +
-  facet_grid(~MicrobialGenus) +
-  labs(y = "Proportion",
-       fill = "Prevalence") +
-  coord_flip()
+plotPrev(apib.melt, apib, "Species")
+ggsave("output/Plots/CorePhylo/Apibacter_microSpecvApinaeSpec_Prev.pdf")
+
+#again, but with Apibacter in general, not broken down by species
+apib2 <- unique(genkey$GenHitID[genkey$PhyloHit == "Apibacter"])
+apib.melt2 <- plotGen0(microbes = apib2,
+                      samples = corb,
+                      cntmat = cnt.inc)
+
+plotPrev(apib.melt2, apib2, "Genus", "genus")
+ggsave("output/Plots/CorePhylo/Apibacter_genusvCorb_Prev.pdf")
+
+#####Apibacter versus Snodgrassella and Crithidia####
+#apibacter = GRH128, snodgrassella = GRH8, crithidia = GRH434
+#apibacter and snodgrassella
+#looking at rpm
+avs <- c("GRH128", "GRH8")
+
+#extract rpm
+avs.rpm <- cnt.rpm[rownames(cnt.rpm) %in% avs,]
+#remove samples with neither present
+avs.rpm <- avs.rpm[,! colSums(avs.rpm) == 0]
+
+#make plottable
+avs.rpm$MicroID <- rownames(avs.rpm)
+tmp <- melt(avs.rpm)
+avs.melt <- merge(tmp, met, by.x = "variable", by.y = "Sample.ID")
+names(avs.melt)[c(1,3)] <- c("Sample", "rPM")
+
+#annotate each sample as either Apibacter dominant, snodgrassella dominant or 
+#absent in either case
+samps <- unique(avs.melt$Sample)
+#prepare vector to populate with classifications
+class <- vector(length = length(samps))
+#for each rpm table, row 1 = snodgrassella, row 2 = apibacter
+for (i in 1:length(class)){
+  s <- avs.rpm[1, names(avs.rpm) == paste(samps[i])]
+  a <- avs.rpm[2, names(avs.rpm) == paste(samps[i])]
+  if (s == 0){
+    class[i] <- "Snodgrassella\nAbsent"
+  }
+  if (a == 0){
+    class[i] <- "Apibacter\nAbsent"
+  }
+  if (s > a & a != 0){
+    class[i] <- "Snodgrassella\nDominant"
+  }
+  if (a > s & s != 0){
+    class[i] <- "Apibacter\nDominant"
+  }
+}
+classkey <- data.frame(Sample = samps, Composition = class)
+
+#add composition classification and microphylo information
+for(i in 1:nrow(avs.melt)){
+  avs.melt$Composition[i] <- classkey$Composition[classkey$Sample == avs.melt$Sample[i]]
+  avs.melt$MicroPhylo[i] <- genkey$PhyloHit[genkey$GenHitID == avs.melt$MicroID[i]]
+}
+
+avs.melt$Composition <- factor(avs.melt$Composition, 
+                               levels = c("Apibacter\nAbsent",
+                                          "Apibacter\nDominant",
+                                          "Snodgrassella\nDominant",
+                                          "Snodgrassella\nAbsent"))
+
+myPal <- brewer.pal(4, "Dark2")
+
+ggplot(data = avs.melt, aes(x = Composition, y = log(rPM), fill = MicroPhylo))+
+  geom_boxplot(alpha = 0.5) +
+  theme(axis.text.x = element_text(angle =69, hjust = 1),
+        axis.line = element_line(colour = "black"),
+        legend.text = element_text(face = "italic"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank() ,
+        panel.background = element_blank()) +
+  scale_fill_manual(values = c("#fab387", "#87cefa"))
+
+ggsave("output/Plots/CorePhylo/ApibactervsSnodgrassella_AllBees.pdf")
+
+ggplot(data = avs.melt, aes(x = Composition, y = log(rPM), fill = MicroPhylo, colour = Genus))+
+  geom_boxplot(alpha = 0.5) +
+  theme(axis.text.x = element_text(angle =69, hjust = 1),
+        axis.line = element_line(colour = "black"),
+        legend.text = element_text(face = "italic"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank() ,
+        panel.background = element_blank()) +
+  scale_fill_manual(values = c("#fab387", "#87cefa")) +
+  scale_colour_manual(values=myPal)
+
+ggsave("output/Plots/CorePhylo/ApibactervsSnodgrassella_AllBees_IncludeGen.pdf")
+
+#look at just corbiculates
+#there only Andrena that's in here with corbiculates anyway
+avs.melt2 <- subset(avs.melt, Genus != "Andrena")
+
+ggplot(data = avs.melt2, aes(x = Composition, y = log(rPM), fill = MicroPhylo))+
+  geom_boxplot(alpha = 0.5) +
+  theme(axis.text.x = element_text(angle =69, hjust = 1),
+        axis.line = element_line(colour = "black"),
+        legend.text = element_text(face = "italic"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank() ,
+        panel.background = element_blank()) +
+  scale_fill_manual(values = c("#fab387", "#87cefa"))
+
+ggsave("output/Plots/CorePhylo/ApibactervsSnodgrassella_CorbBees.pdf")
+
+ggplot(data = avs.melt2, aes(x = Composition, y = log(rPM), fill = MicroPhylo, colour = Genus))+
+  geom_boxplot(alpha = 0.5) +
+  theme(axis.text.x = element_text(angle =69, hjust = 1),
+        axis.line = element_line(colour = "black"),
+        legend.text = element_text(face = "italic"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank() ,
+        panel.background = element_blank()) +
+  scale_fill_manual(values = c("#fab387", "#87cefa")) +
+  scale_colour_manual(values=myPal)
+
+ggsave("output/Plots/CorePhylo/ApibactervsSnodgrassella_CorbBees_IncludeGen.pdf")
+
+
+#compare the presence of Apibacter versus presence of crithidia / snodgrassella
