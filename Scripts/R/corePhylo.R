@@ -83,7 +83,7 @@ plotPrev <- function(df.melt,microbes,HostTax, key){
 
 #####Load Necessary Counts and Metadata####
 #Sample metadata
-met <- read.table("input/SRA/MetaData_Edit_Oct22.tsv",
+met <- read.table("input/Metadata/MetaData_Edit_Oct22.tsv",
                   header = T, sep ="\t", quote = "")
 
 #fix tissue field in metadata
@@ -133,11 +133,11 @@ met$Continent[met$Location == "China" | met$Location == "Israel" |
 met$Continent[met$Location == "South Africa" ] <- "Africa"
 
 #save
-write.table(met, "input/SRA/MetaData_Edit_Nov22.tsv",
+write.table(met, "input/Metadata/MetaData_Edit_Nov22.tsv",
             sep = "\t", quote = F, col.names = T, row.names = F)
 
 #Microbial metadata
-genkey <- read.table("input/Keys/GenusFamilySpeciesKey_Nov22.tsv",
+genkey <- read.table("input/Metadata/GenusFamilySpeciesKey_Nov22.tsv",
                      sep = "\t", header = T)
 #Taxonomy
 tax <- read.table("input/Phylo_Misc/rankedlin_Edit_Nov22_v2.tsv",
@@ -492,7 +492,7 @@ bom.fri <- bc.melt %>%
 #look at species level
 spec.rpm <- read.table("input/Counts/Raw_rPM/All_raw_rPM_Nov22.tsv")
 #load the required key for species-level IDs
-microkey <- read.table("input/Keys/MicrobialSpeciesKey.tsv", 
+microkey <- read.table("input/Metadata/MicrobialSpeciesKey.tsv", 
                        sep = "\t", header = T)
 #extract the frischella species IDs
 friID <- microkey$HitID[grepl("Frischella", microkey$TaxHit)]
