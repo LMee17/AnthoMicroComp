@@ -530,3 +530,8 @@ for (i in 1:length(cnt.list)){
   write.table(cnt.list[i], paste(path, nombre, sep = ""),
               sep = "\t", row.names = T, col.names = T, quote = F)
 }
+
+###SessionLog####
+dir.create("SessionLogs/")
+writeLines(capture.output(sessionInfo()),
+           "SessionLogs/ReadFiltCount_Dec22.txt")
