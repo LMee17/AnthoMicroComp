@@ -191,7 +191,6 @@ Save
 
 ## Making Taxonomy Files
 
-
 So I downloaded a taxonomy dump from NCBI on 18th October 2022 and I'm going to use that as my taxonomy resource. However, it is huge, too big for me to process it either in R or Sublime. So I've split into smaller tables which I will process through, removing anything I don't need, and then bringing them altogether at the end (likely in the commandline)
 
 Edits that need to happen:
@@ -202,12 +201,11 @@ Edits that need to happen:
 
 3. All invertebrates can be removed. I can get mite/worm genealogy separately.
 
-
 I also need a separate file for viral taxonomy that goes all the way down to species level as they don't have easy indicators of genus (ie Black queen cell virus = Triatovirus, Deformed wing virus = Iflavirus) and there are too many to try and make these annotations manually.
 
-First I altered the .dmp file in a plain text editor so that the pipe deliminaters were replaced with tabs. I then ran this script.
+First I altered the .dmp file in a plain text editor so that the pipe deliminaters were replaced with tabs. 
 
-After this is ran, all editing chunks will be set to eval = FALSE, as the required files will no longer exist.
+All editing chunks will be set to eval = FALSE, as the required files will no longer exist.
 
 ```{bash, eval = FALSE}
 #usr/bin/bash
