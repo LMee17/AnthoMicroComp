@@ -1,3 +1,0 @@
-#usr/bin/bash
-
-grep "$1" rankedlineage_181022.tsv | head -n 20
