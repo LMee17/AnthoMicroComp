@@ -1,0 +1,10 @@
+Old	Current
+Lactobacillus bombintestini	Apilactobacillus bombintestini
+Ruminococcaceae	Oscillospiraceae
+Oligotropha	Afipia
+Bracovirus	Bracoviriform
+Oblitimonas	Thiopseudomonas
+Hungateiclostridium	Acetivibrio
+Phialemoniopsis	Thyridium
+Serpentinomonas	Serpentinimonas
+Byssochlamys	Paecilomyces
