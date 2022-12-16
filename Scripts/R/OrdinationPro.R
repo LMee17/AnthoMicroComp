@@ -92,6 +92,10 @@ pro <- pro[,!colSums(pro) == 0]
 lt3 <- apply(pro, 2, function(x) sum(x > 0)) < 3
 pro <- pro[, !names(pro) %in% names(lt3[lt3 == TRUE])]
 
+#write up
+dir.create("input/Counts/RelativeAbundance/")
+write.table(pro, "input/Counts/RelativeAbundance/Prokaryote_RA_filtered_Dec22.tsv")
+
 #sanity check: these filters should have gotten rid of any clear outliers
 #i.e. columns or rows that are mostly zero
 #to check, do a quick and dirty NMDS plot using Bray-Curtis
