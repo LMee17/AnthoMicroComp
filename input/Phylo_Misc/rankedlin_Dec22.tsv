@@ -1,0 +1,821 @@
+tax_name	species	genus	family	order	class	phylum	kingdom	superkingdom	ID
+Methanomassiliicoccus	NA	Methanomassiliicoccus	Methanomassiliicoccaceae	Methanomassiliicoccales	Thermoplasmata	Candidatus Thermoplasmatota		Archaea	TRH746
+Natronomonas	NA	Natronomonas	Haloarculaceae	Halobacteriales	Halobacteria	Euryarchaeota		Archaea	TRH383
+Bacteroides	NA	Bacteroides	Bacteroidaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH278
+Phocaeicola	NA	Phocaeicola	Bacteroidaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH271
+Dysgonomonas	NA	Dysgonomonas	Dysgonomonadaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH656
+Petrimonas	NA	Petrimonas	Dysgonomonadaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH672
+Proteiniphilum	NA	Proteiniphilum	Dysgonomonadaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH749
+Paludibacter	NA	Paludibacter	Paludibacteraceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH480
+Porphyromonas	NA	Porphyromonas	Porphyromonadaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH332
+Alloprevotella	NA	Alloprevotella	Prevotellaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH304
+Prevotella	NA	Prevotella	Prevotellaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH161
+Alistipes	NA	Alistipes	Rikenellaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH580
+Parabacteroides	NA	Parabacteroides	Tannerellaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH612
+Tannerella	NA	Tannerella	Tannerellaceae	Bacteroidales	Bacteroidia	Bacteroidota		Bacteria	TRH312
+Aquipluma	NA	Aquipluma	Prolixibacteraceae	Marinilabiliales	Bacteroidia	Bacteroidota		Bacteria	TRH492
+Filimonas	NA	Filimonas	Chitinophagaceae	Chitinophagales	Chitinophagia	Bacteroidota		Bacteria	TRH33
+Flavihumibacter	NA	Flavihumibacter	Chitinophagaceae	Chitinophagales	Chitinophagia	Bacteroidota		Bacteria	TRH693
+Flavisolibacter	NA	Flavisolibacter	Chitinophagaceae	Chitinophagales	Chitinophagia	Bacteroidota		Bacteria	TRH202
+Lacibacter	NA	Lacibacter	Chitinophagaceae	Chitinophagales	Chitinophagia	Bacteroidota		Bacteria	TRH763
+Pseudobacter	NA	Pseudobacter	Chitinophagaceae	Chitinophagales	Chitinophagia	Bacteroidota		Bacteria	TRH694
+Candidatus Cardinium	NA	Candidatus Cardinium	Amoebophilaceae	Cytophagales	Cytophagia	Bacteroidota		Bacteria	TRH716
+Bernardetia	NA	Bernardetia	Bernardetiaceae	Cytophagales	Cytophagia	Bacteroidota		Bacteria	TRH485
+Spirosoma	NA	Spirosoma	Cytophagaceae	Cytophagales	Cytophagia	Bacteroidota		Bacteria	TRH295
+Hymenobacter	NA	Hymenobacter	Hymenobacteraceae	Cytophagales	Cytophagia	Bacteroidota		Bacteria	TRH59
+Dyadobacter	NA	Dyadobacter	Spirosomaceae	Cytophagales	Cytophagia	Bacteroidota		Bacteria	TRH489
+Amniculibacterium	NA	Amniculibacterium	Flavobacteriaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH769
+Arenibacter	NA	Arenibacter	Flavobacteriaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH421
+Capnocytophaga	NA	Capnocytophaga	Flavobacteriaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH229
+Flavobacterium	NA	Flavobacterium	Flavobacteriaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH220
+Myroides	NA	Myroides	Flavobacteriaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH435
+Polaribacter	NA	Polaribacter	Flavobacteriaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH598
+Tenacibaculum	NA	Tenacibaculum	Flavobacteriaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH732
+Winogradskyella	NA	Winogradskyella	Flavobacteriaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH741
+Apibacter	NA	Apibacter	Weeksellaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH94
+Chryseobacterium	NA	Chryseobacterium	Weeksellaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH46
+Epilithonimonas	NA	Epilithonimonas	Weeksellaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH155
+Kaistella	NA	Kaistella	Weeksellaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH482
+Cloacibacterium	NA	Cloacibacterium	Weeksellaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH671
+Empedobacter	NA	Empedobacter	Weeksellaceae	Flavobacteriales	Flavobacteriia	Bacteroidota		Bacteria	TRH207
+Mucilaginibacter	NA	Mucilaginibacter	Sphingobacteriaceae	Sphingobacteriales	Sphingobacteriia	Bacteroidota		Bacteria	TRH241
+Pedobacter	NA	Pedobacter	Sphingobacteriaceae	Sphingobacteriales	Sphingobacteriia	Bacteroidota		Bacteria	TRH279
+Sphingobacterium	NA	Sphingobacterium	Sphingobacteriaceae	Sphingobacteriales	Sphingobacteriia	Bacteroidota		Bacteria	TRH268
+Rhodothermaceae	NA	Rhodothermaceae		Bacteroidetes Order II. Incertae sedis		Bacteroidota		Bacteria	TRH669
+Fusobacterium	NA	Fusobacterium	Fusobacteriaceae	Fusobacteriales	Fusobacteriia	Fusobacteria		Bacteria	TRH222
+Leptotrichia	NA	Leptotrichia	Leptotrichiaceae	Fusobacteriales	Fusobacteriia	Fusobacteria		Bacteria	TRH217
+Asticcacaulis	NA	Asticcacaulis	Caulobacteraceae	Caulobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH333
+Brevundimonas	NA	Brevundimonas	Caulobacteraceae	Caulobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH296
+Phenylobacterium	NA	Phenylobacterium	Caulobacteraceae	Caulobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH643
+Aureimonas	NA	Aureimonas	Aurantimonadaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH300
+Bartonella	NA	Bartonella	Bartonellaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH456
+Bosea	NA	Bosea	Boseaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH315
+Brucella	NA	Brucella	Brucellaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH400
+Ochrobactrum	NA	Ochrobactrum	Brucellaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH230
+Chelatococcus	NA	Chelatococcus	Chelatococcaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH650
+Devosia	NA	Devosia	Devosiaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH299
+Methylobacterium	NA	Methylobacterium	Methylobacteriaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH346
+Methylorubrum	NA	Methylorubrum	Methylobacteriaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH406
+Microvirga	NA	Microvirga	Methylobacteriaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH264
+Afipia	NA	Afipia	Nitrobacteraceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH624
+Candidatus Phaeomarinobacter	NA	Candidatus Phaeomarinobacter	Parvibaculaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH411
+Phreatobacter	NA	Phreatobacter	Phreatobacteraceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH235
+Aminobacter	NA	Aminobacter	Phyllobacteriaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH317
+Mesorhizobium	NA	Mesorhizobium	Phyllobacteriaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH244
+Phyllobacterium	NA	Phyllobacterium	Phyllobacteriaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH65
+Agrobacterium	NA	Agrobacterium	Rhizobiaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH20
+Neorhizobium	NA	Neorhizobium	Rhizobiaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH276
+Rhizobium	NA	Rhizobium	Rhizobiaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH197
+Shinella	NA	Shinella	Rhizobiaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH293
+Ensifer	NA	Ensifer	Rhizobiaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH285
+Sinorhizobium	NA	Sinorhizobium	Rhizobiaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH243
+Pannonibacter	NA	Pannonibacter	Stappiaceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH311
+Xanthobacter	NA	Xanthobacter	Xanthobacteraceae	Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH269
+Nordella	NA	Nordella		Hyphomicrobiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH420
+Glycocaulis	NA	Glycocaulis	Maricaulaceae	Maricaulales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH424
+Maricaulis	NA	Maricaulis	Maricaulaceae	Maricaulales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH410
+Candidatus Pelagibacter	NA	Candidatus Pelagibacter	Pelagibacteraceae	Pelagibacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH137
+Paracoccus	NA	Paracoccus	Rhodobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH200
+Polymorphum	NA	Polymorphum	Rhodobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH314
+Rhodobacter	NA	Rhodobacter	Rhodobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH98
+Roseicitreum	NA	Roseicitreum	Rhodobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH95
+Thioclava	NA	Thioclava	Rhodobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH503
+Mameliella	NA	Mameliella	Roseobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH409
+Roseivivax	NA	Roseivivax	Roseobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH773
+Roseobacter	NA	Roseobacter	Roseobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH772
+Roseovarius	NA	Roseovarius	Roseobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH427
+Salipiger	NA	Salipiger	Roseobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH431
+Sulfitobacter	NA	Sulfitobacter	Roseobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH429
+Thalassococcus	NA	Thalassococcus	Roseobacteraceae	Rhodobacterales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH640
+Acetobacteraceae	NA	Acetobacteraceae		Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH119
+Acidiphilium	NA	Acidiphilium	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH708
+Asaia	NA	Asaia	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH75
+Bombella	NA	Bombella	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH78
+Commensalibacter	NA	Commensalibacter	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH455
+Gluconacetobacter	NA	Gluconacetobacter	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH647
+Granulibacter	NA	Granulibacter	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH438
+Komagataeibacter	NA	Komagataeibacter	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH720
+Kozakia	NA	Kozakia	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH686
+Neokomagataea	NA	Neokomagataea	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH682
+Parasaccharibacter	NA	Parasaccharibacter	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH77
+Roseomonas	NA	Roseomonas	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH233
+Saccharibacter	NA	Saccharibacter	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH616
+Swingsia	NA	Swingsia	Acetobacteraceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH353
+Azospirillum	NA	Azospirillum	Azospirillaceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH6
+Rhodospirillum	NA	Rhodospirillum	Rhodospirillaceae	Rhodospirillales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH362
+Wolbachia	NA	Wolbachia	Anaplasmataceae	Rickettsiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH106
+Candidatus Lariskella	NA	Candidatus Lariskella	Candidatus Midichloriaceae	Rickettsiales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH470
+Aurantiacibacter	NA	Aurantiacibacter	Erythrobacteraceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH425
+Croceicoccus	NA	Croceicoccus	Erythrobacteraceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH399
+Erythrobacter	NA	Erythrobacter	Erythrobacteraceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH437
+Porphyrobacter	NA	Porphyrobacter	Erythrobacteraceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH402
+Qipengyuania	NA	Qipengyuania	Erythrobacteraceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH302
+Tsuneonella	NA	Tsuneonella	Erythrobacteraceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH452
+Blastomonas	NA	Blastomonas	Sphingomonadaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH415
+Novosphingobium	NA	Novosphingobium	Sphingomonadaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH208
+Rhizorhabdus	NA	Rhizorhabdus	Sphingomonadaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH408
+Sphingomonas	NA	Sphingomonas	Sphingomonadaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH398
+Sphingopyxis	NA	Sphingopyxis	Sphingomonadaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH407
+Sphingosinithalassobacter	NA	Sphingosinithalassobacter	Sphingomonadaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH204
+Sandaracinobacter	NA	Sandaracinobacter	Sphingosinicellaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH770
+Sphingosinicella	NA	Sphingosinicella	Sphingosinicellaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH440
+Zymomonas	NA	Zymomonas	Zymomonadaceae	Sphingomonadales	Alphaproteobacteria	Proteobacteria		Bacteria	TRH339
+Achromobacter	NA	Achromobacter	Alcaligenaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH231
+Alcaligenes	NA	Alcaligenes	Alcaligenaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH641
+Bordetella	NA	Bordetella	Alcaligenaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH280
+Pigmentiphaga	NA	Pigmentiphaga	Alcaligenaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH474
+Burkholderiaceae	NA	Burkholderiaceae		Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH663
+Burkholderia	NA	Burkholderia	Burkholderiaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH270
+Cupriavidus	NA	Cupriavidus	Burkholderiaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH70
+Lautropia	NA	Lautropia	Burkholderiaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH260
+Limnobacter	NA	Limnobacter	Burkholderiaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH373
+Paraburkholderia	NA	Paraburkholderia	Burkholderiaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH22
+Polynucleobacter	NA	Polynucleobacter	Burkholderiaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH601
+Ralstonia	NA	Ralstonia	Burkholderiaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH29
+Acidovorax	NA	Acidovorax	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH661
+Alicycliphilus	NA	Alicycliphilus	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH662
+Comamonas	NA	Comamonas	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH328
+Curvibacter	NA	Curvibacter	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH387
+Delftia	NA	Delftia	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH236
+Hydrogenophaga	NA	Hydrogenophaga	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH39
+Kinneretia	NA	Kinneretia	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH434
+Limnohabitans	NA	Limnohabitans	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH340
+Polaromonas	NA	Polaromonas	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH481
+Rhodoferax	NA	Rhodoferax	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH649
+Serpentinimonas	NA	Serpentinimonas	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH189
+Variovorax	NA	Variovorax	Comamonadaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH316
+Collimonas	NA	Collimonas	Oxalobacteraceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH639
+Herbaspirillum	NA	Herbaspirillum	Oxalobacteraceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH28
+Herminiimonas	NA	Herminiimonas	Oxalobacteraceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH432
+Janthinobacterium	NA	Janthinobacterium	Oxalobacteraceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH245
+Duganella	NA	Duganella	Oxalobacteraceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH325
+Massilia	NA	Massilia	Oxalobacteraceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH246
+Undibacterium	NA	Undibacterium	Oxalobacteraceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH382
+Inhella	NA	Inhella	Sphaerotilaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH426
+Mitsuaria	NA	Mitsuaria	Sphaerotilaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH433
+Schlegelella	NA	Schlegelella	Sphaerotilaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH337
+Aquabacterium	NA	Aquabacterium		Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH401
+Leptothrix	NA	Leptothrix		Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH642
+Tepidimonas	NA	Tepidimonas		Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH31
+Thiomonas	NA	Thiomonas		Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH439
+Xylophilus	NA	Xylophilus		Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria	TRH668
+Laribacter	NA	Laribacter	Chromobacteriaceae	Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH635
+Neisseriaceae	NA	Neisseriaceae		Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH14
+Alysiella	NA	Alysiella	Neisseriaceae	Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH710
+Eikenella	NA	Eikenella	Neisseriaceae	Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH613
+Kingella	NA	Kingella	Neisseriaceae	Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH288
+Neisseria	NA	Neisseria	Neisseriaceae	Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH19
+Simonsiella	NA	Simonsiella	Neisseriaceae	Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH704
+Snodgrassella	NA	Snodgrassella	Neisseriaceae	Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH3
+Vitreoscilla	NA	Vitreoscilla	Neisseriaceae	Neisseriales	Betaproteobacteria	Proteobacteria		Bacteria	TRH707
+Methylophilus	NA	Methylophilus	Methylophilaceae	Nitrosomonadales	Betaproteobacteria	Proteobacteria		Bacteria	TRH391
+Methylotenera	NA	Methylotenera	Methylophilaceae	Nitrosomonadales	Betaproteobacteria	Proteobacteria		Bacteria	TRH495
+Dechloromonas	NA	Dechloromonas	Azonexaceae	Rhodocyclales	Betaproteobacteria	Proteobacteria		Bacteria	TRH404
+Desulfobulbus	NA	Desulfobulbus	Desulfobulbaceae	Desulfobacterales	Deltaproteobacteria	Proteobacteria		Bacteria	TRH685
+Labilithrix	NA	Labilithrix	Labilitrichaceae	Myxococcales	Deltaproteobacteria	Proteobacteria		Bacteria	TRH629
+Sandaracinus	NA	Sandaracinus	Sandaracinaceae	Myxococcales	Deltaproteobacteria	Proteobacteria		Bacteria	TRH483
+Arcobacter	NA	Arcobacter	Arcobacteraceae	Campylobacterales	Epsilonproteobacteria	Proteobacteria		Bacteria	TRH499
+Campylobacter	NA	Campylobacter	Campylobacteraceae	Campylobacterales	Epsilonproteobacteria	Proteobacteria		Bacteria	TRH259
+Aeromonas	NA	Aeromonas	Aeromonadaceae	Aeromonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH18
+Zobellella	NA	Zobellella	Aeromonadaceae	Aeromonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH681
+Alteromonas	NA	Alteromonas	Alteromonadaceae	Alteromonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH417
+Thalassotalea	NA	Thalassotalea	Colwelliaceae	Alteromonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH620
+Pseudoalteromonas	NA	Pseudoalteromonas	Pseudoalteromonadaceae	Alteromonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH219
+Psychromonas	NA	Psychromonas	Psychromonadaceae	Alteromonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH491
+Parashewanella	NA	Parashewanella	Shewanellaceae	Alteromonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH619
+Shewanella	NA	Shewanella	Shewanellaceae	Alteromonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH86
+Cardiobacterium	NA	Cardiobacterium	Cardiobacteriaceae	Cardiobacteriales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH289
+Cellvibrio	NA	Cellvibrio	Cellvibrionaceae	Cellvibrionales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH227
+Microbulbifer	NA	Microbulbifer	Microbulbiferaceae	Cellvibrionales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH96
+Rheinheimera	NA	Rheinheimera	Chromatiaceae	Chromatiales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH26
+Sodalis	NA	Sodalis	Bruguierivoracaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH459
+Pragia	NA	Pragia	Budviciaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH600
+Enterobacteriaceae	NA	Enterobacteriaceae		Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH117
+Atlantibacter	NA	Atlantibacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH630
+Buttiauxella	NA	Buttiauxella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH358
+Candidatus Curculioniphilus	NA	Candidatus Curculioniphilus	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH518
+Cedecea	NA	Cedecea	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH341
+Citrobacter	NA	Citrobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH93
+Cronobacter	NA	Cronobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH172
+Enterobacter	NA	Enterobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH184
+Escherichia	NA	Escherichia	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH7
+Klebsiella	NA	Klebsiella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH88
+Raoultella	NA	Raoultella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH376
+Kluyvera	NA	Kluyvera	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH583
+Kosakonia	NA	Kosakonia	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH469
+Leclercia	NA	Leclercia	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH263
+Lelliottia	NA	Lelliottia	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH109
+Phytobacter	NA	Phytobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH378
+Plesiomonas	NA	Plesiomonas	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH699
+Pluralibacter	NA	Pluralibacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH120
+Salmonella	NA	Salmonella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH99
+Shigella	NA	Shigella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH97
+Erwiniaceae	NA	Erwiniaceae		Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH517
+Buchnera	NA	Buchnera	Erwiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH468
+Erwinia	NA	Erwinia	Erwiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH107
+Izhakiella	NA	Izhakiella	Erwiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH467
+Mixta	NA	Mixta	Erwiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH450
+Pantoea	NA	Pantoea	Erwiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH8
+Rosenbergiella	NA	Rosenbergiella	Erwiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH488
+Tatumella	NA	Tatumella	Erwiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH100
+Edwardsiella	NA	Edwardsiella	Hafniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH664
+Hafnia	NA	Hafnia	Hafniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH257
+Arsenophonus	NA	Arsenophonus	Morganellaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH532
+Morganella	NA	Morganella	Morganellaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH476
+Photorhabdus	NA	Photorhabdus	Morganellaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH125
+Proteus	NA	Proteus	Morganellaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH553
+Providencia	NA	Providencia	Morganellaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH118
+Brenneria	NA	Brenneria	Pectobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH514
+Dickeya	NA	Dickeya	Pectobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH513
+Lonsdalea	NA	Lonsdalea	Pectobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH512
+Pectobacterium	NA	Pectobacterium	Pectobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH379
+Gibbsiella	NA	Gibbsiella	Yersiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH515
+Rahnella	NA	Rahnella	Yersiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH386
+Serratia	NA	Serratia	Yersiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH85
+Yersinia	NA	Yersinia	Yersiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH516
+Kangiella	NA	Kangiella	Kangiellaceae	Kangiellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH674
+Legionella	NA	Legionella	Legionellaceae	Legionellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH403
+Methylothermaceae	NA	Methylothermaceae		Methylococcales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH395
+Moraxellaceae	NA	Moraxellaceae		Moraxellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH733
+Acinetobacter	NA	Acinetobacter	Moraxellaceae	Moraxellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH5
+Moraxella	NA	Moraxella	Moraxellaceae	Moraxellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH196
+Psychrobacter	NA	Psychrobacter	Moraxellaceae	Moraxellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH40
+Nevskia	NA	Nevskia	Sinobacteraceae	Nevskiales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH81
+Steroidobacter	NA	Steroidobacter	Steroidobacteraceae	Nevskiales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH307
+Alcanivorax	NA	Alcanivorax	Alcanivoracaceae	Oceanospirillales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH657
+Carnimonas	NA	Carnimonas	Halomonadaceae	Oceanospirillales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH473
+Cobetia	NA	Cobetia	Halomonadaceae	Oceanospirillales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH651
+Halomonas	NA	Halomonas	Halomonadaceae	Oceanospirillales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH61
+Halotalea	NA	Halotalea	Halomonadaceae	Oceanospirillales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH697
+Candidatus Carsonella	NA	Candidatus Carsonella	Halomonadaceae	Oceanospirillales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH461
+Zymobacter	NA	Zymobacter	Halomonadaceae	Oceanospirillales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH142
+Orbaceae	NA	Orbaceae		Orbales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH705
+Frischella	NA	Frischella	Orbaceae	Orbales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH53
+Gilliamella	NA	Gilliamella	Orbaceae	Orbales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH2
+Orbus	NA	Orbus	Orbaceae	Orbales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH457
+Pasteurellaceae	NA	Pasteurellaceae		Pasteurellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH502
+Actinobacillus	NA	Actinobacillus	Pasteurellaceae	Pasteurellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH330
+Aggregatibacter	NA	Aggregatibacter	Pasteurellaceae	Pasteurellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH294
+Glaesserella	NA	Glaesserella	Pasteurellaceae	Pasteurellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH581
+Haemophilus	NA	Haemophilus	Pasteurellaceae	Pasteurellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH66
+Mannheimia	NA	Mannheimia	Pasteurellaceae	Pasteurellales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH326
+Marinobacter	NA	Marinobacter	Marinobacteraceae	Pseudomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH412
+Entomomonas	NA	Entomomonas	Pseudomonadaceae	Pseudomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH569
+Pseudomonas	NA	Pseudomonas	Pseudomonadaceae	Pseudomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH224
+Allofrancisella	NA	Allofrancisella	Francisellaceae	Thiotrichales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH638
+Francisella	NA	Francisella	Francisellaceae	Thiotrichales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH138
+Photobacterium	NA	Photobacterium	Vibrionaceae	Vibrionales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH698
+Vibrio	NA	Vibrio	Vibrionaceae	Vibrionales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH87
+Luteimonas	NA	Luteimonas	Xanthomonadaceae	Xanthomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH303
+Lysobacter	NA	Lysobacter	Xanthomonadaceae	Xanthomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH298
+Pseudoxanthomonas	NA	Pseudoxanthomonas	Xanthomonadaceae	Xanthomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH284
+Stenotrophomonas	NA	Stenotrophomonas	Xanthomonadaceae	Xanthomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH248
+Thermomonas	NA	Thermomonas	Xanthomonadaceae	Xanthomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH36
+Xanthomonas	NA	Xanthomonas	Xanthomonadaceae	Xanthomonadales	Gammaproteobacteria	Proteobacteria		Bacteria	TRH47
+Candidatus Nardonella	NA	Candidatus Nardonella			Gammaproteobacteria	Proteobacteria		Bacteria	TRH622
+Hydrogenophilus	NA	Hydrogenophilus	Hydrogenophilaceae	Hydrogenophilales	Hydrogenophilalia	Proteobacteria		Bacteria	TRH652
+Bacteriovorax	NA	Bacteriovorax	Bacteriovoracaceae	Bacteriovoracales	Oligoflexia	Proteobacteria		Bacteria	TRH490
+Bdellovibrio	NA	Bdellovibrio	Bdellovibrionaceae	Bdellovibrionales	Oligoflexia	Proteobacteria		Bacteria	TRH498
+Gemmata	NA	Gemmata	Gemmataceae	Gemmatales	Planctomycetia	Planctomycetota		Bacteria	TRH719
+Singulisphaera	NA	Singulisphaera	Isosphaeraceae	Isosphaerales	Planctomycetia	Planctomycetota		Bacteria	TRH261
+Tautonia	NA	Tautonia	Isosphaeraceae	Isosphaerales	Planctomycetia	Planctomycetota		Bacteria	TRH768
+Pirellula	NA	Pirellula	Pirellulaceae	Pirellulales	Planctomycetia	Planctomycetota		Bacteria	TRH156
+Planctomyces	NA	Planctomyces	Planctomycetaceae	Planctomycetales	Planctomycetia	Planctomycetota		Bacteria	TRH413
+Pedosphaera	NA	Pedosphaera	Verrucomicrobia subdivision 3	Verrucomicrobiales	Verrucomicrobiae	Verrucomicrobia		Bacteria	TRH689
+Brachyspira	NA	Brachyspira	Brachyspiraceae	Brachyspirales	Spirochaetia	Spirochaetes		Bacteria	TRH634
+Treponema	NA	Treponema	Treponemataceae	Spirochaetales	Spirochaetia	Spirochaetes		Bacteria	TRH218
+Acidothermus	NA	Acidothermus	Acidothermaceae	Acidothermales	Actinomycetia	Actinobacteria		Bacteria	TRH654
+Actinomyces	NA	Actinomyces	Actinomycetaceae	Actinomycetales	Actinomycetia	Actinobacteria		Bacteria	TRH71
+Flaviflexus	NA	Flaviflexus	Actinomycetaceae	Actinomycetales	Actinomycetia	Actinobacteria		Bacteria	TRH35
+Pauljensenia	NA	Pauljensenia	Actinomycetaceae	Actinomycetales	Actinomycetia	Actinobacteria		Bacteria	TRH308
+Schaalia	NA	Schaalia	Actinomycetaceae	Actinomycetales	Actinomycetia	Actinobacteria		Bacteria	TRH62
+Bifidobacteriaceae	NA	Bifidobacteriaceae		Bifidobacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH10
+Bifidobacterium	NA	Bifidobacterium	Bifidobacteriaceae	Bifidobacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH16
+Bombiscardovia	NA	Bombiscardovia	Bifidobacteriaceae	Bifidobacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH545
+Gardnerella	NA	Gardnerella	Bifidobacteriaceae	Bifidobacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH212
+Candidatus Planktophila	NA	Candidatus Planktophila	Candidatus Nanopelagicaceae	Candidatus Nanopelagicales	Actinomycetia	Actinobacteria		Bacteria	TRH660
+Corynebacterium	NA	Corynebacterium	Corynebacteriaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH160
+Dietzia	NA	Dietzia	Dietziaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH195
+Gordonia	NA	Gordonia	Gordoniaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH69
+Lawsonella	NA	Lawsonella	Lawsonellaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH216
+Mycobacterium	NA	Mycobacterium	Mycobacteriaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH305
+Mycobacteroides	NA	Mycobacteroides	Mycobacteriaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH249
+Antrihabitans	NA	Antrihabitans	Nocardiaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH42
+Nocardia	NA	Nocardia	Nocardiaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH277
+Rhodococcus	NA	Rhodococcus	Nocardiaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH187
+Tsukamurella	NA	Tsukamurella	Tsukamurellaceae	Corynebacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH471
+Geodermatophilaceae	NA	Geodermatophilaceae		Geodermatophilales	Actinomycetia	Actinobacteria		Bacteria	TRH201
+Blastococcus	NA	Blastococcus	Geodermatophilaceae	Geodermatophilales	Actinomycetia	Actinobacteria		Bacteria	TRH68
+Geodermatophilus	NA	Geodermatophilus	Geodermatophilaceae	Geodermatophilales	Actinomycetia	Actinobacteria		Bacteria	TRH234
+Modestobacter	NA	Modestobacter	Geodermatophilaceae	Geodermatophilales	Actinomycetia	Actinobacteria		Bacteria	TRH232
+Miniimonas	NA	Miniimonas	Beutenbergiaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH500
+Brevibacterium	NA	Brevibacterium	Brevibacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH215
+Brachybacterium	NA	Brachybacterium	Dermabacteraceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH247
+Dermabacter	NA	Dermabacter	Dermabacteraceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH631
+Dermacoccus	NA	Dermacoccus	Dermacoccaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH89
+Janibacter	NA	Janibacter	Intrasporangiaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH223
+Phycicoccus	NA	Phycicoccus	Intrasporangiaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH115
+Jonesia	NA	Jonesia	Jonesiaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH24
+Kytococcus	NA	Kytococcus	Kytococcaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH265
+Microbacteriaceae	NA	Microbacteriaceae		Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH214
+Chryseoglobus	NA	Chryseoglobus	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH494
+Cryobacterium	NA	Cryobacterium	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH501
+Curtobacterium	NA	Curtobacterium	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH292
+Diaminobutyricimonas	NA	Diaminobutyricimonas	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH286
+Frondihabitans	NA	Frondihabitans	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH281
+Leifsonia	NA	Leifsonia	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH396
+Microbacterium	NA	Microbacterium	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH239
+Microcella	NA	Microcella	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH739
+Plantibacter	NA	Plantibacter	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH375
+Rathayibacter	NA	Rathayibacter	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH238
+Salinibacterium	NA	Salinibacterium	Microbacteriaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH487
+Arthrobacter	NA	Arthrobacter	Micrococcaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH17
+Kocuria	NA	Kocuria	Micrococcaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH209
+Micrococcus	NA	Micrococcus	Micrococcaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH186
+Paenarthrobacter	NA	Paenarthrobacter	Micrococcaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH477
+Pseudarthrobacter	NA	Pseudarthrobacter	Micrococcaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH497
+Rothia	NA	Rothia	Micrococcaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH60
+Ornithinimicrobium	NA	Ornithinimicrobium	Ornithinimicrobiaceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH313
+Sanguibacter	NA	Sanguibacter	Sanguibacteraceae	Micrococcales	Actinomycetia	Actinobacteria		Bacteria	TRH436
+Actinoplanes	NA	Actinoplanes	Micromonosporaceae	Micromonosporales	Actinomycetia	Actinobacteria		Bacteria	TRH310
+Micromonospora	NA	Micromonospora	Micromonosporaceae	Micromonosporales	Actinomycetia	Actinobacteria		Bacteria	TRH767
+Nakamurella	NA	Nakamurella	Nakamurellaceae	Nakamurellales	Actinomycetia	Actinobacteria		Bacteria	TRH766
+Nocardioidaceae	NA	Nocardioidaceae		Propionibacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH419
+Friedmanniella	NA	Friedmanniella	Nocardioidaceae	Propionibacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH267
+Micropruina	NA	Micropruina	Nocardioidaceae	Propionibacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH734
+Nocardioides	NA	Nocardioides	Nocardioidaceae	Propionibacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH240
+Cutibacterium	NA	Cutibacterium	Propionibacteriaceae	Propionibacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH190
+Microlunatus	NA	Microlunatus	Propionibacteriaceae	Propionibacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH48
+Propionibacterium	NA	Propionibacterium	Propionibacteriaceae	Propionibacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH258
+Tessaracoccus	NA	Tessaracoccus	Propionibacteriaceae	Propionibacteriales	Actinomycetia	Actinobacteria		Bacteria	TRH237
+Actinosynnema	NA	Actinosynnema	Pseudonocardiaceae	Pseudonocardiales	Actinomycetia	Actinobacteria		Bacteria	TRH465
+Amycolatopsis	NA	Amycolatopsis	Pseudonocardiaceae	Pseudonocardiales	Actinomycetia	Actinobacteria		Bacteria	TRH363
+Lentzea	NA	Lentzea	Pseudonocardiaceae	Pseudonocardiales	Actinomycetia	Actinobacteria		Bacteria	TRH667
+Pseudonocardia	NA	Pseudonocardia	Pseudonocardiaceae	Pseudonocardiales	Actinomycetia	Actinobacteria		Bacteria	TRH364
+Saccharopolyspora	NA	Saccharopolyspora	Pseudonocardiaceae	Pseudonocardiales	Actinomycetia	Actinobacteria		Bacteria	TRH301
+Umezawaea	NA	Umezawaea	Pseudonocardiaceae	Pseudonocardiales	Actinomycetia	Actinobacteria		Bacteria	TRH464
+Streptomyces	NA	Streptomyces	Streptomycetaceae	Streptomycetales	Actinomycetia	Actinobacteria		Bacteria	TRH194
+Lancefieldella	NA	Lancefieldella	Atopobiaceae	Coriobacteriales	Coriobacteriia	Actinobacteria		Bacteria	TRH327
+Egicoccus	NA	Egicoccus	Egicoccaceae	Egicoccales	Nitriliruptoria	Actinobacteria		Bacteria	TRH511
+Chroococcidiopsis	NA	Chroococcidiopsis	Chroococcidiopsidaceae	Chroococcidiopsidales		Cyanobacteria		Bacteria	TRH157
+Calothrix	NA	Calothrix	Calotrichaceae	Nostocales		Cyanobacteria		Bacteria	TRH25
+Fischerella	NA	Fischerella	Hapalosiphonaceae	Nostocales		Cyanobacteria		Bacteria	TRH150
+Anabaena	NA	Anabaena	Nostocaceae	Nostocales		Cyanobacteria		Bacteria	TRH388
+Chondrocystis	NA	Chondrocystis	Chroococcaceae	Chroococcales		Cyanobacteria		Bacteria	TRH460
+Gloeocapsa	NA	Gloeocapsa	Chroococcaceae	Chroococcales		Cyanobacteria		Bacteria	TRH645
+Gloeocapsopsis	NA	Gloeocapsopsis	Chroococcaceae	Chroococcales		Cyanobacteria		Bacteria	TRH646
+Cyanobacterium	NA	Cyanobacterium	Geminocystaceae	Chroococcales		Cyanobacteria		Bacteria	TRH55
+Oscillatoria	NA	Oscillatoria	Oscillatoriaceae	Oscillatoriales		Cyanobacteria		Bacteria	TRH329
+Pseudanabaena	NA	Pseudanabaena	Pseudanabaenaceae	Pseudanabaenales		Cyanobacteria		Bacteria	TRH744
+Deinococcus	NA	Deinococcus	Deinococcaceae	Deinococcales	Deinococci	Deinococcus-Thermus		Bacteria	TRH266
+Meiothermus	NA	Meiothermus	Thermaceae	Thermales	Deinococci	Deinococcus-Thermus		Bacteria	TRH345
+Thermus	NA	Thermus	Thermaceae	Thermales	Deinococci	Deinococcus-Thermus		Bacteria	TRH297
+Truepera	NA	Truepera	Trueperaceae	Trueperales	Deinococci	Deinococcus-Thermus		Bacteria	TRH126
+Alicyclobacillus	NA	Alicyclobacillus	Alicyclobacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH748
+Effusibacillus	NA	Effusibacillus	Alicyclobacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH34
+Aeribacillus	NA	Aeribacillus	Bacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH430
+Alkalihalobacillus	NA	Alkalihalobacillus	Bacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH740
+Anoxybacillus	NA	Anoxybacillus	Bacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH44
+Bacillus	NA	Bacillus	Bacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH73
+Lysinibacillus	NA	Lysinibacillus	Bacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH213
+Priestia	NA	Priestia	Bacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH721
+Virgibacillus	NA	Virgibacillus	Bacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH729
+Paenibacillus	NA	Paenibacillus	Paenibacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH338
+Sporosarcina	NA	Sporosarcina	Planococcaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH287
+Sporolactobacillus	NA	Sporolactobacillus	Sporolactobacillaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH701
+Macrococcus	NA	Macrococcus	Staphylococcaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH737
+Staphylococcus	NA	Staphylococcus	Staphylococcaceae	Bacillales	Bacilli	Firmicutes		Bacteria	TRH38
+Gemella	NA	Gemella		Bacillales	Bacilli	Firmicutes		Bacteria	TRH63
+Exiguobacterium	NA	Exiguobacterium		Bacillales	Bacilli	Firmicutes		Bacteria	TRH221
+Abiotrophia	NA	Abiotrophia	Aerococcaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH711
+Aerococcus	NA	Aerococcus	Aerococcaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH291
+Carnobacteriaceae	NA	Carnobacteriaceae		Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH637
+Alkalibacterium	NA	Alkalibacterium	Carnobacteriaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH423
+Carnobacterium	NA	Carnobacterium	Carnobacteriaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH451
+Dolosigranulum	NA	Dolosigranulum	Carnobacteriaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH283
+Granulicatella	NA	Granulicatella	Carnobacteriaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH272
+Jeotgalibaca	NA	Jeotgalibaca	Carnobacteriaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH43
+Marinilactibacillus	NA	Marinilactibacillus	Carnobacteriaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH653
+Enterococcus	NA	Enterococcus	Enterococcaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH361
+Vagococcus	NA	Vagococcus	Enterococcaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH83
+Acetilactobacillus	NA	Acetilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH105
+Apilactobacillus	NA	Apilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH103
+Bombilactobacillus	NA	Bombilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH4
+Companilactobacillus	NA	Companilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH706
+Fructilactobacillus	NA	Fructilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH713
+Fructobacillus	NA	Fructobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH458
+Lacticaseibacillus	NA	Lacticaseibacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH82
+Lactiplantibacillus	NA	Lactiplantibacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH91
+Lactobacillus	NA	Lactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH49
+Latilactobacillus	NA	Latilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH479
+Lentilactobacillus	NA	Lentilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH712
+Leuconostoc	NA	Leuconostoc	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH128
+Levilactobacillus	NA	Levilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH84
+Ligilactobacillus	NA	Ligilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH12
+Limosilactobacillus	NA	Limosilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH182
+Loigolactobacillus	NA	Loigolactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH80
+Pediococcus	NA	Pediococcus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH309
+Secundilactobacillus	NA	Secundilactobacillus	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH392
+Weissella	NA	Weissella	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH504
+Lactococcus	NA	Lactococcus	Streptococcaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH72
+Streptococcus	NA	Streptococcus	Streptococcaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH57
+Clostridium	NA	Clostridium	Clostridiaceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH27
+Hathewaya	NA	Hathewaya	Clostridiaceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH51
+Lachnospiraceae	NA	Lachnospiraceae		Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH331
+Anaerobutyricum	NA	Anaerobutyricum	Lachnospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH726
+Blautia	NA	Blautia	Lachnospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH644
+Lachnoanaerobaculum	NA	Lachnoanaerobaculum	Lachnospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH306
+Mediterraneibacter	NA	Mediterraneibacter	Lachnospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH56
+Oribacterium	NA	Oribacterium	Lachnospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH273
+Tyzzerella	NA	Tyzzerella	Lachnospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH709
+Acetivibrio	NA	Acetivibrio	Oscillospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH675
+Ethanoligenens	NA	Ethanoligenens	Oscillospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH735
+Faecalibacterium	NA	Faecalibacterium	Oscillospiraceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH343
+Peptostreptococcaceae	NA	Peptostreptococcaceae		Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH282
+Clostridioides	NA	Clostridioides	Peptostreptococcaceae	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH554
+Mogibacterium	NA	Mogibacterium	Eubacteriales Family XIII. Incertae Sedis	Eubacteriales	Clostridia	Firmicutes		Bacteria	TRH321
+Caldicellulosiruptor	NA	Caldicellulosiruptor	Thermoanaerobacterales Family III. Incertae Sedis	Thermoanaerobacterales	Clostridia	Firmicutes		Bacteria	TRH443
+Thermoanaerobacterium	NA	Thermoanaerobacterium	Thermoanaerobacterales Family III. Incertae Sedis	Thermoanaerobacterales	Clostridia	Firmicutes		Bacteria	TRH670
+Selenomonas	NA	Selenomonas	Selenomonadaceae	Selenomonadales	Negativicutes	Firmicutes		Bacteria	TRH225
+Veillonella	NA	Veillonella	Veillonellaceae	Veillonellales	Negativicutes	Firmicutes		Bacteria	TRH64
+Anaerococcus	NA	Anaerococcus	Peptoniphilaceae	Tissierellales	Tissierellia	Firmicutes		Bacteria	TRH67
+Finegoldia	NA	Finegoldia	Peptoniphilaceae	Tissierellales	Tissierellia	Firmicutes		Bacteria	TRH242
+Parvimonas	NA	Parvimonas	Peptoniphilaceae	Tissierellales	Tissierellia	Firmicutes		Bacteria	TRH318
+Peptoniphilus	NA	Peptoniphilus	Peptoniphilaceae	Tissierellales	Tissierellia	Firmicutes		Bacteria	TRH262
+Spiroplasma	NA	Spiroplasma	Spiroplasmataceae	Entomoplasmatales	Mollicutes	Tenericutes		Bacteria	TRH466
+Mycoplasma	NA	Mycoplasma	Mycoplasmataceae	Mycoplasmatales	Mollicutes	Tenericutes		Bacteria	TRH356
+Mycoplasmopsis	NA	Mycoplasmopsis	Mycoplasmataceae	Mycoplasmatales	Mollicutes	Tenericutes		Bacteria	TRH354
+Entamoeba	NA	Entamoeba	Entamoebidae	Mastigamoebida		Evosea		Eukaryota	TRH628
+Acytostelium	NA	Acytostelium	Acytosteliaceae	Acytosteliales	Eumycetozoa	Evosea		Eukaryota	TRH508
+Cavenderia	NA	Cavenderia	Cavenderiaceae	Acytosteliales	Eumycetozoa	Evosea		Eukaryota	TRH592
+Dictyostelium	NA	Dictyostelium	Dictyosteliaceae	Dictyosteliales	Eumycetozoa	Evosea		Eukaryota	TRH185
+Physarum	NA	Physarum	Physaraceae	Physariida	Eumycetozoa	Evosea		Eukaryota	TRH702
+Protostelium	NA	Protostelium	Protosteliaceae	Protosteliida	Variosea	Evosea		Eukaryota	TRH522
+Thecamonas	NA	Thecamonas	Apusomonadidae	Apusomonadida				Eukaryota	TRH659
+Euglena	NA	Euglena	Euglenaceae	Euglenales	Euglenida	Euglenozoa		Eukaryota	TRH570
+Trypanosomatidae	NA	Trypanosomatidae		Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH700
+Herpetomonas	NA	Herpetomonas	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH627
+Crithidia	NA	Crithidia	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH102
+Endotrypanum	NA	Endotrypanum	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH703
+Leishmania	NA	Leishmania	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH162
+Leptomonas	NA	Leptomonas	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH101
+Lotmaria	NA	Lotmaria	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH104
+Wallaceina	NA	Wallaceina	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH475
+Zelonia	NA	Zelonia	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH526
+Paratrypanosoma	NA	Paratrypanosoma	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH722
+Angomonas	NA	Angomonas	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH614
+Strigomonas	NA	Strigomonas	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH632
+Trypanosoma	NA	Trypanosoma	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH472
+Wallacemonas	NA	Wallacemonas	Trypanosomatidae	Trypanosomatida	Kinetoplastea	Euglenozoa		Eukaryota	TRH678
+Naegleria	NA	Naegleria	Vahlkampfiidae			Heterolobosea		Eukaryota	TRH534
+Holomastigotoides	NA	Holomastigotoides	Holomastigotoididae	Spirotrichonymphida		Parabasalia		Eukaryota	TRH724
+Cladosporium	NA	Cladosporium	Cladosporiaceae	Cladosporiales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH153
+Dothideaceae	NA	Dothideaceae		Dothideales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH324
+Hormonema	NA	Hormonema	Dothioraceae	Dothideales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH252
+Sydowia	NA	Sydowia	Dothioraceae	Dothideales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH205
+Aureobasidium	NA	Aureobasidium	Saccotheciaceae	Dothideales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH127
+Zalaria	NA	Zalaria	Zalariaceae	Dothideales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH251
+Dissoconium	NA	Dissoconium	Dissoconiaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH540
+Uwebraunia	NA	Uwebraunia	Dissoconiaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH250
+Cercospora	NA	Cercospora	Mycosphaerellaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH171
+Pseudocercospora	NA	Pseudocercospora	Mycosphaerellaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH550
+Ramularia	NA	Ramularia	Mycosphaerellaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH478
+Sphaerulina	NA	Sphaerulina	Mycosphaerellaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH371
+Zasmidium	NA	Zasmidium	Mycosphaerellaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH389
+Zymoseptoria	NA	Zymoseptoria	Mycosphaerellaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH191
+Acrodontium	NA	Acrodontium	Teratosphaeriaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH320
+Baudoinia	NA	Baudoinia	Teratosphaeriaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH394
+Neohortaea	NA	Neohortaea	Teratosphaeriaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH537
+Stenella	NA	Stenella	Teratosphaeriaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH714
+Teratosphaeria	NA	Teratosphaeria	Teratosphaeriaceae	Mycosphaerellales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH131
+Mytilinidion	NA	Mytilinidion	Mytilinidiaceae	Mytilinidiales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH385
+Pithomyces	NA	Pithomyces	Astrosphaeriellaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH206
+Dothidotthia	NA	Dothidotthia	Dothidotthiaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH607
+Paraphaeosphaeria	NA	Paraphaeosphaeria	Didymosphaeriaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH529
+Massarinaceae	NA	Massarinaceae		Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH134
+Periconia	NA	Periconia	Periconiaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH129
+Trematosphaeria	NA	Trematosphaeria	Trematosphaeriaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH560
+Ascochyta	NA	Ascochyta	Didymellaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH52
+Boeremia	NA	Boeremia	Didymellaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH695
+Calophoma	NA	Calophoma	Didymellaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH687
+Didymella	NA	Didymella	Didymellaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH369
+Heterophoma	NA	Heterophoma	Didymellaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH690
+Macroventuria	NA	Macroventuria	Didymellaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH527
+Phoma	NA	Phoma	Didymellaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH193
+Leptosphaeria	NA	Leptosphaeria	Leptosphaeriaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH151
+Phaeosphaeriaceae	NA	Phaeosphaeriaceae		Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH665
+Parastagonospora	NA	Parastagonospora	Phaeosphaeriaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH130
+Pleosporaceae	NA	Pleosporaceae		Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH255
+Alternaria	NA	Alternaria	Pleosporaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH13
+Bipolaris	NA	Bipolaris	Pleosporaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH114
+Exserohilum	NA	Exserohilum	Pleosporaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH143
+Pyrenophora	NA	Pyrenophora	Pleosporaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH58
+Stemphylium	NA	Stemphylium	Pleosporaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH486
+Westerdykella	NA	Westerdykella	Sporormiaceae	Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH595
+Aaosphaeria	NA	Aaosphaeria		Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH141
+Cryptocoryneum	NA	Cryptocoryneum		Pleosporales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH133
+Venturia	NA	Venturia	Venturiaceae	Venturiales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH589
+Aplosporella	NA	Aplosporella	Aplosporellaceae	Botryosphaeriales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH418
+Diplodia	NA	Diplodia	Botryosphaeriaceae	Botryosphaeriales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH334
+Lasiodiplodia	NA	Lasiodiplodia	Botryosphaeriaceae	Botryosphaeriales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH350
+Phyllosticta	NA	Phyllosticta	Phyllostictaceae	Botryosphaeriales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH322
+Patellaria	NA	Patellaria	Patellariaceae	Patellariales	Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH139
+Spissiomyces	NA	Spissiomyces			Dothideomycetes	Ascomycota	Fungi	Eukaryota	TRH140
+Bonordeniella	NA	Bonordeniella	Herpotrichiellaceae	Chaetothyriales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH582
+Capronia	NA	Capronia	Herpotrichiellaceae	Chaetothyriales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH599
+Cladophialophora	NA	Cladophialophora	Herpotrichiellaceae	Chaetothyriales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH617
+Exophiala	NA	Exophiala	Herpotrichiellaceae	Chaetothyriales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH37
+Fonsecaea	NA	Fonsecaea	Herpotrichiellaceae	Chaetothyriales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH552
+Phialophora	NA	Phialophora	Herpotrichiellaceae	Chaetothyriales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH528
+Knufia	NA	Knufia	Trichomeriaceae	Chaetothyriales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH32
+Strelitziana	NA	Strelitziana		Chaetothyriales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH169
+Endocarpon	NA	Endocarpon	Verrucariaceae	Verrucariales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH145
+Aspergillaceae	NA	Aspergillaceae		Eurotiales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH655
+Aspergillus	NA	Aspergillus	Aspergillaceae	Eurotiales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH23
+Penicilliopsis	NA	Penicilliopsis	Aspergillaceae	Eurotiales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH609
+Penicillium	NA	Penicillium	Aspergillaceae	Eurotiales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH54
+Paecilomyces	NA	Paecilomyces	Thermoascaceae	Eurotiales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH30
+Rasamsonia	NA	Rasamsonia	Trichocomaceae	Eurotiales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH575
+Talaromyces	NA	Talaromyces	Trichocomaceae	Eurotiales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH135
+Blastomyces	NA	Blastomyces	Ajellomycetaceae	Onygenales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH368
+Trichophyton	NA	Trichophyton	Arthrodermataceae	Onygenales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH253
+Ascosphaera	NA	Ascosphaera	Ascosphaeraceae	Onygenales	Eurotiomycetes	Ascomycota	Fungi	Eukaryota	TRH673
+Cetraria	NA	Cetraria	Parmeliaceae	Lecanorales	Lecanoromycetes	Ascomycota	Fungi	Eukaryota	TRH611
+Bacidina	NA	Bacidina	Ramalinaceae	Lecanorales	Lecanoromycetes	Ascomycota	Fungi	Eukaryota	TRH715
+Fissurina	NA	Fissurina	Graphidaceae	Ostropales	Lecanoromycetes	Ascomycota	Fungi	Eukaryota	TRH745
+Umbilicaria	NA	Umbilicaria	Umbilicariaceae	Umbilicariales	Lecanoromycetes	Ascomycota	Fungi	Eukaryota	TRH132
+Blumeria	NA	Blumeria	Erysiphaceae	Erysiphales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH170
+Erysiphe	NA	Erysiphe	Erysiphaceae	Erysiphales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH290
+Golovinomyces	NA	Golovinomyces	Erysiphaceae	Erysiphales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH357
+Phyllactinia	NA	Phyllactinia	Erysiphaceae	Erysiphales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH203
+Marssonina	NA	Marssonina	Dermateaceae	Helotiales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH605
+Phlyctema	NA	Phlyctema	Dermateaceae	Helotiales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH743
+Helotiaceae	NA	Helotiaceae		Helotiales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH274
+Lachnellula	NA	Lachnellula	Lachnaceae	Helotiales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH725
+Venustampulla	NA	Venustampulla	Pleuroascaceae	Helotiales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH351
+Botrytis	NA	Botrytis	Sclerotiniaceae	Helotiales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH344
+Sclerotinia	NA	Sclerotinia	Sclerotiniaceae	Helotiales	Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH556
+Pseudogymnoascus	NA	Pseudogymnoascus	Pseudeurotiaceae		Leotiomycetes	Ascomycota	Fungi	Eukaryota	TRH348
+Colletotrichum	NA	Colletotrichum	Glomerellaceae	Glomerellales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH181
+Sodiomyces	NA	Sodiomyces	Plectosphaerellaceae	Glomerellales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH608
+Verticillium	NA	Verticillium	Plectosphaerellaceae	Glomerellales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH542
+Clonostachys	NA	Clonostachys	Bionectriaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH370
+Geosmithia	NA	Geosmithia	Bionectriaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH594
+Claviceps	NA	Claviceps	Clavicipitaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH359
+Metarhizium	NA	Metarhizium	Clavicipitaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH731
+Beauveria	NA	Beauveria	Cordycipitaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH377
+Cordyceps	NA	Cordyceps	Cordycipitaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH551
+Trichoderma	NA	Trichoderma	Hypocreaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH543
+Fusarium	NA	Fusarium	Nectriaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH116
+Purpureocillium	NA	Purpureocillium	Ophiocordycipitaceae	Hypocreales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH541
+Ambrosiella	NA	Ambrosiella	Ceratocystidaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH756
+Berkeleyomyces	NA	Berkeleyomyces	Ceratocystidaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH764
+Ceratocystis	NA	Ceratocystis	Ceratocystidaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH754
+Davidsoniella	NA	Davidsoniella	Ceratocystidaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH755
+Huntiella	NA	Huntiella	Ceratocystidaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH736
+Phialophoropsis	NA	Phialophoropsis	Ceratocystidaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH761
+Graphium	NA	Graphium	Graphiaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH683
+Microascus	NA	Microascus	Microascaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH691
+Scedosporium	NA	Scedosporium	Microascaceae	Microascales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH688
+Chrysoporthe	NA	Chrysoporthe	Cryphonectriaceae	Diaporthales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH505
+Microascospora	NA	Microascospora	Melanconiellaceae	Diaporthales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH256
+Pyricularia	NA	Pyricularia	Pyriculariaceae	Magnaporthales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH183
+Ophiostoma	NA	Ophiostoma	Ophiostomataceae	Ophiostomatales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH738
+Sporothrix	NA	Sporothrix	Ophiostomataceae	Ophiostomatales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH747
+Chaetomium	NA	Chaetomium	Chaetomiaceae	Sordariales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH593
+Thermothelomyces	NA	Thermothelomyces	Chaetomiaceae	Sordariales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH416
+Thermothielavioides	NA	Thermothielavioides	Chaetomiaceae	Sordariales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH578
+Podospora	NA	Podospora	Podosporaceae	Sordariales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH428
+Neurospora	NA	Neurospora	Sordariaceae	Sordariales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH530
+Sordaria	NA	Sordaria	Sordariaceae	Sordariales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH380
+Rhamphoria	NA	Rhamphoria	Rhamphoriaceae		Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH561
+Arthrinium	NA	Arthrinium	Apiosporaceae	Xylariales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH666
+Pestalotiopsis	NA	Pestalotiopsis	Sporocadaceae	Xylariales	Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH405
+Thyridium	NA	Thyridium	Thyridiaceae		Sordariomycetes	Ascomycota	Fungi	Eukaryota	TRH618
+Xylona	NA	Xylona	Xylonaceae	Xylonales	Xylonomycetes	Ascomycota	Fungi	Eukaryota	TRH606
+Arthrobotrys	NA	Arthrobotrys	Orbiliaceae	Orbiliales	Orbiliomycetes	Ascomycota	Fungi	Eukaryota	TRH615
+Plectania	NA	Plectania	Sarcosomataceae	Pezizales	Pezizomycetes	Ascomycota	Fungi	Eukaryota	TRH254
+Tuber	NA	Tuber	Tuberaceae	Pezizales	Pezizomycetes	Ascomycota	Fungi	Eukaryota	TRH573
+Alatosessilispora	NA	Alatosessilispora				Ascomycota	Fungi	Eukaryota	TRH50
+Candida	NA	Candida	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH367
+Lodderomyces	NA	Lodderomyces	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH559
+Debaryomyces	NA	Debaryomyces	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH74
+Hyphopichia	NA	Hyphopichia	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH158
+Kodamaea	NA	Kodamaea	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH79
+Meyerozyma	NA	Meyerozyma	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH349
+Millerozyma	NA	Millerozyma	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH76
+Priceomyces	NA	Priceomyces	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH692
+Scheffersomyces	NA	Scheffersomyces	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH555
+Spathaspora	NA	Spathaspora	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH548
+Suhomyces	NA	Suhomyces	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH539
+Yamadazyma	NA	Yamadazyma	Debaryomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH152
+Clavispora	NA	Clavispora	Metschnikowiaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH159
+Metschnikowia	NA	Metschnikowia	Metschnikowiaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH111
+Babjeviella	NA	Babjeviella		Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH604
+Saccharomycopsis	NA	Saccharomycopsis	Saccharomycopsidaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH45
+Galactomyces	NA	Galactomyces	Dipodascaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH728
+Saprochaete	NA	Saprochaete	Dipodascaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH149
+Yarrowia	NA	Yarrowia	Dipodascaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH228
+Cyberlindnera	NA	Cyberlindnera	Phaffomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH397
+Komagataella	NA	Komagataella	Phaffomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH154
+Wickerhamomyces	NA	Wickerhamomyces	Phaffomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH192
+Brettanomyces	NA	Brettanomyces	Pichiaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH567
+Ogataea	NA	Ogataea	Pichiaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH568
+Pichia	NA	Pichia	Pichiaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH587
+Eremothecium	NA	Eremothecium	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH636
+Kazachstania	NA	Kazachstania	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH538
+Kluyveromyces	NA	Kluyveromyces	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH147
+Lachancea	NA	Lachancea	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH447
+Nakaseomyces	NA	Nakaseomyces	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH352
+Naumovozyma	NA	Naumovozyma	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH146
+Saccharomyces	NA	Saccharomyces	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH365
+Tetrapisispora	NA	Tetrapisispora	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH546
+Torulaspora	NA	Torulaspora	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH547
+Vanderwaltozyma	NA	Vanderwaltozyma	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH446
+Zygosaccharomyces	NA	Zygosaccharomyces	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH211
+Zygotorulaspora	NA	Zygotorulaspora	Saccharomycetaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH549
+Blastobotrys	NA	Blastobotrys	Trichomonascaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH90
+Sugiyamaella	NA	Sugiyamaella	Trichomonascaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH625
+Wickerhamiella	NA	Wickerhamiella	Trichomonascaceae	Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH679
+Ambrosiozyma	NA	Ambrosiozyma		Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH760
+Diutina	NA	Diutina		Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH591
+Kuraishia	NA	Kuraishia		Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH509
+Starmerella	NA	Starmerella		Saccharomycetales	Saccharomycetes	Ascomycota	Fungi	Eukaryota	TRH1
+Pneumocystis	NA	Pneumocystis	Pneumocystidaceae	Pneumocystidales	Pneumocystidomycetes	Ascomycota	Fungi	Eukaryota	TRH393
+Schizosaccharomyces	NA	Schizosaccharomyces	Schizosaccharomycetaceae	Schizosaccharomycetales	Schizosaccharomycetes	Ascomycota	Fungi	Eukaryota	TRH621
+Saitoella	NA	Saitoella				Ascomycota	Fungi	Eukaryota	TRH92
+Coprinopsis	NA	Coprinopsis	Psathyrellaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH590
+Floccularia	NA	Floccularia	Squamanitaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH762
+Pholiota	NA	Pholiota	Strophariaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH175
+Mycena	NA	Mycena	Mycenaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH177
+Armillaria	NA	Armillaria	Physalacriaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH453
+Flammulina	NA	Flammulina	Physalacriaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH441
+Pleurotus	NA	Pleurotus	Pleurotaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH586
+Amanita	NA	Amanita	Amanitaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH759
+Pluteus	NA	Pluteus	Pluteaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH751
+Clitocybe	NA	Clitocybe	Clitocybaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH753
+Entoloma	NA	Entoloma	Entolomataceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH168
+Termitomyces	NA	Termitomyces	Lyophyllaceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH765
+Tricholoma	NA	Tricholoma	Tricholomataceae	Agaricales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH166
+Coniophora	NA	Coniophora	Coniophoraceae	Boletales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH510
+Auricularia	NA	Auricularia	Auriculariaceae	Auriculariales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH757
+Exidia	NA	Exidia	Exidiaceae	Auriculariales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH774
+Botryobasidium	NA	Botryobasidium	Botryobasidiaceae	Cantharellales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH626
+Rhizoctonia	NA	Rhizoctonia	Ceratobasidiaceae	Cantharellales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH163
+Laetisaria	NA	Laetisaria	Corticiaceae	Corticiales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH180
+Waitea	NA	Waitea	Corticiaceae	Corticiales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH179
+Gloeophyllum	NA	Gloeophyllum	Gloeophyllaceae	Gloeophyllales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH174
+Veluticeps	NA	Veluticeps	Gloeophyllaceae	Gloeophyllales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH167
+Amyloporia	NA	Amyloporia	Adustoporiaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH121
+Cerrena	NA	Cerrena	Cerrenaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH123
+Fibroporia	NA	Fibroporia	Fibroporiaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH176
+Fomitopsis	NA	Fomitopsis	Fomitopsidaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH164
+Rigidoporus	NA	Rigidoporus	Meripilaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH124
+Phlebia	NA	Phlebia	Meruliaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH178
+Wolfiporia	NA	Wolfiporia	Phaeolaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH21
+Phlebiopsis	NA	Phlebiopsis	Phanerochaetaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH165
+Dichomitus	NA	Dichomitus	Polyporaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH610
+Ganoderma	NA	Ganoderma	Polyporaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH173
+Hornodermoporus	NA	Hornodermoporus	Polyporaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH15
+Polyporus	NA	Polyporus	Polyporaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH122
+Trametes	NA	Trametes	Polyporaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH442
+Postia	NA	Postia	Postiaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH579
+Sparassis	NA	Sparassis	Sparassidaceae	Polyporales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH384
+Heterobasidion	NA	Heterobasidion	Bondarzewiaceae	Russulales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH507
+Stereum	NA	Stereum	Stereaceae	Russulales	Agaricomycetes	Basidiomycota	Fungi	Eukaryota	TRH602
+Phaffia	NA	Phaffia	Mrakiaceae	Cystofilobasidiales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH572
+Naganishia	NA	Naganishia	Filobasidiaceae	Filobasidiales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH520
+Holtermannia	NA	Holtermannia		Holtermanniales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH422
+Cryptococcus	NA	Cryptococcus	Cryptococcaceae	Tremellales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH454
+Kwoniella	NA	Kwoniella	Cryptococcaceae	Tremellales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH148
+Kockovaella	NA	Kockovaella	Cuniculitremaceae	Tremellales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH557
+Tremellaceae	NA	Tremellaceae		Tremellales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH696
+Apiotrichum	NA	Apiotrichum	Trichosporonaceae	Trichosporonales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH342
+Cutaneotrichosporon	NA	Cutaneotrichosporon	Trichosporonaceae	Trichosporonales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH374
+Trichosporon	NA	Trichosporon	Trichosporonaceae	Trichosporonales	Tremellomycetes	Basidiomycota	Fungi	Eukaryota	TRH414
+Kondoa	NA	Kondoa	Kondoaceae	Agaricostilbales	Agaricostilbomycetes	Basidiomycota	Fungi	Eukaryota	TRH198
+Cystobasidium	NA	Cystobasidium	Cystobasidiaceae	Cystobasidiales	Cystobasidiomycetes	Basidiomycota	Fungi	Eukaryota	TRH199
+Symmetrospora	NA	Symmetrospora	Symmetrosporaceae		Cystobasidiomycetes	Basidiomycota	Fungi	Eukaryota	TRH718
+Leucosporidium	NA	Leucosporidium	Leucosporidiaceae	Leucosporidiales	Microbotryomycetes	Basidiomycota	Fungi	Eukaryota	TRH323
+Rhodosporidiobolus	NA	Rhodosporidiobolus	Sporidiobolaceae	Sporidiobolales	Microbotryomycetes	Basidiomycota	Fungi	Eukaryota	TRH519
+Rhodotorula	NA	Rhodotorula	Sporidiobolaceae	Sporidiobolales	Microbotryomycetes	Basidiomycota	Fungi	Eukaryota	TRH521
+Sporobolomyces	NA	Sporobolomyces	Sporidiobolaceae	Sporidiobolales	Microbotryomycetes	Basidiomycota	Fungi	Eukaryota	TRH775
+Curvibasidium	NA	Curvibasidium			Microbotryomycetes	Basidiomycota	Fungi	Eukaryota	TRH524
+Melampsora	NA	Melampsora	Melampsoraceae	Pucciniales	Pucciniomycetes	Basidiomycota	Fungi	Eukaryota	TRH571
+Puccinia	NA	Puccinia	Pucciniaceae	Pucciniales	Pucciniomycetes	Basidiomycota	Fungi	Eukaryota	TRH113
+Ceraceosorus	NA	Ceraceosorus	Ceraceosoraceae	Ceraceosorales	Exobasidiomycetes	Basidiomycota	Fungi	Eukaryota	TRH506
+Tilletiopsis	NA	Tilletiopsis		Entylomatales	Exobasidiomycetes	Basidiomycota	Fungi	Eukaryota	TRH372
+Meira	NA	Meira	Brachybasidiaceae	Exobasidiales	Exobasidiomycetes	Basidiomycota	Fungi	Eukaryota	TRH584
+Tilletiaria	NA	Tilletiaria	Tilletiariaceae	Georgefischeriales	Exobasidiomycetes	Basidiomycota	Fungi	Eukaryota	TRH144
+Jaminaea	NA	Jaminaea		Microstromatales	Exobasidiomycetes	Basidiomycota	Fungi	Eukaryota	TRH448
+Pseudomicrostroma	NA	Pseudomicrostroma		Microstromatales	Exobasidiomycetes	Basidiomycota	Fungi	Eukaryota	TRH758
+Malasseziaceae	NA	Malasseziaceae		Malasseziales	Malasseziomycetes	Basidiomycota	Fungi	Eukaryota	TRH275
+Malassezia	NA	Malassezia	Malasseziaceae	Malasseziales	Malasseziomycetes	Basidiomycota	Fungi	Eukaryota	TRH226
+Moniliella	NA	Moniliella	Moniliellaceae	Moniliellales	Moniliellomycetes	Basidiomycota	Fungi	Eukaryota	TRH445
+Anthracocystis	NA	Anthracocystis	Ustilaginaceae	Ustilaginales	Ustilaginomycetes	Basidiomycota	Fungi	Eukaryota	TRH444
+Melanopsichium	NA	Melanopsichium	Ustilaginaceae	Ustilaginales	Ustilaginomycetes	Basidiomycota	Fungi	Eukaryota	TRH449
+Moesziomyces	NA	Moesziomyces	Ustilaginaceae	Ustilaginales	Ustilaginomycetes	Basidiomycota	Fungi	Eukaryota	TRH585
+Sporisorium	NA	Sporisorium	Ustilaginaceae	Ustilaginales	Ustilaginomycetes	Basidiomycota	Fungi	Eukaryota	TRH525
+Ustilago	NA	Ustilago	Ustilaginaceae	Ustilaginales	Ustilaginomycetes	Basidiomycota	Fungi	Eukaryota	TRH41
+Wallemia	NA	Wallemia	Wallemiaceae	Wallemiales	Wallemiomycetes	Basidiomycota	Fungi	Eukaryota	TRH188
+Nowakowskiella	NA	Nowakowskiella	Nowakowskiellaceae	Cladochytriales	Chytridiomycetes	Chytridiomycota	Fungi	Eukaryota	TRH752
+Batrachochytrium	NA	Batrachochytrium		Rhizophydiales	Chytridiomycetes	Chytridiomycota	Fungi	Eukaryota	TRH565
+Spizellomyces	NA	Spizellomyces	Spizellomycetaceae	Spizellomycetales	Chytridiomycetes	Chytridiomycota	Fungi	Eukaryota	TRH535
+Synchytrium	NA	Synchytrium	Synchytriaceae	Synchytriales	Chytridiomycetes	Chytridiomycota	Fungi	Eukaryota	TRH136
+Catenomyces	NA	Catenomyces			Chytridiomycetes	Chytridiomycota	Fungi	Eukaryota	TRH648
+Hepatospora	NA	Hepatospora	Enterocytozoonidae			Microsporidia	Fungi	Eukaryota	TRH597
+Nosema	NA	Nosema	Nosematidae			Microsporidia	Fungi	Eukaryota	TRH462
+Encephalitozoon	NA	Encephalitozoon	Unikaryonidae			Microsporidia	Fungi	Eukaryota	TRH558
+Anncaliia	NA	Anncaliia	Tubulinosematidae			Microsporidia	Fungi	Eukaryota	TRH623
+Tubulinosema	NA	Tubulinosema	Tubulinosematidae			Microsporidia	Fungi	Eukaryota	TRH750
+Microsporidium	NA	Microsporidium				Microsporidia	Fungi	Eukaryota	TRH463
+Ordospora	NA	Ordospora	Ordosporidae			Microsporidia	Fungi	Eukaryota	TRH588
+Glomeraceae	NA	Glomeraceae		Glomerales	Glomeromycetes	Mucoromycota	Fungi	Eukaryota	TRH684
+Rhizophagus	NA	Rhizophagus	Glomeraceae	Glomerales	Glomeromycetes	Mucoromycota	Fungi	Eukaryota	TRH633
+Lobosporangium	NA	Lobosporangium	Mortierellaceae	Mortierellales	Mortierellomycetes	Mucoromycota	Fungi	Eukaryota	TRH335
+Mortierella	NA	Mortierella	Mortierellaceae	Mortierellales	Mortierellomycetes	Mucoromycota	Fungi	Eukaryota	TRH110
+Podila	NA	Podila	Mortierellaceae	Mortierellales	Mortierellomycetes	Mucoromycota	Fungi	Eukaryota	TRH112
+Cunninghamella	NA	Cunninghamella	Cunninghamellaceae	Mucorales	Mucoromycetes	Mucoromycota	Fungi	Eukaryota	TRH574
+Lichtheimia	NA	Lichtheimia	Lichtheimiaceae	Mucorales	Mucoromycetes	Mucoromycota	Fungi	Eukaryota	TRH390
+Mucor	NA	Mucor	Mucoraceae	Mucorales	Mucoromycetes	Mucoromycota	Fungi	Eukaryota	TRH347
+Parasitella	NA	Parasitella	Mucoraceae	Mucorales	Mucoromycetes	Mucoromycota	Fungi	Eukaryota	TRH381
+Rhizopus	NA	Rhizopus	Rhizopodaceae	Mucorales	Mucoromycetes	Mucoromycota	Fungi	Eukaryota	TRH108
+Phycomyces	NA	Phycomyces	Phycomycetaceae	Mucorales	Mucoromycetes	Mucoromycota	Fungi	Eukaryota	TRH536
+Entomophthora	NA	Entomophthora	Entomophthoraceae	Entomophthorales	Entomophthoromycetes	Zoopagomycota	Fungi	Eukaryota	TRH496
+Creolimax	NA	Creolimax		Ichthyophonida	Ichthyosporea			Eukaryota	TRH658
+Haemocystidium	NA	Haemocystidium	Haemoproteidae	Haemosporida	Aconoidasida	Apicomplexa		Eukaryota	TRH596
+Plasmodium	NA	Plasmodium	Plasmodiidae	Haemosporida	Aconoidasida	Apicomplexa		Eukaryota	TRH336
+Babesia	NA	Babesia	Babesiidae	Piroplasmida	Aconoidasida	Apicomplexa		Eukaryota	TRH533
+Theileria	NA	Theileria	Theileriidae	Piroplasmida	Aconoidasida	Apicomplexa		Eukaryota	TRH366
+Cryptosporidium	NA	Cryptosporidium	Cryptosporidiidae	Eucoccidiorida	Conoidasida	Apicomplexa		Eukaryota	TRH531
+Cyclospora	NA	Cyclospora	Eimeriidae	Eucoccidiorida	Conoidasida	Apicomplexa		Eukaryota	TRH563
+Eimeria	NA	Eimeria	Eimeriidae	Eucoccidiorida	Conoidasida	Apicomplexa		Eukaryota	TRH544
+Isospora	NA	Isospora	Eimeriidae	Eucoccidiorida	Conoidasida	Apicomplexa		Eukaryota	TRH523
+Besnoitia	NA	Besnoitia	Sarcocystidae	Eucoccidiorida	Conoidasida	Apicomplexa		Eukaryota	TRH717
+Neospora	NA	Neospora	Sarcocystidae	Eucoccidiorida	Conoidasida	Apicomplexa		Eukaryota	TRH562
+Sarcocystis	NA	Sarcocystis	Sarcocystidae	Eucoccidiorida	Conoidasida	Apicomplexa		Eukaryota	TRH677
+Ascogregarina	NA	Ascogregarina	Lecudinidae	Eugregarinorida	Conoidasida	Apicomplexa		Eukaryota	TRH484
+Mattesia	NA	Mattesia	Lipotrophidae	Neogregarinorida	Conoidasida	Apicomplexa		Eukaryota	TRH676
+Apicystis	NA	Apicystis	Ophryocystidae	Neogregarinorida	Conoidasida	Apicomplexa		Eukaryota	TRH493
+Colpoda	NA	Colpoda	Colpodidae	Colpodida	Colpodea	Ciliophora		Eukaryota	TRH11
+Tetrahymena	NA	Tetrahymena	Tetrahymenidae	Hymenostomatida	Oligohymenophorea	Ciliophora		Eukaryota	TRH566
+Paramecium	NA	Paramecium	Parameciidae	Peniculida	Oligohymenophorea	Ciliophora		Eukaryota	TRH742
+Hypocoma	NA	Hypocoma	Hypocomidae	Hypocomatida	Phyllopharyngea	Ciliophora		Eukaryota	TRH727
+Strobilidium	NA	Strobilidium	Strobilidiidae	Choreotrichida	Spirotrichea	Ciliophora		Eukaryota	TRH730
+Anteholosticha	NA	Anteholosticha	Holostichidae	Urostylida	Spirotrichea	Ciliophora		Eukaryota	TRH576
+Colpodella	NA	Colpodella	Colpodellaceae					Eukaryota	TRH210
+Alexandrium	NA	Alexandrium	Pyrocystaceae	Gonyaulacales	Dinophyceae			Eukaryota	TRH680
+Prorocentrum	NA	Prorocentrum	Prorocentraceae	Prorocentrales	Dinophyceae			Eukaryota	TRH319
+Globobulimina	NA	Globobulimina	Buliminidae	Rotaliida		Foraminifera		Eukaryota	TRH577
+Blastocystis	NA	Blastocystis	Blastocystidae	Opalinata	Bigyra			Eukaryota	TRH723
+Albugo	NA	Albugo	Albuginaceae	Albuginales		Oomycota		Eukaryota	TRH355
+Phytophthora	NA	Phytophthora	Peronosporaceae	Peronosporales		Oomycota		Eukaryota	TRH603
+Plasmopara	NA	Plasmopara	Peronosporaceae	Peronosporales		Oomycota		Eukaryota	TRH771
+Aphanomyces	NA	Aphanomyces	Saprolegniaceae	Saprolegniales		Oomycota		Eukaryota	TRH564
+Saprolegnia	NA	Saprolegnia	Saprolegniaceae	Saprolegniales		Oomycota		Eukaryota	TRH360
+Zindervirus	NA	NA	Zindervirus		Caudoviricetes	Uroviricota	Heunggongvirae	Viruses	TRH786
+Teetrevirus	NA	NA	Teetrevirus		Caudoviricetes	Uroviricota	Heunggongvirae	Viruses	TRH789
+Teseptimavirus	NA	NA	Teseptimavirus		Caudoviricetes	Uroviricota	Heunggongvirae	Viruses	TRH785
+Lambdavirus	NA	NA	Lambdavirus		Caudoviricetes	Uroviricota	Heunggongvirae	Viruses	TRH784
+Siphoviridae	NA	NA	Siphoviridae		Caudoviricetes	Uroviricota	Heunggongvirae	Viruses	TRH782
+Parvoviridae	NA	NA	Parvoviridae	Piccovirales	Quintoviricetes	Cossaviricota	Shotokuvirae	Viruses	TRH777
+Reoviridae	NA	NA	Reoviridae	Reovirales	Resentoviricetes	Duplornaviricota	Orthornavirae	Viruses	TRH802
+Cucumovirus	NA	NA	Cucumovirus	Martellivirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH813
+Ilarvirus	NA	NA	Ilarvirus	Martellivirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH805
+Virgaviridae	NA	NA	Virgaviridae	Martellivirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH797
+Tobamovirus	NA	NA	Tobamovirus	Martellivirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH779
+Potexvirus	NA	NA	Potexvirus	Tymovirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH781
+Betaflexiviridae	NA	NA	Betaflexiviridae	Tymovirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH811
+Capillovirus	NA	NA	Capillovirus	Tymovirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH793
+Tymoviridae	NA	NA	Tymoviridae	Tymovirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH819
+Maculavirus	NA	NA	Maculavirus	Tymovirales	Alsuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH815
+Flaviviridae	NA	NA	Flaviviridae	Amarillovirales	Flasuviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH809
+Sinaivirus	NA	NA	Sinaivirus	Nodamuvirales	Magsaviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH787
+Betacarmovirus	NA	NA	Betacarmovirus	Tolivirales	Tolucaviricetes	Kitrinoviricota	Orthornavirae	Viruses	TRH814
+Chuviridae	NA	NA	Chuviridae	Jingchuvirales	Monjiviricetes	Negarnaviricota	Orthornavirae	Viruses	TRH818
+Orthorubulavirus	NA	NA	Orthorubulavirus	Mononegavirales	Monjiviricetes	Negarnaviricota	Orthornavirae	Viruses	TRH783
+Rhabdoviridae	NA	NA	Rhabdoviridae	Mononegavirales	Monjiviricetes	Negarnaviricota	Orthornavirae	Viruses	TRH804
+Peribunyaviridae	NA	NA	Peribunyaviridae	Bunyavirales	Ellioviricetes	Negarnaviricota	Orthornavirae	Viruses	TRH795
+Phasmaviridae	NA	NA	Phasmaviridae	Bunyavirales	Ellioviricetes	Negarnaviricota	Orthornavirae	Viruses	TRH808
+Orthophasmavirus	NA	NA	Orthophasmavirus	Bunyavirales	Ellioviricetes	Negarnaviricota	Orthornavirae	Viruses	TRH807
+Phlebovirus	NA	NA	Phlebovirus	Bunyavirales	Ellioviricetes	Negarnaviricota	Orthornavirae	Viruses	TRH799
+Orthomyxoviridae	NA	NA	Orthomyxoviridae	Articulavirales	Insthoviricetes	Negarnaviricota	Orthornavirae	Viruses	TRH798
+Amalgaviridae	NA	NA	Amalgaviridae	Durnavirales	Duplopiviricetes	Pisuviricota	Orthornavirae	Viruses	TRH812
+Betapartitivirus	NA	NA	Betapartitivirus	Durnavirales	Duplopiviricetes	Pisuviricota	Orthornavirae	Viruses	TRH776
+Dicistroviridae	NA	NA	Dicistroviridae	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH794
+Aparavirus	NA	NA	Aparavirus	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH792
+Cripavirus	NA	NA	Cripavirus	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH801
+Triatovirus	NA	NA	Triatovirus	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH788
+Iflaviridae	NA	NA	Iflaviridae	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH820
+Iflavirus	NA	NA	Iflavirus	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH778
+Secoviridae	NA	NA	Secoviridae	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH817
+Comovirus	NA	NA	Comovirus	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH796
+Fabavirus	NA	NA	Fabavirus	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH806
+Nepovirus	NA	NA	Nepovirus	Picornavirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH803
+Polerovirus	NA	NA	Polerovirus	Sobelivirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH791
+Sobemovirus	NA	NA	Sobemovirus	Sobelivirales	Pisoniviricetes	Pisuviricota	Orthornavirae	Viruses	TRH810
+Potyvirus	NA	NA	Potyvirus	Patatavirales	Stelpaviricetes	Pisuviricota	Orthornavirae	Viruses	TRH790
+Gammaretrovirus	NA	NA	Gammaretrovirus	Ortervirales	Revtraviricetes	Artverviricota	Pararnavirae	Viruses	TRH780
+Negevirus	NA	NA	Negevirus					Viruses	TRH816
+Chlorovirus	NA	NA	Chlorovirus	Algavirales	Megaviricetes	Nucleocytoviricota	Bamfordvirae	Viruses	TRH800
+Lactobacillus: Firm-5	NA	Lactobacillus: Firm-5	Lactobacillaceae	Lactobacillales	Bacilli	Firmicutes		Bacteria	TRH9
