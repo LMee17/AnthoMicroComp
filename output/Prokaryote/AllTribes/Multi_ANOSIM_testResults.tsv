@@ -1,0 +1,10 @@
+Variable	R_Statistic	pvalue	adjP	Significance	Dispersion
+Sociality	0.112758416860456	2e-04	0.00045	*	NonSig Dispersed
+Sociality 	0.0485378135980048	0.0028	0.0042	*	Sig Dispersed
+Sex	0.0915763308429456	0.0012	0.00216	*	Sig Dispersed
+Year Collected	0.155885006911867	1e-04	3e-04	*	Sig Dispersed
+Library Layout	0.251749903279532	0.0108	0.01215	*	Sig Dispersed
+Platform	0.0542247083788057	0.0519	0.0519		Sig Dispersed
+Host Family	0.169385367891514	1e-04	3e-04	*	Sig Dispersed
+Host Tribe	0.152276163966361	1e-04	3e-04	*	Sig Dispersed
+Continent	0.0344256919088551	0.0099	0.01215	*	NonSig Dispersed
