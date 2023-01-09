@@ -16,7 +16,6 @@
 #Rarefaction: 
 #https://www.youtube.com/watch?v=ht3AX5uZTTQ&list=PLmNrK_nkqBpJuhS93PYC-Xr5oqur7IIWf
 
-
 set.seed(1549)
 
 dir.create("output/Prokaryote/")
@@ -1406,6 +1405,28 @@ eu.multiAOV %>%
 #for eusocial animals, the most explanatory variables appear to be Continent,
 #platform and sex. Tribe is is significant but doesn't tell much of the story.
 
+write.table(eu.multiAOV, "output/Prokaryote/AllTribes/Eusocial_multiANOVA.tsv",
+            col.names = T, row.names = F, quote = F, sep = "\t")
+
+#double check dispersion
+eu.disp.df <- data.frame()
+for (i in 1:length(eu.vars$Var)){
+  print(eu.vars$Var[i])
+  eu.disp.df[i,1] <- paste(eu.vars$VarLab[i])
+  disp <- betadisper(eu.dist, meteu[,eu.vars$Var[i]])
+  eu.disp.df[i,2] <- paste(names(disp$group.distances), collapse = ",")
+  eu.disp.df[i,3] <- paste(as.numeric(disp$group.distances), collapse = ",")
+  a.disp <- anova(disp)
+  eu.disp.df[i,4] <- a.disp$Df[1]
+  eu.disp.df[i,5] <- a.disp$`F value`[1]
+  eu.disp.df[i,6] <- a.disp$`Pr(>F)`[1]
+}
+names(eu.disp.df) <- c("Variable", "Factor_Levels", "AvgDistanceToMedian", "ANOVA_DF",
+                    "ANOVA_Fvalue", "ANOVA_pvalue")
+eu.disp.df$adj_pvalue <- p.adjust(eu.disp.df$ANOVA_pvalue, method = "fdr")
+eu.disp.df$Sig <- ifelse(eu.disp.df$adj_pvalue < 0.05, "Sig", "Non-Sig")
+
+eu.disp.df
 #consider these
 ggplot(data = eu.plot,
        aes(x = NMDS1, y = NMDS2, colour = Continent)) +
@@ -1438,7 +1459,7 @@ ggplot(data = eu.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Eusocial_NMDS_Sex.pdf")
+ggsave("output/Prokaryote/AllTribes/Eusocial_NMDS_Platform.pdf")
 
 ggplot(data = eu.plot,
        aes(x = NMDS1, y = NMDS2, colour = Sex)) +
@@ -1522,7 +1543,7 @@ po.plot <- merge(ext, metpo, by.x = "Sample", by.y = "Sample.ID")
 po.plot
 
 #save
-write.table(nmds.plot, "output/Prokaryote/AllTribes/Polymorhic_NMDS_meta.tsv",
+write.table(nmds.plot, "output/Prokaryote/AllTribes/Polymorphic_NMDS_meta.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 
 #Adonis
@@ -1550,6 +1571,30 @@ po.multiAOV %>%
 #Family, Year Collected and platform. 
 #Phylogenetic signal explains over 50% of model
 
+write.table(po.multiAOV, "output/Prokaryote/AllTribes/Polymorphic_multiANOVA.tsv",
+            col.names = T, row.names = F, quote = F, sep = "\t")
+
+#double check dispersion
+po.disp.df <- data.frame()
+for (i in 1:length(po.vars$Var)){
+  print(po.vars$Var[i])
+  po.disp.df[i,1] <- paste(po.vars$VarLab[i])
+  disp <- betadisper(po.dist, metpo[,po.vars$Var[i]])
+  po.disp.df[i,2] <- paste(names(disp$group.distances), collapse = ",")
+  po.disp.df[i,3] <- paste(as.numeric(disp$group.distances), collapse = ",")
+  a.disp <- anova(disp)
+  po.disp.df[i,4] <- a.disp$Df[1]
+  po.disp.df[i,5] <- a.disp$`F value`[1]
+  po.disp.df[i,6] <- a.disp$`Pr(>F)`[1]
+}
+names(po.disp.df) <- c("Variable", "Factor_Levels", "AvgDistanceToMedian", "ANOVA_DF",
+                       "ANOVA_Fvalue", "ANOVA_pvalue")
+po.disp.df$adj_pvalue <- p.adjust(po.disp.df$ANOVA_pvalue, method = "fdr")
+po.disp.df$Sig <- ifelse(po.disp.df$adj_pvalue < 0.05, "Sig", "Non-Sig")
+
+po.disp.df %>%
+  filter(Sig == "Non-Sig") %>%
+  select(Variable)
 
 #consider these
 ggplot(data = po.plot,
@@ -1637,7 +1682,24 @@ ggplot(data = po.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_Continent_Spec.pdf")
+ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_Continent.pdf")
+
+#to compare to others: sex
+ggplot(data = po.plot,
+      aes(x = NMDS1, y = NMDS2, colour = Sex)) +
+  geom_point() + 
+  stat_ellipse(geom = "polygon",
+               aes(fill = Sex),
+               alpha = 0.1) +
+  scale_colour_manual(values = myPal) +
+  scale_fill_manual(values = myPal) +
+  labs(x = "NMDS1",
+       y = "NMDS2",
+       colour = "Sex") +
+  theme_classic() +
+  theme(strip.background = element_blank())
+
+ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_Sex.pdf")
 
 ####Solitary Considerations#####
 so.cnt <- cnt[,names(cnt) %in% metdf$Sample.ID[metdf$Sociality == "Solitary"]]
@@ -1704,10 +1766,37 @@ so.multiAOV %>%
   filter(adjP < 0.05) %>%
   arrange(-R2)
 
-#for solitary, the only statistically signficant factor is sex.
+#for solitary, the only statistically significant factor is sex.
 #will look at this and also those of interest elsewhere:
 #tribe, family, continent
 
+
+write.table(so.multiAOV, "output/Prokaryote/AllTribes/Solitary_multiANOVA.tsv",
+            col.names = T, row.names = F, quote = F, sep = "\t")
+
+#double check dispersion
+so.disp.df <- data.frame()
+for (i in 1:length(so.vars$Var)){
+  print(so.vars$Var[i])
+  so.disp.df[i,1] <- paste(so.vars$VarLab[i])
+  disp <- betadisper(so.dist, metso[,so.vars$Var[i]])
+  so.disp.df[i,2] <- paste(names(disp$group.distances), collapse = ",")
+  so.disp.df[i,3] <- paste(as.numeric(disp$group.distances), collapse = ",")
+  a.disp <- anova(disp)
+  so.disp.df[i,4] <- a.disp$Df[1]
+  so.disp.df[i,5] <- a.disp$`F value`[1]
+  so.disp.df[i,6] <- a.disp$`Pr(>F)`[1]
+}
+names(so.disp.df) <- c("Variable", "Factor_Levels", "AvgDistanceToMedian", "ANOVA_DF",
+                       "ANOVA_Fvalue", "ANOVA_pvalue")
+so.disp.df$adj_pvalue <- p.adjust(so.disp.df$ANOVA_pvalue, method = "fdr")
+so.disp.df$Sig <- ifelse(so.disp.df$adj_pvalue < 0.05, "Sig", "Non-Sig")
+
+so.disp.df %>%
+  filter(Sig == "Non-Sig") %>%
+  select(Variable)
+ncol(so.cnt)
+so.low_read
 #sex
 ggplot(data = so.plot,
        aes(x = NMDS1, y = NMDS2, colour = Sex)) +
@@ -1804,6 +1893,30 @@ pairwiseAOV.soc %>%
 write.table(pairwiseAOV.soc, "output/Prokaryote/AllTribes/PairwiseAOV_Sociality.tsv",
            row.names = F, col.names = T, quote = F, sep = "\t")
 
+#sociality
+cbn <- combn(x=unique(metdf$Family), m = 2)
+pvalue <- c()
+
+for(i in 1:ncol(cbn)){
+  sub <- metdf$Sample.ID[metdf$Family == cbn[,i]]
+  subcnt <- cnt[names(cnt) %in% sub]
+  submet <- metdf[metdf$Sample.ID %in% names(subcnt),]
+  subdist <- avgdist(t(subcnt), dmethod = "bray", sample = low_read, iterations = 1e4)
+  test <- adonis2(subdist ~ submet$Family, 
+                  data = submet, permutations = 9999)
+  pvalue <- c(pvalue, test$`Pr(>F)`[1])
+}
+
+p.adj <- p.adjust(pvalue, method = "BH")
+pairwiseAOV.fam <- cbind.data.frame(t(cbn), pvalue=pvalue, padj=p.adj)
+pairwiseAOV.fam %>%
+  filter(padj < 0.05)
+#like with the anosim, the only significant difference is between eusocial and 
+#polymorphic
+
+write.table(pairwiseAOV.fam, "output/Prokaryote/AllTribes/PairwiseAOV_Family.tsv",
+            row.names = F, col.names = T, quote = F, sep = "\t")
+
 ###2###
 multiAOV2 <- data.frame()
 for (i in 1:length(vars.sim$Var)){
@@ -1840,7 +1953,7 @@ multiAOV2 %>%
 #sociality (3 level) is still significant just not at the level of < 0.001
 #(its 0.000103...)
 #write up
-write.table(multiAOV, "output/Prokaryote/TribeReduced/Multi_adonis2_results.tsv",
+write.table(multiAOV2, "output/Prokaryote/TribeReduced/Multi_adonis2_results.tsv",
             row.names = F, col.names = T, quote = F,
             sep = "\t")
 
@@ -2010,4 +2123,3 @@ table(metdf2$Sociality, metdf2$Family)
 write.table(pairwiseAOV.fam2, 
             "output/Prokaryote/TribeReduced/PairwisedANOVA_Family.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
-
