@@ -126,7 +126,7 @@ cnt.rel <- as.data.frame(cnt.rel)
 cnt.rel2 <- cnt.rel[,names(cnt.rel) %in% metdf2$Sample.ID]
 
 write.table(cnt2, "input/Counts/Prokaryote_Filtered_TribeReduced_Raw.tsv",
-            sep = "\t", col.names = T, row.names = T)
+            sep = "\t", col.names = T, row.names = T, quote = F)
 
 ##Step Two: Principal Components ####
 #most of these steps assume that rows are samples / sites, not columns
