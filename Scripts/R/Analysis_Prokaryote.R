@@ -18,9 +18,9 @@
 
 set.seed(1549)
 
-dir.create("output/Prokaryote/")
-dir.create("output/Prokaryote/AllTribes/")
-dir.create("output/Prokaryote/TribeReduced/")
+dir.create("output/Prokaryote/Composition_Analysis/")
+dir.create("output/Prokaryote/Composition_Analysis/AllTribes/")
+dir.create("output/Prokaryote/Composition_Analysis/TribeReduced/")
 
 ## Libraries ####
 library(tidyverse)
@@ -125,6 +125,9 @@ cnt2 <- cnt[,names(cnt) %in% metdf2$Sample.ID]
 cnt.rel <- as.data.frame(cnt.rel)
 cnt.rel2 <- cnt.rel[,names(cnt.rel) %in% metdf2$Sample.ID]
 
+write.table(cnt2, "input/Counts/Prokaryote_Filtered_TribeReduced_Raw.pdf",
+            sep = "\t", col.names = T, row.names = T)
+
 ##Step Two: Principal Components ####
 #most of these steps assume that rows are samples / sites, not columns
 #using relative abundance data
@@ -186,7 +189,7 @@ for (i in 1:length(vars)){
     guides(alpha = "none") + 
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/AllTribes/PCA_PC1PC2_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/AllTribes/PCA_PC1PC2_", title, ".pdf", sep = ""))
 }
 
 #looking at pc3 and pc4
@@ -204,7 +207,7 @@ for (i in 1:length(vars)){
     theme_classic() +
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/AllTribes/PCA_PC3PC4_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/AllTribes/PCA_PC3PC4_", title, ".pdf", sep = ""))
 }
 
 #Looking at three axes at once
@@ -224,7 +227,7 @@ for (i in 1:length(vars)){
                      paste("PC3 (", three, "%)", sep = "")),
             hjust=c(0,1,1), vjust=c(1, 1, -0.2), angle=c(0, 0, 90))
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/AllTribes/PCA_3D_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/AllTribes/PCA_3D_", title, ".pdf", sep = ""))
 }
 
 ###Version 2#####
@@ -259,7 +262,7 @@ for (i in 1:length(vars)){
     guides(alpha = "none") + 
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/TribeReduced/PCA_PC1PC2_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/TribeReduced/PCA_PC1PC2_", title, ".pdf", sep = ""))
 }
 
 #looking at pc3 and pc4
@@ -277,7 +280,7 @@ for (i in 1:length(vars)){
     theme_classic() +
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/TribeReduced/PCA_PC3PC4_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/TribeReduced/PCA_PC3PC4_", title, ".pdf", sep = ""))
 }
 
 #Looking at three axes at once
@@ -297,7 +300,7 @@ for (i in 1:length(vars)){
                      paste("PC3 (", three, "%)", sep = "")),
             hjust=c(0,1,1), vjust=c(1, 1, -0.2), angle=c(0, 0, 90))
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/TribeReduced/PCA_3D_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/TribeReduced/PCA_3D_", title, ".pdf", sep = ""))
 }
 
 
@@ -305,11 +308,11 @@ for (i in 1:length(vars)){
 ###1####
 biplot(pca, choices = c(1,2), type = c("text", "points"))
 
-pdf("output/Prokaryote/AllTribes/BiPlot_PC1PC2.pdf")
+pdf("output/Prokaryote/Composition_Analysis/AllTribes/BiPlot_PC1PC2.pdf")
   biplot(pca, choices = c(1,2), type = c("text", "points"))
 dev.off()
 #without text
-pdf("output/Prokaryote/AllTribes/BiPlot_PC1PC2_Plain.pdf")
+pdf("output/Prokaryote/Composition_Analysis/AllTribes/BiPlot_PC1PC2_Plain.pdf")
   biplot(pca, choices = c(1,2), type = c("points"))
 dev.off()
 
@@ -322,11 +325,11 @@ taxkey[taxkey$taxID %in% vip,]
 ###2####
 biplot(pca2, choices = c(1,2), type = c("text", "points"))
 
-pdf("output/Prokaryote/TribeReduced/BiPlot_PC1PC2.pdf")
+pdf("output/Prokaryote/Composition_Analysis/TribeReduced/BiPlot_PC1PC2.pdf")
   biplot(pca2, choices = c(1,2), type = c("text", "points"))
 dev.off()
 #without text
-pdf("output/Prokaryote/TribeReduced/BiPlot_PC1PC2_Plain.pdf")
+pdf("output/Prokaryote/Composition_Analysis/TribeReduced/BiPlot_PC1PC2_Plain.pdf")
   biplot(pca2, choices = c(1,2), type = c("points"))
 dev.off()
 
@@ -404,7 +407,7 @@ for (i in 1:length(vars)){
     theme_classic() +
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/AllTribes/PCoA_Ax1Ax2_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/AllTribes/PCoA_Ax1Ax2_", title, ".pdf", sep = ""))
 }
 
 ###2####
@@ -474,7 +477,7 @@ for (i in 1:length(vars)){
     theme_classic() +
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/TribeReduced/PCoA_Ax1Ax2_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/TribeReduced/PCoA_Ax1Ax2_", title, ".pdf", sep = ""))
 }
 
 ##Step Five: NonMetric Multidimensional Scaling ####
@@ -493,7 +496,7 @@ stressplot(nmds)
 #this is good
 
 #save
-pdf("output/Prokaryote/AllTribes/NMDS_StressPlot.pdf")
+pdf("output/Prokaryote/Composition_Analysis/AllTribes/NMDS_StressPlot.pdf")
   stressplot(nmds)
 dev.off()
 
@@ -513,7 +516,7 @@ ggplot(nmds.plot, aes(x = NMDS1, y = NMDS2))+
 plot(nmds, display = "sites")
 
 #save
-write.table(nmds.plot, "output/Prokaryote/AllTribes/NMDS_meta.tsv",
+write.table(nmds.plot, "output/Prokaryote/Composition_Analysis/AllTribes/NMDS_meta.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 
 #run through variables and plot
@@ -528,7 +531,7 @@ for (i in 1:length(vars)){
     theme_classic() +
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/AllTribes/NMDS_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/AllTribes/NMDS_", title, ".pdf", sep = ""))
 }
 
 #run through variables and plot: with ellipses
@@ -544,7 +547,7 @@ for (i in 1:length(vars)){
     theme_classic() +
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/AllTribes/NMDS_Ellipses_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/AllTribes/NMDS_Ellipses_", title, ".pdf", sep = ""))
 }
 
 #run through variables and plot: with polygons
@@ -564,7 +567,7 @@ for (i in 1:length(vars)){
     theme(strip.background = element_blank()) +
     guides(fill = "none")
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/AllTribes/NMDS_Polygons_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/AllTribes/NMDS_Polygons_", title, ".pdf", sep = ""))
 }
 
 #from looking at the plots so far it looks like the stand out clusters
@@ -595,7 +598,7 @@ ggplot(data = nmds.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/NMDS_Sociality_EllipseCentroid.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/NMDS_Sociality_EllipseCentroid.pdf")
 
 #sociality#2
 any(table(metdf.pd$Sociality2) < 4)
@@ -618,7 +621,7 @@ ggplot(data = nmds.plot,
   labs(colour = "Sociality") +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/NMDS_Sociality2_EllipseCentroid.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/NMDS_Sociality2_EllipseCentroid.pdf")
 
 #family
 any(table(metdf.pd$Family) < 4)
@@ -644,7 +647,7 @@ for (i in 1:length(foi)){
                      "NMDS3"),
             hjust=c(0,1,1), vjust=c(1, 1, -0.2), angle=c(0, 0, 90))
   title <- gsub(" ", "_", foilabs[i])
-  ggsave(paste("output/Prokaryote/AllTribes/NMDS_3D_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/AllTribes/NMDS_3D_", title, ".pdf", sep = ""))
 }
 
 ###2####
@@ -662,7 +665,7 @@ stressplot(nmds2)
 #this is good
 
 #save
-pdf("output/Prokaryote/TribeReduced/NMDS_StressPlot.pdf")
+pdf("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_StressPlot.pdf")
   stressplot(nmds2)
 dev.off()
 
@@ -682,7 +685,7 @@ ggplot(nmds.plot2, aes(x = NMDS1, y = NMDS2))+
 plot(nmds2, display = "sites")
 
 #save
-write.table(nmds.plot2, "output/Prokaryote/TribeReduced/NMDS_meta.tsv",
+write.table(nmds.plot2, "output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_meta.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 
 #run through variables and plot
@@ -697,7 +700,7 @@ for (i in 1:length(vars)){
     theme_classic() +
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/TribeReduced/NMDS_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_", title, ".pdf", sep = ""))
 }
 
 #run through variables and plot: with ellipses
@@ -713,7 +716,7 @@ for (i in 1:length(vars)){
     theme_classic() +
     theme(strip.background = element_blank())
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/TribeReduced/NMDS_Ellipses_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_Ellipses_", title, ".pdf", sep = ""))
 }
 
 #run through variables and plot: with polygons
@@ -733,7 +736,7 @@ for (i in 1:length(vars)){
     theme(strip.background = element_blank()) +
     guides(fill = "none")
   title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Prokaryote/TribeReduced/NMDS_Polygons_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_Polygons_", title, ".pdf", sep = ""))
 }
 
 #from looking at the plots so far it looks like the stand out clusters
@@ -765,7 +768,7 @@ ggplot(data = nmds.plot2,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/TribeReduced/NMDS_Sociality_EllipseCentroid.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_Sociality_EllipseCentroid.pdf")
 
 #sociality#2
 any(table(metdf.pd2$Sociality2) < 4)
@@ -788,7 +791,7 @@ ggplot(data = nmds.plot2,
   labs(colour = "Sociality") +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/TribeReduced/NMDS_Sociality2_EllipseCentroid.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_Sociality2_EllipseCentroid.pdf")
 
 #family
 any(table(metdf.pd2$Family) < 4)
@@ -810,7 +813,7 @@ ggplot(data = nmds.plot2,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/TribeReduced/NMDS_Family_EllipseCentroid.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_Family_EllipseCentroid.pdf")
 
 #tribe
 any(table(metdf.pd2$Tribe) < 4)
@@ -832,7 +835,7 @@ ggplot(data = nmds.plot2,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/TribeReduced/NMDS_Tribe_EllipseCentroid.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_Tribe_EllipseCentroid.pdf")
 
 #Exploratory look at 3D plots with 3 NDMS dimensions
 #only considering the factors already that look interesting
@@ -853,7 +856,7 @@ for (i in 1:length(foi2)){
                      "NMDS3"),
             hjust=c(0,1,1), vjust=c(1, 1, -0.2), angle=c(0, 0, 90))
   title <- gsub(" ", "_", foilabs2[i])
-  ggsave(paste("output/Prokaryote/TribeReduced/NMDS_3D_", title, ".pdf", sep = ""))
+  ggsave(paste("output/Prokaryote/Composition_Analysis/TribeReduced/NMDS_3D_", title, ".pdf", sep = ""))
 }
 
 ##Step Six: Checking Dispersion ####
@@ -897,7 +900,7 @@ disp.df %>%
   select(Variable)
 
 #write up
-write.table(disp.df, "output/Prokaryote/AllTribes/VariableDispersion_ANOVA.tsv",
+write.table(disp.df, "output/Prokaryote/Composition_Analysis/AllTribes/VariableDispersion_ANOVA.tsv",
             col.names = T, row.names = F, sep = "\t", quote = F)
 
 #Sociality (1, with three levels) does not have significant differences in group dispersion
@@ -944,7 +947,7 @@ disp.df2 %>%
 #and nor does Continent, Month Collected, Library Selection or Host Family .
 
 #write up
-write.table(disp.df2, "output/Prokaryote/TribeReduced/VariableDispersion_ANOVA.tsv",
+write.table(disp.df2, "output/Prokaryote/Composition_Analysis/TribeReduced/VariableDispersion_ANOVA.tsv",
             col.names = T, row.names = F, sep = "\t", quote = F)
 
 ##Step Seven: ANOSIM ####
@@ -994,7 +997,7 @@ multiSIM %>%
 #between the levels of the factor than there is when considering continent as a variable
 
 #write up
-write.table(multiSIM, "output/Prokaryote/AllTribes/Multi_ANOSIM_testResults.tsv",
+write.table(multiSIM, "output/Prokaryote/Composition_Analysis/AllTribes/Multi_ANOSIM_testResults.tsv",
             row.names = F, col.names = T, quote = F,
             sep = "\t")
 
@@ -1022,7 +1025,7 @@ pairSIM.soc
 #no sig difference between sol and eu
 #nearly a diff between pol and sol, but non-significant even before adjusting
 
-write.table(pairSIM.soc, "output/Prokaryote/AllTribes/PairwiseANOSIM_Sociality.tsv",
+write.table(pairSIM.soc, "output/Prokaryote/Composition_Analysis/AllTribes/PairwiseANOSIM_Sociality.tsv",
             col.names = T, row.names = F, quote = F,
             sep = "\t")
 
@@ -1046,7 +1049,7 @@ pairSIM.con
 #there's only one significant difference after adjustment: Europe and Oceania
 #which makes sense
 
-write.table(pairSIM.con, "output/Prokaryote/AllTribes/PairwiseANOSIM_Continent.tsv",
+write.table(pairSIM.con, "output/Prokaryote/Composition_Analysis/AllTribes/PairwiseANOSIM_Continent.tsv",
             col.names = T, row.names = F, quote = F,
             sep = "\t")
 
@@ -1098,7 +1101,7 @@ multiSIM2 %>%
 #with sociality 
 
 #write up
-write.table(multiSIM2, "output/Prokaryote/TribeReduced/Multi_ANOSIM_testResults.tsv",
+write.table(multiSIM2, "output/Prokaryote/Composition_Analysis/TribeReduced/Multi_ANOSIM_testResults.tsv",
             row.names = F, col.names = T, quote = F,
             sep = "\t")
 
@@ -1125,7 +1128,7 @@ pairSIM.soc2
 #there is  still a significant difference between eusocial and polymorphic,
 #just less so.
 
-write.table(pairSIM.soc2, "output/Prokaryote/TribeReduced/PairwiseANOSIM_Sociality.tsv",
+write.table(pairSIM.soc2, "output/Prokaryote/Composition_Analysis/TribeReduced/PairwiseANOSIM_Sociality.tsv",
             col.names = T, row.names = F, quote = F,
             sep = "\t")
 
@@ -1149,7 +1152,7 @@ pairSIM.con2
 #again, there's only one significant difference after adjustment: Europe and Oceania
 #which makes sense
 
-write.table(pairSIM.con2, "output/Prokaryote/TribeReduced/PairwiseANOSIM_Continent.tsv",
+write.table(pairSIM.con2, "output/Prokaryote/Composition_Analysis/TribeReduced/PairwiseANOSIM_Continent.tsv",
             col.names = T, row.names = F, quote = F,
             sep = "\t")
 
@@ -1173,7 +1176,7 @@ pairSIM.fam2
 #there's a significant difference between Halictidae and everything else, though
 #all the others appear to overlap
 
-write.table(pairSIM.fam2, "output/Prokaryote/TribeReduced/PairwiseANOSIM_Family.tsv",
+write.table(pairSIM.fam2, "output/Prokaryote/Composition_Analysis/TribeReduced/PairwiseANOSIM_Family.tsv",
             col.names = T, row.names = F, quote = F,
             sep = "\t")
 
@@ -1199,7 +1202,7 @@ pairSIM.tri2 %>%
 #there's a significant difference Augochlorini and Bombini/Osmiini/Andrenini,
 #and also between Apini/Euglossini
 
-write.table(pairSIM.tri2, "output/Prokaryote/TribeReduced/PairwiseANOSIM_Tribe.tsv",
+write.table(pairSIM.tri2, "output/Prokaryote/Composition_Analysis/TribeReduced/PairwiseANOSIM_Tribe.tsv",
             col.names = T, row.names = F, quote = F,
             sep = "\t")
 
@@ -1248,7 +1251,7 @@ multiAOV %>%
 #would not be sensitive to the dispersion problem.
 
 #write up
-write.table(multiAOV, "output/Prokaryote/AllTribes/Multi_adonis2_results.tsv",
+write.table(multiAOV, "output/Prokaryote/Composition_Analysis/AllTribes/Multi_adonis2_results.tsv",
             row.names = F, col.names = T, quote = F,
             sep = "\t")
 
@@ -1363,7 +1366,7 @@ eu.nmds <- metaMDS(dist, k = 6, trymax = 100, trace = F, distances = "bray")
 
 stressplot(eu.nmds)
 
-pdf("output/Prokaryote/AllTribes/Eusocial_NMDS_StressPlot.pdf")
+pdf("output/Prokaryote/Composition_Analysis/AllTribes/Eusocial_NMDS_StressPlot.pdf")
   stressplot(eu.nmds)
 dev.off()
 
@@ -1376,7 +1379,7 @@ eu.plot <- merge(ext, meteu, by.x = "Sample", by.y = "Sample.ID")
 eu.plot
 
 #save
-write.table(nmds.plot, "output/Prokaryote/AllTribes/Eusocial_NMDS_meta.tsv",
+write.table(nmds.plot, "output/Prokaryote/Composition_Analysis/AllTribes/Eusocial_NMDS_meta.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 
 #Adonis
@@ -1405,7 +1408,7 @@ eu.multiAOV %>%
 #for eusocial animals, the most explanatory variables appear to be Continent,
 #platform and sex. Tribe is is significant but doesn't tell much of the story.
 
-write.table(eu.multiAOV, "output/Prokaryote/AllTribes/Eusocial_multiANOVA.tsv",
+write.table(eu.multiAOV, "output/Prokaryote/Composition_Analysis/AllTribes/Eusocial_multiANOVA.tsv",
             col.names = T, row.names = F, quote = F, sep = "\t")
 
 #double check dispersion
@@ -1442,7 +1445,7 @@ ggplot(data = eu.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Eusocial_NMDS_Continent.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Eusocial_NMDS_Continent.pdf")
 
 ggplot(data = eu.plot,
        aes(x = NMDS1, y = NMDS2, colour = Platform_Spec)) +
@@ -1459,7 +1462,7 @@ ggplot(data = eu.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Eusocial_NMDS_Platform.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Eusocial_NMDS_Platform.pdf")
 
 ggplot(data = eu.plot,
        aes(x = NMDS1, y = NMDS2, colour = Sex)) +
@@ -1475,7 +1478,7 @@ ggplot(data = eu.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Eusocial_NMDS_Sex.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Eusocial_NMDS_Sex.pdf")
 
 ggplot(data = eu.plot,
        aes(x = NMDS1, y = NMDS2, colour = Tribe)) +
@@ -1491,7 +1494,7 @@ ggplot(data = eu.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Eusocial_NMDS_Tribe.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Eusocial_NMDS_Tribe.pdf")
 
 
 ggplot(data = eu.plot,
@@ -1509,7 +1512,7 @@ ggplot(data = eu.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Eusocial_NMDS_YearCollected.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Eusocial_NMDS_YearCollected.pdf")
 
 
 ####Polymorphic Considerations#####
@@ -1530,7 +1533,7 @@ po.nmds <- metaMDS(dist, k = 3, trymax = 100, trace = F, distances = "bray")
 
 stressplot(po.nmds)
 
-pdf("output/Prokaryote/AllTribes/Polymorphic_NMDS_StressPlot.pdf")
+pdf("output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_NMDS_StressPlot.pdf")
 stressplot(po.nmds)
 dev.off()
 
@@ -1543,7 +1546,7 @@ po.plot <- merge(ext, metpo, by.x = "Sample", by.y = "Sample.ID")
 po.plot
 
 #save
-write.table(nmds.plot, "output/Prokaryote/AllTribes/Polymorphic_NMDS_meta.tsv",
+write.table(nmds.plot, "output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_NMDS_meta.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 
 #Adonis
@@ -1571,7 +1574,7 @@ po.multiAOV %>%
 #Family, Year Collected and platform. 
 #Phylogenetic signal explains over 50% of model
 
-write.table(po.multiAOV, "output/Prokaryote/AllTribes/Polymorphic_multiANOVA.tsv",
+write.table(po.multiAOV, "output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_multiANOVA.tsv",
             col.names = T, row.names = F, quote = F, sep = "\t")
 
 #double check dispersion
@@ -1611,7 +1614,7 @@ ggplot(data = po.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_Tribe.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_NMDS_Tribe.pdf")
 
 ggplot(data = po.plot,
        aes(x = NMDS1, y = NMDS2, colour = Family)) +
@@ -1628,7 +1631,7 @@ ggplot(data = po.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_Family.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_NMDS_Family.pdf")
 
 ggplot(data = po.plot,
        aes(x = NMDS1, y = NMDS2, colour = as.factor(YearCollected))) +
@@ -1645,7 +1648,7 @@ ggplot(data = po.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_YearCollected.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_NMDS_YearCollected.pdf")
 #likely to be an artefact of project here.
 
 ggplot(data = po.plot,
@@ -1663,7 +1666,7 @@ ggplot(data = po.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_Platform_Spec.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_NMDS_Platform_Spec.pdf")
 
 #and for completeness, continent
 #Continent
@@ -1682,7 +1685,7 @@ ggplot(data = po.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_Continent.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_NMDS_Continent.pdf")
 
 #to compare to others: sex
 ggplot(data = po.plot,
@@ -1699,7 +1702,7 @@ ggplot(data = po.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Polymorphic_NMDS_Sex.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Polymorphic_NMDS_Sex.pdf")
 
 ####Solitary Considerations#####
 so.cnt <- cnt[,names(cnt) %in% metdf$Sample.ID[metdf$Sociality == "Solitary"]]
@@ -1722,7 +1725,7 @@ so.nmds <- metaMDS(dist, k = 2, trymax = 100, trace = F, distances = "bray")
 stressplot(so.nmds)
 #still ok r plot ... though it's not the best
 
-pdf("output/Prokaryote/AllTribes/Solitary_NMDS_StressPlot.pdf")
+pdf("output/Prokaryote/Composition_Analysis/AllTribes/Solitary_NMDS_StressPlot.pdf")
   stressplot(so.nmds)
 dev.off()
 
@@ -1734,7 +1737,7 @@ metso <- metdf %>%
 so.plot <- merge(ext, metso, by.x = "Sample", by.y = "Sample.ID")
 
 #save
-write.table(so.plot, "output/Prokaryote/AllTribes/Solitary_NMDS_meta.tsv",
+write.table(so.plot, "output/Prokaryote/Composition_Analysis/AllTribes/Solitary_NMDS_meta.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 
 #Adonis
@@ -1771,7 +1774,7 @@ so.multiAOV %>%
 #tribe, family, continent
 
 
-write.table(so.multiAOV, "output/Prokaryote/AllTribes/Solitary_multiANOVA.tsv",
+write.table(so.multiAOV, "output/Prokaryote/Composition_Analysis/AllTribes/Solitary_multiANOVA.tsv",
             col.names = T, row.names = F, quote = F, sep = "\t")
 
 #double check dispersion
@@ -1812,7 +1815,7 @@ ggplot(data = so.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Solitary_NMDS_Sex.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Solitary_NMDS_Sex.pdf")
 
 #Tribe
 ggplot(data = so.plot,
@@ -1829,7 +1832,7 @@ ggplot(data = so.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Solitary_NMDS_Tribe.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Solitary_NMDS_Tribe.pdf")
 
 #Family
 ggplot(data = so.plot,
@@ -1847,7 +1850,7 @@ ggplot(data = so.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Solitary_NMDS_Family.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Solitary_NMDS_Family.pdf")
 
 #Continent
 ggplot(data = so.plot,
@@ -1865,7 +1868,7 @@ ggplot(data = so.plot,
   theme_classic() +
   theme(strip.background = element_blank())
 
-ggsave("output/Prokaryote/AllTribes/Solitary_NMDS_Continent_Spec.pdf")
+ggsave("output/Prokaryote/Composition_Analysis/AllTribes/Solitary_NMDS_Continent_Spec.pdf")
 
 
 ####Pairwise ####
@@ -1890,7 +1893,7 @@ pairwiseAOV.soc %>%
 #like with the anosim, the only significant difference is between eusocial and 
 #polymorphic
 
-write.table(pairwiseAOV.soc, "output/Prokaryote/AllTribes/PairwiseAOV_Sociality.tsv",
+write.table(pairwiseAOV.soc, "output/Prokaryote/Composition_Analysis/AllTribes/PairwiseAOV_Sociality.tsv",
            row.names = F, col.names = T, quote = F, sep = "\t")
 
 #sociality
@@ -1914,7 +1917,7 @@ pairwiseAOV.fam %>%
 #like with the anosim, the only significant difference is between eusocial and 
 #polymorphic
 
-write.table(pairwiseAOV.fam, "output/Prokaryote/AllTribes/PairwiseAOV_Family.tsv",
+write.table(pairwiseAOV.fam, "output/Prokaryote/Composition_Analysis/AllTribes/PairwiseAOV_Family.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
 
 ###2###
@@ -1953,7 +1956,7 @@ multiAOV2 %>%
 #sociality (3 level) is still significant just not at the level of < 0.001
 #(its 0.000103...)
 #write up
-write.table(multiAOV2, "output/Prokaryote/TribeReduced/Multi_adonis2_results.tsv",
+write.table(multiAOV2, "output/Prokaryote/Composition_Analysis/TribeReduced/Multi_adonis2_results.tsv",
             row.names = F, col.names = T, quote = F,
             sep = "\t")
 
@@ -2065,7 +2068,7 @@ pairwiseAOV.soc2 %>%
 #polymorphic
 
 write.table(pairwiseAOV.soc2, 
-            "output/Prokaryote/TribeReduced/PairwisedANOVA_Sociality.tsv",
+            "output/Prokaryote/Composition_Analysis/TribeReduced/PairwisedANOVA_Sociality.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
 
 #in version 2, there are other non-significantly dispersed factors to consider
@@ -2090,7 +2093,7 @@ pairwiseAOV.con2 %>%
 
 #the only significant difference between continents was between oceania and europe
 write.table(pairwiseAOV.con2, 
-            "output/Prokaryote/TribeReduced/PairwisedANOVA_Continent.tsv",
+            "output/Prokaryote/Composition_Analysis/TribeReduced/PairwisedANOVA_Continent.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
 
 
@@ -2121,5 +2124,5 @@ table(metdf2$Sociality, metdf2$Family)
 
 
 write.table(pairwiseAOV.fam2, 
-            "output/Prokaryote/TribeReduced/PairwisedANOVA_Family.tsv",
+            "output/Prokaryote/Composition_Analysis/TribeReduced/PairwisedANOVA_Family.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
