@@ -1,0 +1,66 @@
+TaxID	Microbe_Genus	Host_Genera
+TRH2	Gilliamella	Apis, Bombus, Tetragonisca, Andrena
+TRH3	Snodgrassella	Apis, Bombus, Tetragonisca, Andrena
+TRH4	Bombilactobacillus	Bombus, Apis, Tetragonisca, Andrena
+TRH5	Acinetobacter	Bombus, Ceratina, Euglossa, Tetragonula, Apis, Osmia, Megalopta
+TRH7	Escherichia	Bombus, Ceratina, Apis, Tetragonisca, Andrena, Tetragonula, Osmia
+TRH8	Pantoea	Bombus, Apis, Andrena, Osmia, Megalopta
+TRH9	Lactobacillus: Firm-5	Bombus, Apis, Tetragonisca, Tetragonula
+TRH16	Bifidobacterium	Bombus, Tetragonisca, Apis, Andrena, Tetragonula, Osmia
+TRH17	Arthrobacter	Bombus, Ceratina, Andrena, Apis
+TRH18	Aeromonas	Bombus, Apis, Andrena
+TRH19	Neisseria	Bombus, Ceratina, Tetragonisca, Apis, Megalopta, Osmia
+TRH20	Agrobacterium	Bombus, Andrena, Osmia, Apis
+TRH22	Paraburkholderia	Ceratina, Bombus, Apis, Eufriesea
+TRH27	Clostridium	Ceratina, Bombus, Andrena, Apis
+TRH29	Ralstonia	Ceratina, Bombus, Megalopta
+TRH38	Staphylococcus	Ceratina, Apis, Tetragonisca, Bombus, Euglossa, Osmia
+TRH46	Chryseobacterium	Ceratina, Bombus, Apis
+TRH49	Lactobacillus	Bombus, Euglossa, Megalopta, Osmia
+TRH51	Hathewaya	Bombus, Osmia
+TRH53	Frischella	Bombus, Apis, Tetragonisca, Andrena
+TRH57	Streptococcus	Bombus, Tetragonisca, Andrena, Tetragonula, Apis, Osmia, Megalopta
+TRH59	Hymenobacter	Bombus, Euglossa, Apis, Megalopta
+TRH60	Rothia	Bombus, Andrena, Apis, Megalopta
+TRH64	Veillonella	Bombus, Tetragonisca, Megalopta, Apis
+TRH66	Haemophilus	Bombus, Apis, Megalopta
+TRH69	Gordonia	Bombus, Megalopta
+TRH70	Cupriavidus	Bombus, Euglossa, Apis, Megalopta
+TRH71	Actinomyces	Bombus, Tetragonisca, Megalopta, Apis
+TRH72	Lactococcus	Bombus, Andrena, Megalopta, Apis
+TRH73	Bacillus	Apis, Bombus, Euglossa, Andrena
+TRH77	Parasaccharibacter	Apis, Euglossa, Tetragonula, Bombus, Megalopta
+TRH78	Bombella	Apis, Tetragonisca, Euglossa, Tetragonula, Bombus, Megalopta
+TRH85	Serratia	Apis, Bombus, Euglossa, Andrena, Tetragonula
+TRH88	Klebsiella	Apis, Tetragonisca, Bombus, Tetragonula, Osmia, Andrena
+TRH93	Citrobacter	Apis, Tetragonisca, Bombus
+TRH94	Apibacter	Apis, Bombus
+TRH97	Shigella	Apis, Bombus
+TRH99	Salmonella	Apis, Tetragonisca, Bombus, Andrena, Tetragonula, Ceratina, Osmia
+TRH103	Apilactobacillus	Apis, Tetragonisca, Bombus, Euglossa, Megalopta
+TRH106	Wolbachia	Bombus, Andrena, Apis, Osmia
+TRH107	Erwinia	Bombus, Andrena, Apis
+TRH117	Enterobacteriaceae	Tetragonisca, Bombus, Andrena, Apis, Osmia
+TRH119	Acetobacteraceae	Tetragonisca, Euglossa, Apis, Tetragonula, Bombus, Megalopta
+TRH128	Leuconostoc	Tetragonisca, Bombus, Andrena, Tetragonula, Apis
+TRH157	Chroococcidiopsis	Tetragonisca, Bombus, Apis, Andrena
+TRH160	Corynebacterium	Tetragonisca, Bombus, Apis, Osmia, Megalopta, Andrena
+TRH161	Prevotella	Tetragonisca, Bombus, Apis
+TRH184	Enterobacter	Tetragonisca, Bombus, Apis
+TRH194	Streptomyces	Bombus, Euglossa, Andrena, Megalopta, Osmia
+TRH215	Brevibacterium	Bombus
+TRH220	Flavobacterium	Bombus, Andrena, Apis, Eufriesea
+TRH224	Pseudomonas	Bombus, Euglossa, Apis
+TRH230	Ochrobactrum	Bombus, Euglossa, Apis
+TRH231	Achromobacter	Bombus, Euglossa, Apis
+TRH248	Stenotrophomonas	Bombus, Euglossa
+TRH266	Deinococcus	Bombus, Apis
+TRH270	Burkholderia	Bombus, Euglossa, Apis, Eufriesea, Megalopta
+TRH333	Asticcacaulis	Euglossa, Ceratina
+TRH361	Enterococcus	Bombus, Andrena, Apis, Osmia
+TRH391	Methylophilus	Bombus, Apis, Osmia, Andrena
+TRH395	Methylothermaceae	Bombus, Apis, Osmia, Andrena
+TRH455	Commensalibacter	Apis, Andrena, Bombus
+TRH456	Bartonella	Apis, Bombus
+TRH457	Orbus	Apis, Bombus
+TRH641	Alcaligenes	Apis

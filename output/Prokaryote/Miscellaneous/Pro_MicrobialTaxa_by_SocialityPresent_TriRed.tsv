@@ -1,0 +1,136 @@
+Tax_ID	Microbial_Genus	Sociality
+TRH2	Gilliamella	Eusocial, Solitary
+TRH3	Snodgrassella	Eusocial, Solitary
+TRH4	Bombilactobacillus	Eusocial, Solitary
+TRH5	Acinetobacter	Eusocial, Polymorphic, Solitary
+TRH7	Escherichia	Eusocial, Polymorphic, Solitary
+TRH8	Pantoea	Eusocial, Polymorphic, Solitary
+TRH9	Lactobacillus: Firm-5	Eusocial
+TRH16	Bifidobacterium	Eusocial, Solitary
+TRH17	Arthrobacter	Eusocial, Polymorphic, Solitary
+TRH18	Aeromonas	Eusocial, Solitary
+TRH19	Neisseria	Eusocial, Polymorphic, Solitary
+TRH20	Agrobacterium	Eusocial, Solitary
+TRH22	Paraburkholderia	Eusocial, Polymorphic
+TRH27	Clostridium	Eusocial, Polymorphic, Solitary
+TRH29	Ralstonia	Eusocial, Polymorphic
+TRH38	Staphylococcus	Eusocial, Polymorphic, Solitary
+TRH46	Chryseobacterium	Eusocial, Polymorphic
+TRH49	Lactobacillus	Eusocial, Polymorphic, Solitary
+TRH51	Hathewaya	Eusocial, Solitary
+TRH53	Frischella	Eusocial, Solitary
+TRH57	Streptococcus	Eusocial, Polymorphic, Solitary
+TRH59	Hymenobacter	Eusocial, Polymorphic
+TRH60	Rothia	Eusocial, Polymorphic, Solitary
+TRH64	Veillonella	Eusocial, Polymorphic
+TRH66	Haemophilus	Eusocial, Polymorphic
+TRH69	Gordonia	Eusocial, Polymorphic
+TRH70	Cupriavidus	Eusocial, Polymorphic
+TRH71	Actinomyces	Eusocial, Polymorphic
+TRH72	Lactococcus	Eusocial, Polymorphic, Solitary
+TRH73	Bacillus	Eusocial, Polymorphic, Solitary
+TRH77	Parasaccharibacter	Eusocial, Polymorphic
+TRH78	Bombella	Eusocial, Polymorphic
+TRH85	Serratia	Eusocial, Polymorphic, Solitary
+TRH88	Klebsiella	Eusocial, Solitary
+TRH93	Citrobacter	Eusocial
+TRH94	Apibacter	Eusocial
+TRH97	Shigella	Eusocial
+TRH99	Salmonella	Eusocial, Polymorphic, Solitary
+TRH103	Apilactobacillus	Eusocial, Polymorphic
+TRH106	Wolbachia	Eusocial, Solitary
+TRH107	Erwinia	Eusocial, Solitary
+TRH117	Enterobacteriaceae	Eusocial, Solitary
+TRH119	Acetobacteraceae	Eusocial, Polymorphic
+TRH128	Leuconostoc	Eusocial, Solitary
+TRH157	Chroococcidiopsis	Eusocial, Solitary
+TRH160	Corynebacterium	Eusocial, Polymorphic, Solitary
+TRH161	Prevotella	Eusocial
+TRH184	Enterobacter	Eusocial
+TRH194	Streptomyces	Eusocial, Polymorphic, Solitary
+TRH215	Brevibacterium	Eusocial
+TRH220	Flavobacterium	Eusocial, Polymorphic, Solitary
+TRH224	Pseudomonas	Eusocial, Polymorphic
+TRH230	Ochrobactrum	Eusocial, Polymorphic
+TRH231	Achromobacter	Eusocial, Polymorphic
+TRH248	Stenotrophomonas	Eusocial, Polymorphic
+TRH266	Deinococcus	Eusocial
+TRH270	Burkholderia	Eusocial, Polymorphic
+TRH361	Enterococcus	Eusocial, Solitary
+TRH391	Methylophilus	Eusocial, Solitary
+TRH395	Methylothermaceae	Eusocial, Solitary
+TRH455	Commensalibacter	Eusocial, Solitary
+TRH456	Bartonella	Eusocial
+TRH457	Orbus	Eusocial
+TRH641	Alcaligenes	Eusocial
+TRH5	Acinetobacter	Eusocial, Polymorphic, Solitary
+TRH7	Escherichia	Eusocial, Polymorphic, Solitary
+TRH8	Pantoea	Eusocial, Polymorphic, Solitary
+TRH17	Arthrobacter	Eusocial, Polymorphic, Solitary
+TRH19	Neisseria	Eusocial, Polymorphic, Solitary
+TRH22	Paraburkholderia	Eusocial, Polymorphic
+TRH27	Clostridium	Eusocial, Polymorphic, Solitary
+TRH29	Ralstonia	Eusocial, Polymorphic
+TRH38	Staphylococcus	Eusocial, Polymorphic, Solitary
+TRH46	Chryseobacterium	Eusocial, Polymorphic
+TRH49	Lactobacillus	Eusocial, Polymorphic, Solitary
+TRH57	Streptococcus	Eusocial, Polymorphic, Solitary
+TRH59	Hymenobacter	Eusocial, Polymorphic
+TRH60	Rothia	Eusocial, Polymorphic, Solitary
+TRH64	Veillonella	Eusocial, Polymorphic
+TRH66	Haemophilus	Eusocial, Polymorphic
+TRH69	Gordonia	Eusocial, Polymorphic
+TRH70	Cupriavidus	Eusocial, Polymorphic
+TRH71	Actinomyces	Eusocial, Polymorphic
+TRH72	Lactococcus	Eusocial, Polymorphic, Solitary
+TRH73	Bacillus	Eusocial, Polymorphic, Solitary
+TRH77	Parasaccharibacter	Eusocial, Polymorphic
+TRH78	Bombella	Eusocial, Polymorphic
+TRH85	Serratia	Eusocial, Polymorphic, Solitary
+TRH99	Salmonella	Eusocial, Polymorphic, Solitary
+TRH103	Apilactobacillus	Eusocial, Polymorphic
+TRH119	Acetobacteraceae	Eusocial, Polymorphic
+TRH160	Corynebacterium	Eusocial, Polymorphic, Solitary
+TRH194	Streptomyces	Eusocial, Polymorphic, Solitary
+TRH220	Flavobacterium	Eusocial, Polymorphic, Solitary
+TRH224	Pseudomonas	Eusocial, Polymorphic
+TRH230	Ochrobactrum	Eusocial, Polymorphic
+TRH231	Achromobacter	Eusocial, Polymorphic
+TRH248	Stenotrophomonas	Eusocial, Polymorphic
+TRH270	Burkholderia	Eusocial, Polymorphic
+TRH333	Asticcacaulis	Polymorphic
+TRH2	Gilliamella	Eusocial, Solitary
+TRH3	Snodgrassella	Eusocial, Solitary
+TRH4	Bombilactobacillus	Eusocial, Solitary
+TRH5	Acinetobacter	Eusocial, Polymorphic, Solitary
+TRH7	Escherichia	Eusocial, Polymorphic, Solitary
+TRH8	Pantoea	Eusocial, Polymorphic, Solitary
+TRH16	Bifidobacterium	Eusocial, Solitary
+TRH17	Arthrobacter	Eusocial, Polymorphic, Solitary
+TRH18	Aeromonas	Eusocial, Solitary
+TRH19	Neisseria	Eusocial, Polymorphic, Solitary
+TRH20	Agrobacterium	Eusocial, Solitary
+TRH27	Clostridium	Eusocial, Polymorphic, Solitary
+TRH38	Staphylococcus	Eusocial, Polymorphic, Solitary
+TRH49	Lactobacillus	Eusocial, Polymorphic, Solitary
+TRH51	Hathewaya	Eusocial, Solitary
+TRH53	Frischella	Eusocial, Solitary
+TRH57	Streptococcus	Eusocial, Polymorphic, Solitary
+TRH60	Rothia	Eusocial, Polymorphic, Solitary
+TRH72	Lactococcus	Eusocial, Polymorphic, Solitary
+TRH73	Bacillus	Eusocial, Polymorphic, Solitary
+TRH85	Serratia	Eusocial, Polymorphic, Solitary
+TRH88	Klebsiella	Eusocial, Solitary
+TRH99	Salmonella	Eusocial, Polymorphic, Solitary
+TRH106	Wolbachia	Eusocial, Solitary
+TRH107	Erwinia	Eusocial, Solitary
+TRH117	Enterobacteriaceae	Eusocial, Solitary
+TRH128	Leuconostoc	Eusocial, Solitary
+TRH157	Chroococcidiopsis	Eusocial, Solitary
+TRH160	Corynebacterium	Eusocial, Polymorphic, Solitary
+TRH194	Streptomyces	Eusocial, Polymorphic, Solitary
+TRH220	Flavobacterium	Eusocial, Polymorphic, Solitary
+TRH361	Enterococcus	Eusocial, Solitary
+TRH391	Methylophilus	Eusocial, Solitary
+TRH395	Methylothermaceae	Eusocial, Solitary
+TRH455	Commensalibacter	Eusocial, Solitary
