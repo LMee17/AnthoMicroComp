@@ -303,15 +303,20 @@ hpi <- inner_join(hpi, met, by = c("Host_Genus" = "Genus")) %>%
   select(TaxID, Host_Genus, Prevalence, Taxa, Sociality) %>%
   unique()
 #add labels
+#repeat the labels x number of microbial taxa
+notax <- length(unique(hpi$TaxID))
 hpi <- hpi %>%
-  mutate(Labels = rep(samplabs, 65)) %>%
+  mutate(Labels = rep(samplabs, notax)) %>%
   as.data.frame()
 
-#order bee genera by sociality
+#add line breaks into labels
 hpi$Labels <- str_replace(hpi$Labels, " ", "\n")
 
+#order samples by sociality
+hpi$Labels <- as.character(hpi$Labels)
 levelz <- hpi %>%
   select(Host_Genus, Sociality, Labels) %>%
+  arrange(Labels) %>%
   arrange(Sociality) %>%
   unique() %>%
   select(Labels) %>%
@@ -373,9 +378,9 @@ ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) +
   theme(axis.text.x = element_text(angle = 80, hjust = -.1,
                                    face = "italic"),
         axis.text.y = element_text(face = "italic")) +
-  scale_fill_manual(values = c("#6a00d4",
+  scale_fill_manual(values = c("#440088",
+                               "#6a00d4",
                                "#8307ff",
-                               "#9d3bff",
                                "#b66eff",
                                "#d0a1ff",
                                "white")) +
