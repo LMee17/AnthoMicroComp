@@ -395,7 +395,6 @@ ggsave("output/Prokaryote/Miscellaneous/Pro_PrevalenceHeatmap_Factored_HostGenus
 
 ##Sociality vs SharedMicrobial Species #####
 #this will be difficult to code.....
-cntz <- list(pro, pro2)
 soc.inc <- pro %>%
     rownames_to_column(var = "MicroTax") %>%
     pivot_longer(-MicroTax) %>%
