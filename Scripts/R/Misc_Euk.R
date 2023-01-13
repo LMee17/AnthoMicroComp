@@ -413,7 +413,6 @@ ggsave("output/Eukaryote/Miscellaneous/euk_PrevalenceHeatmap_Factored_HostGenus_
 
 ##Sociality vs SharedMicrobial Species #####
 #this will be difficult to code.....
-cntz <- list(euk, euk2)
 soc.inc <- euk %>%
   rownames_to_column(var = "MicroTax") %>%
   pivot_longer(-MicroTax) %>%
@@ -454,7 +453,7 @@ ggplot(data = soc.inc2,
   labs(y = "Number of Eukaryote Genera",
        x = "",
        fill = "")
-ggsave("output/Eukaryote/Miscellaneous/eukk_MicroGenera_bySocCombo.pdf")  
+ggsave("output/Eukaryote/Miscellaneous/euk_MicroGenera_bySocCombo.pdf")  
 #get list of microbial taxa for each combination
 soc.inc3 <- inner_join(soc.inc, met, by = c("Sample" = "Sample.ID")) %>%
   select(MicroTax, Sample, inc, Sociality) %>%
