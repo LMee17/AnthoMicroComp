@@ -16,13 +16,11 @@ met <- read.table("input/Metadata/SampleMetaData_Edit_RNAOnly_Dec22.tsv",
 tax <- read.table("input/Phylo_Misc/rankedlin_Dec22.tsv", 
                   header = T, sep = "\t")
 
-#prokaryote count table (filtered)
-pro <- read.table("input/Counts/Prokaryote_Filtered_Raw.tsv")
 #prokaryote count table (tribe reduced)
-pro2 <- read.table("input/Counts/Prokaryote_Filtered_TribeReduced_Raw.tsv")
+pro <- read.table("input/Counts/Prokaryote_Filtered_TribeReduced_Raw.tsv")
 #prokaryote relative abundance
 pro.rel <- read.table("input/Counts/Prokaryote_RelativeAbundance.tsv")
-pro.rel2 <- pro.rel[,names(pro.rel) %in% names(pro2)]
+pro.rel <- pro.rel[,names(pro.rel) %in% names(pro)]
 
 #manually set palette
 #colour-blind friendly palette sourced: 
@@ -60,73 +58,39 @@ readCnts <- pro %>%
   unique() 
 pro.Spec.Plot <- inner_join(pro.Spec.Plot, readCnts, by = "Sample")
 
-#tribe reduced version
-pro.Spec.Plot2 <- pro.Spec.Plot[pro.Spec.Plot$Sample %in% names(pro2),]
-
-#platformspec
-pro.plots <- list(pro.Spec.Plot, pro.Spec.Plot2)
-
-for (i in 1:length(pro.plots)){
-  print(i)
-  ggplot(data = pro.plots[[i]], aes(x = Platform_Spec, y = Total)) +
+#plot
+ggplot(data = pro.Spec.Plot, aes(x = Platform_Spec, y = Total)) +
     geom_boxplot(aes(colour = Platform_Spec)) +
     coord_flip() +
     scale_colour_manual(values = myPal) +
     labs(x = "Sequencing Platform",
          y = "Number of Unique Species") +
     guides(colour = "none")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Platform.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Platform_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Platform.pdf")
 
 #what about by sociality / genus / family ? 
-for (i in 1:length(pro.plots)){
-  print(i)
-  ggplot(data = pro.plots[[i]], aes(x = Sociality, y = Total)) +
+ggplot(data = pro.Spec.Plot, aes(x = Sociality, y = Total)) +
     geom_boxplot(aes(colour = Sociality)) +
     coord_flip() +
     scale_colour_manual(values = myPal) +
     labs(x = "Sociality",
          y = "Number of Unique Species") +
     guides(colour = "none")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Sociality.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Sociality_TriRed.pdf")
-  }
-}
-
+ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Sociality.pdf")
+    
 #family
-for (i in 1:length(pro.plots)){
-  print(i)
-  ggplot(data = pro.plots[[i]], aes(x = Family, y = Total)) +
+ggplot(data = pro.Spec.Plot, aes(x = Family, y = Total)) +
     geom_boxplot(aes(colour = Family)) +
     coord_flip() +
     scale_colour_manual(values = myPal) +
     labs(x = "Host Family",
          y = "Number of Unique Prokaryote Species") +
     guides(colour = "none")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Family.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Family_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Family.pdf")
+
 
 #for genus, order genera by sociality
-pro.plots[[1]]$Genus <- factor(pro.plots[[1]]$Genus, 
-                              levels = c("Xylocopa", "Osmia", "Habropoda",
-                                         "Epeolus", "Dufourea", "Colletes",
-                                         "Anthophora", "Andrena",
-                                         "Megalopta", "Lasioglossum", "Halictus",
-                                         "Exoneura", "Euglossa", "Eufriesea",
-                                         "Ceratina",
-                                         "Tetragonula", "Tetragonisca", "Bombus", 
-                                         "Apis"))
-pro.plots[[2]]$Genus <- factor(pro.plots[[2]]$Genus,
+pro.Spec.Plot$Genus <- factor(pro.Spec.Plot$Genus,
                                levels = c("Osmia", "Andrena",
                                           "Megalopta",
                                           "Euglossa", "Eufriesea",
@@ -135,75 +99,45 @@ pro.plots[[2]]$Genus <- factor(pro.plots[[2]]$Genus,
                                           "Apis"))
 
 #genus
-for (i in 1:length(pro.plots)){
-  print(i)
-  ggplot(data = pro.plots[[i]], aes(x = Genus, y = Total)) +
+ggplot(data = pro.Spec.Plot, aes(x = Genus, y = Total)) +
     geom_boxplot(aes(colour = Sociality)) +
     coord_flip() +
     scale_colour_manual(values = myPal) +
     labs(x = "Host Genus",
          y = "Number of Unique Prokaryote Species") +
     guides(colour = "none")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Genus.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Genus_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Genus.pdf")
 
 #tribe
 #again, order by sociality
-pro.plots[[1]]$Tribe <- factor(pro.plots[[1]]$Tribe,
-                               levels = c("Xylocopini", "Rophitini", "Osmiini", 
-                                          "Epeolini", "Colletini", "Anthophorini",
-                                          "Andrenini",
-                                          "Halictini", "Euglossini", "Ceratini", 
-                                          "Augochlorini", "Allodapini",
-                                          "Meliponini", "Bombini", "Apini"))
-
-pro.plots[[2]]$Tribe <- factor(pro.plots[[2]]$Tribe,
+pro.Spec.Plot$Tribe <- factor(pro.Spec.Plot$Tribe,
                                levels = c("Osmiini", 
                                           "Andrenini",
                                           "Euglossini", "Ceratini", 
                                           "Augochlorini", "Allodapini",
                                           "Meliponini", "Bombini", "Apini"))
 
-for (i in 1:length(pro.plots)){
-  print(i)
-  ggplot(data = pro.plots[[i]], aes(x = Tribe, y = Total)) +
+ggplot(data = pro.Spec.Plot, aes(x = Tribe, y = Total)) +
     geom_boxplot(aes(colour = Sociality)) +
     coord_flip() +
     scale_colour_manual(values = myPal) +
     labs(x = "Host Tribe",
          y = "Number of Unique Prokaryote Species") +
     guides(colour = "none")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Genus.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Genus_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Genus.pdf")
 
 #library prep
-for (i in 1:length(pro.plots)){
-  print(i)
-  ggplot(data = pro.plots[[i]], aes(x = LibrarySelection, y = Total)) +
+ggplot(data = pro.Spec.Plot, aes(x = LibrarySelection, y = Total)) +
     geom_boxplot(aes(colour = LibrarySelection)) +
     coord_flip() +
     scale_colour_manual(values = myPal) +
     labs(x = "Method of Library Selection",
          y = "Number of Unique Prokaryote Species") +
     guides(colour = "none")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_LibrarySelection.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_LibrarySelection_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_LibrarySelection.pdf")
 
 #total number of reads versus number of species
-for (i in 1:length(pro.plots)){
-  ggplot(data = pro.plots[[i]], aes(x = log(Tot), y = Total)) +
+ggplot(data = pro.Spec.Plot, aes(x = log(Tot), y = Total)) +
     geom_point(aes(colour = Sociality, alpha = 0.85)) +
     labs(x = "log(Total Number of Reads)",
          y = "Number of Unique Species") +
@@ -211,16 +145,10 @@ for (i in 1:length(pro.plots)){
                 method = lm, se = FALSE, fullrange = TRUE,
                 linetype = "twodash") +
     guides(alpha = "none")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_BySoc.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_BySoc_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_BySoc.pdf")
 
 #total number of reads versus number of species (by library selection)
-for (i in 1:length(pro.plots)){
-  ggplot(data = pro.plots[[i]], aes(x = log(Tot), y = Total)) +
+ggplot(data = pro.Spec.Plot, aes(x = log(Tot), y = Total)) +
     geom_point(aes(colour = LibrarySelection, alpha = 0.85)) +
     labs(x = "log(Total Number of Reads)",
          y = "Number of Unique Species") +
@@ -229,16 +157,10 @@ for (i in 1:length(pro.plots)){
                 linetype = "twodash") +
     guides(alpha = "none") +
     labs(colour = "Method of Library Selection")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_ByLibSel.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_ByLibSel_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_ByLibSel.pdf")
 
 #total number of reads versus number of species (by family)
-for (i in 1:length(pro.plots)){
-  ggplot(data = pro.plots[[i]], aes(x = log(Tot), y = Total)) +
+ggplot(data = pro.Spec.Plot, aes(x = log(Tot), y = Total)) +
     geom_point(aes(colour = Family, alpha = 0.85)) +
     labs(x = "log(Total Number of Reads)",
          y = "Number of Unique Species") +
@@ -247,12 +169,7 @@ for (i in 1:length(pro.plots)){
                 linetype = "twodash") +
     guides(alpha = "none") +
     labs(colour = "Host Family")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_ByFam.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_ByFam_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_ByFam.pdf")
 
 #interesting.
 
@@ -283,15 +200,11 @@ pro.micro.plot <- inner_join(pro.micro.plot, met, by = c("Sample" = "Sample.ID")
 #differentiate between host and micro - adding host prefix
 names(pro.micro.plot)[c(13,27:30)] <- sub("^", "Host_", names(pro.micro.plot[c(13,27:30)]))
 
-pro.micro.plot2 <- pro.micro.plot[pro.micro.plot$Sample %in% names(pro2),]
-
-pro.micro.plots <- list(pro.micro.plot, pro.micro.plot2)
 #plot
 #x = bacterial family / order
 #y - abundance
 #facet = sociality
-for(i in 1:length(pro.micro.plots)){
-  ggplot(data = pro.micro.plots[[i]], 
+ggplot(data = pro.micro.plot, 
          aes(x = fct_rev(factor(Micro_family)), y = RelAbundance)) +
     geom_bar(aes(fill = Sociality), stat = "identity") +
     labs(y = "Cumulative Relative Abundance",
@@ -300,16 +213,10 @@ for(i in 1:length(pro.micro.plots)){
     scale_fill_manual(values = myPal) +
     facet_grid(~Sociality) +
     coord_flip()
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialFam_RelAbu_SocialFacet.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialFam_RelAbu_SocialFacet_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialFam_RelAbu_SocialFacet.pdf")
 
 #by order
-for(i in 1:length(pro.micro.plots)){
-  ggplot(data = pro.micro.plots[[i]], 
+ggplot(data = pro.micro.plot, 
          aes(x = fct_rev(factor(Micro_order)), y = RelAbundance)) +
     geom_bar(aes(fill = Sociality), stat = "identity") +
     labs(y = "Cumulative Relative Abundance",
@@ -317,16 +224,10 @@ for(i in 1:length(pro.micro.plots)){
     scale_fill_manual(values = myPal) +
     facet_grid(~Sociality) +
     coord_flip()
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialOrd_RelAbu_SocialFacet.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialOrd_RelAbu_SocialFacet_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialOrd_RelAbu_SocialFacet.pdf")
 
 #fuck it let's do genus
-for(i in 1:length(pro.micro.plots)){
-  ggplot(data = pro.micro.plots[[i]], 
+ggplot(data = pro.micro.plot, 
          aes(x = fct_rev(factor(Micro_genus)), y = RelAbundance)) +
     geom_bar(aes(fill = Sociality), stat = "identity") +
     labs(y = "Cumulative Relative Abundance",
@@ -335,12 +236,8 @@ for(i in 1:length(pro.micro.plots)){
     scale_fill_manual(values = myPal) +
     facet_grid(~Sociality) +
     coord_flip()
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialGen_RelAbu_SocialFacet.pdf")
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialGen_RelAbu_SocialFacet_TriRed.pdf")
-  }
-}
+ggsave("output/Prokaryote/Miscellaneous/Pro_BacterialGen_RelAbu_SocialFacet.pdf",
+       height = 28, units = "cm")
 
 ##Prokaryote Heatmap####
 heat.plot.inc <- pro.inc %>%
@@ -377,7 +274,7 @@ prevmat <- matrix(nrow = length(micros),
 samplabs <- c()
 for (i in 1:length(genera)){
   print(genera[i])
-  samps <- unique(pro.plots[[1]]$Sample[pro.plots[[1]]$Genus == genera[i]])
+  samps <- unique(pro.Spec.Plot$Sample[pro.Spec.Plot$Genus == genera[i]])
   tot <- length(samps)
   label <- paste(genera[i], " (n = ", tot, ")", sep = "")
   samplabs <- c(samplabs, label)
@@ -390,6 +287,7 @@ for (i in 1:length(genera)){
   }
   prevmat[,i] <- x
 }
+
 prevmat <- as.data.frame(prevmat)
 rownames(prevmat) <- micros
 names(prevmat) <- genera
@@ -408,7 +306,10 @@ hpi <- inner_join(hpi, met, by = c("Host_Genus" = "Genus")) %>%
 hpi <- hpi %>%
   mutate(Labels = rep(samplabs, 65)) %>%
   as.data.frame()
+
 #order bee genera by sociality
+hpi$Labels <- str_replace(hpi$Labels, " ", "\n")
+
 levelz <- hpi %>%
   select(Host_Genus, Sociality, Labels) %>%
   arrange(Sociality) %>%
@@ -423,6 +324,7 @@ core <- factor(c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillu
              "Gilliamella", "Snodgrassella", "Bifidobacterium", "Frischella",
             "Bartonella", "Apibacter"))
 noncore <- factor(unique(hpi$Taxa[!hpi$Taxa %in% core]))
+
 
 hpi$Taxa <- factor(hpi$Taxa, levels = c(core, noncore))
 
@@ -440,6 +342,9 @@ hpi$Prev2[hpi$Prevalence == 0] <- " "
   
 hpi$Prev2 <- factor(hpi$Prev2, levels =c("> 75%", "51 - 75%", "31 - 50%",
                                          "11 - 30%", "< 11%", " "))
+#add new lines in labels
+
+
 
 ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) + 
   geom_tile() +
@@ -458,97 +363,21 @@ ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) +
        fill = " ") +
   theme(panel.background = element_blank()) +
   coord_flip() 
-
 
 ggsave("output/Prokaryote/Miscellaneous/Pro_PrevalenceHeatmap_Factored_HostGenus.pdf",
       height = 28, units = "cm")
 
-#now to do that with tribe reduced :(
-
-genera <- unique(met$Genus[met$Sample.ID %in% names(pro2)])
-micros <- unique(heat.plot.inc$MicroTax)
-prevmat <- matrix(nrow = length(micros),
-                  ncol = length(genera))
-
-samplabs <- c()
-for (i in 1:length(genera)){
-  print(genera[i])
-  samps <- unique(pro.plots[[2]]$Sample[pro.plots[[2]]$Genus == genera[i]])
-  tot <- length(samps)
-  label <- paste(genera[i], " (n = ", tot, ")", sep = "")
-  samplabs <- c(samplabs, label)
-  #prepare to populate with prevalence per microtaxa
-  x <- c()
-  for (j in 1:length(micros)){
-    m.gen <- tax$genus[tax$ID == micros[j]]
-    prev <- (sum(pro.inc[micros[j], names(pro.inc) %in% samps]) / tot)*100
-    x <- c(x, prev)
-  }
-  prevmat[,i] <- x
-}
-
-prevmat <- as.data.frame(prevmat)
-rownames(prevmat) <- micros
-names(prevmat) <- genera
-
-hpi <- prevmat %>%
-  rownames_to_column() %>%
-  pivot_longer(-rowname) 
-names(hpi) <- c("TaxID", "Host_Genus", "Prevalence")
-hpi <- inner_join(hpi, taxkey, by = c("TaxID")) %>%
-  mutate(Taxa = genus) %>%
-  select(TaxID, Host_Genus, Prevalence, Taxa) 
-hpi <- inner_join(hpi, met, by = c("Host_Genus" = "Genus")) %>%
-  select(TaxID, Host_Genus, Prevalence, Taxa, Sociality) %>%
-  unique()
-#add labels
-hpi <- hpi %>%
-  mutate(Labels = rep(samplabs, 65)) %>%
-  as.data.frame()
-#order bee genera by sociality
-levelz <- hpi %>%
-  select(Host_Genus, Sociality, Labels) %>%
-  arrange(Sociality) %>%
-  unique() %>%
-  select(Labels) %>%
-  unlist()
-
-hpi$Labels <- factor(hpi$Labels, levels = c(levelz))
-
-#order microbial taxa so core are together
-core <- factor(c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillus",
-                 "Gilliamella", "Snodgrassella", "Bifidobacterium", "Frischella",
-                 "Bartonella", "Apibacter"))
-noncore <- factor(unique(hpi$Taxa[!hpi$Taxa %in% core]))
-
-hpi$Taxa <- factor(hpi$Taxa, levels = c(core, noncore))
-
-#factorise prevalence
-hpi$Prev2[hpi$Prevalence > 75] <- "> 75%"
-hpi$Prev2[hpi$Prevalence <= 75 &
-            hpi$Prevalence > 50] <- "51 - 75%"
-hpi$Prev2[hpi$Prevalence <= 50 &
-            hpi$Prevalence > 30] <- "31 - 50%"
-hpi$Prev2[hpi$Prevalence <= 30 &
-            hpi$Prevalence > 10] <- "11 - 30%"
-hpi$Prev2[hpi$Prevalence < 10 &
-            hpi$Prevalence > 0] <- "< 11%"
-hpi$Prev2[hpi$Prevalence == 0] <- " "
-
-hpi$Prev2 <- factor(hpi$Prev2, levels =c("> 75%", "51 - 75%", "31 - 50%",
-                                         "11 - 30%", "< 11%", " "))
-
 ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) + 
   geom_tile() +
   scale_y_discrete(position = "right") +
   theme(axis.text.x = element_text(angle = 80, hjust = -.1,
                                    face = "italic"),
         axis.text.y = element_text(face = "italic")) +
-  scale_fill_manual(values = c("black",
-                               "#004545",
-                               "#006b6b",
-                               "#00cece",
-                               "#00f6f6",
+  scale_fill_manual(values = c("#6a00d4",
+                               "#8307ff",
+                               "#9d3bff",
+                               "#b66eff",
+                               "#d0a1ff",
                                "white")) +
   labs(x = "Prokaryote Genus",
        y = "Host Genus",
@@ -556,21 +385,19 @@ ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) +
   theme(panel.background = element_blank()) +
   coord_flip() 
 
-ggsave("output/Prokaryote/Miscellaneous/Pro_PrevalenceHeatmap_Factored_HostGenus_TriRed.pdf",
+ggsave("output/Prokaryote/Miscellaneous/Pro_PrevalenceHeatmap_Factored_HostGenus_Purp.pdf",
        height = 28, units = "cm")
 
 ##Sociality vs SharedMicrobial Species #####
 #this will be difficult to code.....
 cntz <- list(pro, pro2)
-
-for (i in 1:length(cntz)){
-  soc.inc <- cntz[[i]] %>%
+soc.inc <- pro %>%
     rownames_to_column(var = "MicroTax") %>%
     pivot_longer(-MicroTax) %>%
     mutate(inc = ifelse(value > 0, 1, 0)) %>%
     mutate(Sample = name) %>%
     select(MicroTax, Sample, inc)
-  soc.inc2 <- inner_join(soc.inc, met, by = c("Sample" = "Sample.ID")) %>%
+soc.inc2 <- inner_join(soc.inc, met, by = c("Sample" = "Sample.ID")) %>%
     select(MicroTax, Sample, inc, Sociality) %>%
     mutate(SocID = substr(Sociality, 1, 1)) %>%
     select(-Sample) %>%
@@ -583,11 +410,11 @@ for (i in 1:length(cntz)){
     group_by(Sociality, Combo) %>%
     count(name = "Count")
   #order factors
-  soc.inc2$Combo <- factor(soc.inc2$Combo,
+soc.inc2$Combo <- factor(soc.inc2$Combo,
                            levels = c("EPS", 
                                       "PS", "ES", "EP",
                                       "E", "P", "S"))
-  ggplot(data = soc.inc2,
+ggplot(data = soc.inc2,
          aes(x = Sociality, y = Count, fill = (Combo), label = Count))+
     geom_bar(stat = "identity", colour = "grey") + 
     geom_text(size = 3, 
@@ -604,13 +431,9 @@ for (i in 1:length(cntz)){
     labs(y = "Number of Prokaryote Genera",
          x = "",
          fill = "")
-  if (i == 1){
-    ggsave("output/Prokaryote/Miscellaneous/Prok_MicroGenera_bySocCombo.pdf")  
-  } else {
-    ggsave("output/Prokaryote/Miscellaneous/Prok_MicroGenera_bySocCombo_TriRed.pdf")  
-  }
-  #get list of microbial taxa for each combination
-  soc.inc3 <- inner_join(soc.inc, met, by = c("Sample" = "Sample.ID")) %>%
+ggsave("output/Prokaryote/Miscellaneous/Prok_MicroGenera_bySocCombo.pdf")  
+#get list of microbial taxa for each combination
+soc.inc3 <- inner_join(soc.inc, met, by = c("Sample" = "Sample.ID")) %>%
     select(MicroTax, Sample, inc, Sociality) %>%
     select(-Sample) %>%
     filter(inc > 0) %>%
@@ -620,25 +443,18 @@ for (i in 1:length(cntz)){
     group_by(MicroTax) %>%
     mutate(Combo = paste0(Sociality, collapse = ", ")) %>%
     select(MicroTax, Combo)
-  names(soc.inc3) <- c("Tax_ID", "Sociality")
-  soc.inc3 <- inner_join(soc.inc3, taxkey, by = c("Tax_ID" = "TaxID")) %>%
+names(soc.inc3) <- c("Tax_ID", "Sociality")
+soc.inc3 <- inner_join(soc.inc3, taxkey, by = c("Tax_ID" = "TaxID")) %>%
     mutate(Microbial_Genus = genus) %>%
     select(Tax_ID, Sociality, Microbial_Genus) %>%
     relocate(Microbial_Genus, .before = "Sociality") %>%
     as.data.frame() 
-  if (i == 1){
-    write.table(soc.inc3,
-                "output/Prokaryote/Miscellaneous/Pro_MicrobialTaxa_by_SocialityPresent.tsv",
+write.table(soc.inc3,
+      "output/Prokaryote/Miscellaneous/Pro_MicrobialTaxa_by_SocialityPresent.tsv",
                   col.names = T, row.names = F, quote = F, sep = "\t")
-  } else {
-    write.table(soc.inc3, 
-                "output/Prokaryote/Miscellaneous/Pro_MicrobialTaxa_by_SocialityPresent_TriRed.tsv",
-                col.names = T, row.names = F, quote = F, sep = "\t")
-  }
-}
 
 ##Microbial Taxa by Species #####
-spec.inc <- pro2 %>%
+spec.inc <- pro %>%
   rownames_to_column(var = "TaxID") %>%
   pivot_longer(-TaxID) %>%
   filter(value > 0)
@@ -658,3 +474,7 @@ write.table(spec.inc,
             "output/Prokaryote/Miscellaneous/Pro_BacterialGen_by_HostGen.tsv",
             sep = "\t",
             row.names = F, col.names = T, quote = F)
+
+##SessionLog####
+writeLines(capture.output(sessionInfo()),
+           "SessionLogs/Misc_Pro_Jan23.txt")
