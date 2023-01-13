@@ -22,6 +22,9 @@ tax <- read.table("input/Phylo_Misc/rankedlin_Dec22.tsv",
 #prokaryote count table
 pro <- read.table("input/Counts/Prokaryote_Filtered_TribeReduced_Raw.tsv")
 
+pro.rel <- read.table("input/Counts/Prokaryote_RelativeAbundance.tsv")
+pro.rel <- pro.rel[, names(pro.rel) %in% names(pro)]
+
 #####Quick Incidence Overview: Core Phylo + All Samples####
 #extract the core microbiota phylotype
 beecore <- c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillus",
@@ -121,7 +124,7 @@ core.df$Prev2 <- factor(core.df$Prev2,
                         levels = c("81 - 100%", "61 - 80%", "41 - 60%", 
                                    "21 - 40%", "5 - 20%", "< 5%", " "))
 #prepare average abundances to printed over tiles (need to end up character vectors)
-for (i in 2:3){}
+for (i in 2:3){
   core.df[,i] <- core.df[,i]*100
   core.df[,i] <- round(core.df[,i], digits = 1)
   core.df[,i] <- as.character(core.df[,i])
@@ -165,4 +168,175 @@ ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
         axis.text.x = element_text(angle = 60, hjust = 1,
                                    face = "italic"))
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev.pdf")
+
+##Gilliamella and Snodgrassella in Apis and Bombus####
+#others have found higher abundance of these 2 in bombus than in apis, do I?
+myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
+           "#000000", "#ff6db6", "#6db6ff", "#24ff24", "#00e6e6",
+           "#ffb6db", "#b66dff", "#924900", "#b6dbff", "#ffff6d",
+           "#9acd32")
+
+cnt.plot <- pro %>%
+  rownames_to_column(var = "TaxID") %>%
+  pivot_longer(-TaxID) %>%
+  filter(TaxID %in% coreID)
+names(cnt.plot)[2:3] <- c("Sample", "NoRead")
+cnt.plot <- inner_join(cnt.plot, met, by = c("Sample" = "Sample.ID")) %>%
+  select(TaxID, Sample, NoRead, Species, Genus, Sociality)
+cnt.plot <- inner_join(cnt.plot, tax, by = c("TaxID" = "ID")) %>%
+  select(TaxID, Sample, NoRead, Species, Genus, Sociality, tax_name)
+
+cnt.plot %>%
+  subset(tax_name == "Gilliamella" | tax_name == "Snodgrassella") %>%
+  subset(Sociality == "Eusocial") %>%
+  subset(Genus != "Tetragonula") %>%
+  ggplot(aes(x = Genus, y = log(NoRead), fill = tax_name)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = myPal[c(5,11)]) +
+  labs(fill = "Microbial Taxa", 
+       y = "log(No of Reads)") +
+  theme(axis.text.x = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.background = element_blank()) 
+ggsave("output/Prokaryote/CorePhylo/Gilliamella_Snodgrassella_noReads_Eus.pdf")
+
+cnt.plot.rel <- pro.rel %>%
+  rownames_to_column(var = "TaxID") %>%
+  pivot_longer(-TaxID) %>%
+  filter(TaxID %in% coreID)
+names(cnt.plot.rel)[2:3] <- c("Sample", "NoRead")
+cnt.plot.rel <- inner_join(cnt.plot.rel, met, by = c("Sample" = "Sample.ID")) %>%
+  select(TaxID, Sample, NoRead, Species, Genus, Sociality)
+cnt.plot.rel <- inner_join(cnt.plot.rel, tax, by = c("TaxID" = "ID")) %>%
+  select(TaxID, Sample, NoRead, Species, Genus, Sociality, tax_name)
+
+cnt.plot.rel %>%
+  subset(tax_name == "Gilliamella" | tax_name == "Snodgrassella") %>%
+  subset(Sociality == "Eusocial") %>%
+  subset(Genus != "Tetragonula") %>%
+  ggplot(aes(x = Genus, y = log(NoRead), fill = tax_name)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = myPal[c(5,11)]) +
+  labs(fill = "Microbial Taxa", 
+       y = "log(Relative Abundance)") +
+  theme(axis.text.x = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.background = element_blank()) 
+ggsave("output/Prokaryote/CorePhylo/Gilliamella_Snodgrassella_relabu_Eus.pdf")
+          
+##Is Frischella Apis-specific?####
+cnt.plot %>%
+  subset(tax_name == "Frischella") %>%
+  filter(NoRead > 0) %>%
+  ggplot(aes(x = Genus, y = log(NoRead), fill = tax_name)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = myPal[c(8)]) +
+  labs(fill = "Microbial Taxa", 
+       y = "log(No of Reads)") +
+  theme(axis.text.x = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.background = element_blank()) 
+ggsave("output/Prokaryote/CorePhylo/Frischella_OutsideApis_noReads_Eus.pdf")
+
+cnt.plot.rel %>%
+  subset(tax_name == "Frischella") %>%
+  filter(NoRead > 0) %>%
+  ggplot(aes(x = Genus, y = log(NoRead), fill = tax_name)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = myPal[c(8)]) +
+  labs(fill = "Microbial Taxa", 
+       y = "log(No of Reads)") +
+  theme(axis.text.x = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.background = element_blank()) 
+ggsave("output/Prokaryote/CorePhylo/Frischella_OutsideApis_relABu_Eus.pdf")
+
+##Apibacter: Should be more prevalent in bumble and Eastern Honeybees ####
+cnt.plot %>%
+  subset(tax_name == "Apibacter") %>%
+  filter(NoRead > 0) %>%
+  ggplot(aes(x = Species, y = log(NoRead), fill = tax_name)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = myPal[c(4)]) +
+  labs(fill = "Microbial Taxa", 
+       y = "log(No of Reads)") +
+  theme(axis.text.y = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.background = element_blank()) +
+  coord_flip()
+ggsave("output/Prokaryote/CorePhylo/Apibacter_noReads_Eus.pdf")
+
+cnt.plot.rel %>%
+  subset(tax_name == "Apibacter") %>%
+  filter(NoRead > 0) %>%
+  ggplot(aes(x = Species, y = log(NoRead), fill = tax_name)) +
+  geom_boxplot() +
+  theme_classic() +
+  scale_fill_manual(values = myPal[c(4)]) +
+  labs(fill = "Microbial Taxa", 
+       y = "log(No of Reads)") +
+  theme(axis.text.y = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.background = element_blank()) +
+  coord_flip()
+ggsave("output/Prokaryote/CorePhylo/Apibacter_relabu_Eus.pdf")
+
+##Antagonistic relationship between Apibacter and Snodgrassella ? ####
+one <- cnt.plot %>%
+  subset(tax_name == "Snodgrassella") %>%
+  mutate(Snod_Read = NoRead) %>%
+  select(Sample, Snod_Read)
+two <- cnt.plot %>%
+  subset(tax_name == "Apibacter") %>%
+  mutate(Api_Read = NoRead) %>%
+  select(Sample, Api_Read) 
+apisnod <- inner_join(one, two, by = "Sample") %>%
+  filter(Snod_Read > 0 | Api_Read | 0)
+apisnod$Category[apisnod$Api_Read > apisnod$Snod_Read] <- "Apibacter\n Dominant"
+apisnod$Category[apisnod$Snod_Read > apisnod$Api_Read] <- "Snodgrassella\n Dominant"
+apisnod$Category[apisnod$Api_Read == 0] <- "Apibacter\n Absent"
+apisnod$Category[apisnod$Snod_Read == 0] <- "Snodgrassella\n Absent"
+
+apisnod.plot <- inner_join(apisnod, cnt.plot, by = "Sample") %>%
+  select(-Snod_Read, -Api_Read) %>%
+  subset(tax_name == "Apibacter" | tax_name == "Snodgrassella")
+
+apisnod.plot$Category <- factor(apisnod.plot$Category, 
+                                levels = c("Apibacter\n Absent", 
+                                           "Apibacter\n Dominant",
+                                           "Snodgrassella\n Dominant",
+                                           "Snodgrassella\n Absent"))
+
+ggplot(data = apisnod.plot, 
+       aes(x = Category, y = log(NoRead), fill = tax_name)) +
+  geom_boxplot() +
+  scale_fill_manual(values = myPal[c(3,10)]) + 
+  theme_classic() +
+  labs(fill = "Microbial Taxa",
+       x = "log(No of Reads)", 
+       y = "Composition") +
+  theme(axis.text.y = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.background = element_blank())
+ggsave("output/Prokaryote/CorePhylo/SnodvsApi_simple.pdf")
+
+ggplot(data = apisnod.plot, 
+       aes(x = Category, y = log(NoRead), fill = tax_name, colour = Genus)) +
+  geom_boxplot(aes(alpha = 0.5)) +
+  scale_fill_manual(values = c("blue", "red")) + 
+  scale_colour_manual(values = myPal) + 
+  theme_classic() +
+  labs(fill = "Microbial Taxa",
+       x = "log(No of Reads)", 
+       y = "Composition") +
+  theme(axis.text.y = element_text(face = "italic"),
+        legend.text = element_text(face = "italic"),
+        strip.background = element_blank()) +
+  guides(alpha = "none")
+ggsave("output/Prokaryote/CorePhylo/SnodvsApi_ByGenus.pdf")
 
