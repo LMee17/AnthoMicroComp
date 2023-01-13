@@ -1,0 +1,4 @@
+1	2	pvalue	padj
+Eusocial	Polymorphic	0.006	0.018
+Eusocial	Solitary	0.887	0.887
+Polymorphic	Solitary	0.323	0.4845
