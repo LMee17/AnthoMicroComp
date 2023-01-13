@@ -436,7 +436,7 @@ ggplot(data = soc.inc2,
     labs(y = "Number of Prokaryote Genera",
          x = "",
          fill = "")
-ggsave("output/Prokaryote/Miscellaneous/Prok_MicroGenera_bySocCombo.pdf")  
+ggsave("output/Prokaryote/Miscellaneous/Pro_MicroGenera_bySocCombo.pdf")  
 #get list of microbial taxa for each combination
 soc.inc3 <- inner_join(soc.inc, met, by = c("Sample" = "Sample.ID")) %>%
     select(MicroTax, Sample, inc, Sociality) %>%
