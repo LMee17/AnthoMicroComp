@@ -72,3 +72,7 @@ for (i in 1:length(tribes)){
 write.table(triPrev,
             "output/Prokaryote/Tribal_Descriptives/TopPrevMicrobes_byTribe.tsv",
             col.names = T, row.names = F, quote = F, sep = "\t")
+
+##SessionLogs####
+writeLines(capture.output(sessionInfo()),
+           "SessionLogs/DescribeTribe_Jan23.txt")
