@@ -617,7 +617,7 @@ for (i in 1:ncol(cbn)){
   subcnt <- cnt[names(cnt) %in% sub]
   submet <- metdf[metdf$Sample.ID %in% names(subcnt),]
   subdist <- avgdist(t(subcnt), dmethod = "bray", sample = low_read, iterations = 1e4)
-  sim <- anosim(subdist, submet$Continent)
+  sim <- anosim(subdist, submet$Family)
   pvalue <- c(pvalue, sim$signif[1])
 }
 padj <- p.adjust(pvalue, method = "BH")
@@ -625,9 +625,10 @@ padj <- p.adjust(pvalue, method = "BH")
 pairSIM.fam <- cbind.data.frame(t(cbn), pvalue = pvalue, padj = padj)
 pairSIM.fam
 
-#there's a sig difference between Megachilidae and Andrenidae, otherwise nothing
+#there's a sig difference between Halictidae and everything else
 
-write.table(pairSIM.fam, "output/Prokaryote/Composition_Analysis/PairwiseANOSIM_Continent.tsv",
+write.table(pairSIM.fam, 
+            "output/Prokaryote/Composition_Analysis/PairwiseANOSIM_Continent.tsv",
             col.names = T, row.names = F, quote = F,
             sep = "\t")
 
@@ -1166,132 +1167,6 @@ for (i in 1:nrow(so.vars)){
                title, ".pdf", sep = ""))
 }
 
-
-
-###2###
-multiAOV2 <- data.frame()
-for (i in 1:length(vars.sim$Var)){
-  print(vars.sim$Var[i])
-  test <- adonis2(dist2 ~ metdf2[,paste(vars.sim$Var[i])], 
-                  data = metdf2, permutations = 9999)
-  multiAOV2[i,1] <- vars.sim$VarLab[i]
-  multiAOV2[i,2] <- test$Df[1]
-  multiAOV2[i,3] <- test$R2[1] 
-  multiAOV2[i,4] <- test$F[1]
-  multiAOV2[i,5] <- test$`Pr(>F)`[1]
-}
-names(multiAOV2) <- c("Variable", "DF", "R2", "F", "pvalue")
-multiAOV2$adjP <-p.adjust(multiAOV2$pvalue, method = "fdr")
-
-multiAOV2
-#according to this, everything is a significant variable except for Sequencing platform....
-#but R2 varies lots
-#considering just the most significant (alpha = 0.001) and the dispersals...
-multiAOV2 <- inner_join(multiAOV2, disp.df2, by = "Variable") %>%
-  select(Variable, DF, R2, 'F', pvalue, adjP, Sig) %>%
-  mutate(Significance = ifelse(adjP < 0.05, "*", "")) %>%
-  mutate(Dispersion = ifelse(Sig == "Non-Sig", "NonSig Dispersed", "Sig Dispersed")) %>%
-  select(-Sig)
-
-multiAOV2 %>%
-  filter(adjP < 0.001) %>%
-  arrange(-R2)
-
-#It appears platform explains the most of the dissmilarities in the matrix when
-#tribe numbers are controlled
-#otherwise there are 2 nonsignificantly dispersed factors that are significant:
-#Host family and continent
-#sociality (3 level) is still significant just not at the level of < 0.001
-#(its 0.000103...)
-#write up
-write.table(multiAOV2, "output/Prokaryote/Composition_Analysis/TribeReduced/Multi_adonis2_results.tsv",
-            row.names = F, col.names = T, quote = F,
-            sep = "\t")
-
-#my main concern continues to be sociality, but will see if I can factor these in
-#note: to nest, the factor that is nested within another factor goes last, ie if 
-#species is nested in site then it is written Site/Species. For permanova, 
-#you then need to designate strata as Site (https://stats.stackexchange.com/questions/188519/adonis-in-vegan-order-of-variables-or-use-of-strata)
-#set permutations to 9999
-p <- 9999
-
-#sociality and tribe
-soc.tri2 <- adonis2(dist2 ~ Sociality + Tribe, 
-                   data = metdf2, 
-                   permutations = p)
-soc.tri2
-
-#interaction likely won't work as every tribe = 1 sociality.
-
-#family?
-soc.fam2 <- adonis2(dist2 ~ Sociality + Family,
-                   data = metdf2,
-                   permutations = p)
-soc.fam2
-
-soc.fam.nest2 <- adonis2(dist2 ~ Family / Sociality,
-                        data = metdf2,
-                        permutations = p,
-                        strata = metdf2$Family)
-soc.fam.nest2
-
-#throwing all phylo in
-soc.phy2 <- adonis2(dist2 ~ Sociality + Family/Tribe,
-                   data = metdf2,
-                   permutations = p,
-                   strata = metdf2$Family)
-soc.phy2
-#when controlling for phylogeny by stratifying by family, Tribe remains a significantly 
-#differing factor but sociality does not. Though the levels of variance explained still 
-#remain very low
-soc.phy.int2 <- adonis2(dist2 ~ Sociality * Family/Tribe,
-                       data = metdf2,
-                       permutations = p,
-                       strata = metdf2$Family)
-soc.phy.int2
-#CONSIDER, each tribe has only 1 sociality. Each family is majoritively one sociality
-#are these therefore all nested ? 
-#here, family appears to be the most explanatory variable and it is not significantly
-#dispersed
-#continent is the only other variable (other than sociality) that does not have 
-#significantly difference dispersions
-#what about continent?
-soc.con2 <- adonis2(dist2 ~ Sociality + Continent,
-                   data = metdf2,
-                   permutations = p)
-soc.con2
-
-soc.con.nest2 <- adonis2(dist2 ~ Continent/Sociality,
-                        data = metdf2,
-                        permutations = p, 
-                        strata = metdf2$Continent)
-soc.con.nest2
-
-soc.con.int2 <- adonis2(dist2 ~ Sociality*Continent,
-                       data = metdf2,
-                       permutations = p)
-soc.con.int2
-
-#will also consider year of collection
-soc.yea2 <- adonis2(dist2 ~ Sociality + YearCollected,
-                   data = metdf2,
-                   permutations = p)
-soc.yea2
-
-
-#considering all 
-soc.all2 <- adonis2(dist2 ~ Sociality + Family/Tribe + YearCollected + Continent,
-                   data = metdf2,
-                   permutations = p,
-                   strata = metdf2$Family)
-soc.all2
-#Sociality is no longer significant when these are all considered together
-#and this model has the least residual errors. It makes senses really, microbial 
-#community should be first and foremost affected by location (especially in non-eusocial
-#species), and location/phylogeny are interchangeable in non-global species. Seasonality
-#would also affect the types of microbe about (year collected) plus as too would whether
-#these were lab reared, caught and put in a lab or else field caught (which may be
-#a factor of the project, not actually the year). 
 ##SessionLogs####
 writeLines(capture.output(sessionInfo()),
            "SessionLogs/Analysis_Prokaryote_Jan23.txt")
