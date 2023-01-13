@@ -500,3 +500,4 @@ write.table(spec.inc,
 ##SessionLog####
 writeLines(capture.output(sessionInfo()),
            "SessionLogs/Misc_Euk_Jan23.txt")
+ 
