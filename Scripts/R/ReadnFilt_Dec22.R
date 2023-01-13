@@ -5,6 +5,8 @@
 library(dplyr)
 library(stringr)
 
+dir.create("SessionLogs/")
+
 ##Functions####
 #get maximum value from a vector of numbers that may or may not contain NAs (or only NAs)
 getMax <- function(counts){
@@ -701,3 +703,7 @@ rownames(cnt) <- virID
 write.table(cnt, "input/Counts/Viral_RawCounts.tsv",
             sep = "\t", quote = F,
             col.names = T, row.names = T)
+
+###SessionLog ####
+writeLines(capture.output(sessionInfo()),
+           "SessionLogs/ReadFiltCount_Dec22.txt")
