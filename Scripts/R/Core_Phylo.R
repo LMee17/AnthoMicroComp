@@ -169,6 +169,151 @@ ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
                                    face = "italic"))
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev.pdf")
 
+##The same as above ... just with Euglossini in it####
+#convert count table to 3 columns: Microbial Taxa, Sample, NoReads
+#subset so that only the taxa from the core phylotypes are kept
+core.df2 <- pro %>%
+  rownames_to_column(var = "TaxID") %>%
+  pivot_longer(-TaxID) %>%
+  subset(TaxID %in% coreID)
+#rename variables
+names(core.df2)[2:3] <- c("Sample", "NoReads")
+#add sample metada (just tribe and sociality)
+core.df2 <- inner_join(core.df2, met, by = c("Sample" = "Sample.ID")) %>%
+  select(TaxID, Sample, NoReads, Tribe, Sociality) %>%
+  mutate(Category = Tribe)
+#add categories (tribes for eusocial, sociality for other socialities)
+core.df2$Category[core.df2$Sociality == "Polymorphic"] <- "Polymorphic Non-Corbiculates"
+core.df2$Category[core.df2$Sociality == "Solitary"] <- "Solitary Non-Corbiculates"
+core.df2$Category[core.df2$Tribe == "Euglossini"] <- "Euglossini"
+#get n samples per category
+catno <- c()
+cats <- unique(core.df2$Category)
+for (i in 1:length(unique(core.df2$Category))){
+  print(cats[i])
+  n <- as.numeric(length(unique(core.df2$Sample[core.df2$Category == cats[i]])))
+  catno <- c(catno, n)
+}
+catkey <- as.data.frame(cbind(catno, cats))
+catkey$catno <- as.numeric(catkey$catno)
+for (i in 1:nrow(core.df2)){
+  core.df2$CatN[i] <- as.numeric(catkey$catno[catkey$cats == core.df2$Category[i]])
+}
+#for some reason, despite many directions to the contrary, CatN is seen as a
+#character vector
+core.df2$CatN <- as.numeric(core.df2$CatN)
+core.df2 <- core.df2 %>%
+  mutate(Label = paste(Category, " (n=", CatN, ")", sep ="")) %>%
+  group_by(Sample) %>%
+  mutate(TotReads = sum(NoReads), .after = NoReads) %>%
+  group_by(TaxID) %>%
+  mutate(RelAbundance = NoReads / TotReads, .after = TotReads) %>%
+  #remove NA values
+  mutate_all(~replace(., is.nan(.), 0)) %>%
+  #remove unnecessary columns
+  select(-Tribe, -Sociality) %>%
+  #get average abundance by Category (when it's present, and across all samples)
+  group_by(TaxID, Category) %>%
+  mutate(AvgRelAbundancePres = sum(RelAbundance) / length(unique(Sample[RelAbundance!=0])),
+         .after = RelAbundance) %>%
+  mutate(AvgRelAbundanceAll = sum(RelAbundance) / CatN,
+         .after = AvgRelAbundancePres) %>%
+  #again replace NA
+  mutate_all(~replace(., is.nan(.), 0)) %>%
+  #now to compute prevalence
+  ungroup() %>% mutate(inc = ifelse(NoReads > 0, 1, 0)) %>%
+  group_by(TaxID, Category) %>%
+  mutate(TotInc = sum(inc)) %>%
+  ungroup() %>%
+  mutate(Prevalence = TotInc / CatN, .after = AvgRelAbundanceAll) %>%
+  #remove unnecessary columns
+  select(TaxID, AvgRelAbundanceAll, AvgRelAbundancePres, Prevalence, Category, Label)
+#add microbiota metadata
+core.df2 <- inner_join(core.df2, tax, by = c("TaxID" = "ID")) %>%
+  select(-species, -tax_name, -kingdom, -phylum, -superkingdom) %>%
+  unique() %>%
+  as.data.frame()
+#add new lines in labels
+core.df2$Label <- str_replace_all(core.df2$Label, " ", "\n")
+
+#arrange microbials
+core.df2$genus <- factor(core.df2$genus, levels = c("Gilliamella","Snodgrassella", 
+                                                  "Lactobacillus: Firm-5","Bifidobacterium", 
+                                                  "Frischella", "Bartonella", "Apibacter", 
+                                                  "Apilactobacillus","Bombilactobacillus", 
+                                                  "Bombiscardovia"))
+#factorise prevalence
+core.df2$Prev2[core.df2$Prevalence > 0.8] <- "81 - 100%"
+core.df2$Prev2[core.df2$Prevalence <= 0.8 &
+                 core.df2$Prevalence > 0.6] <- "61 - 80%"
+core.df2$Prev2[core.df2$Prevalence <= 0.6 &
+                 core.df2$Prevalence > 0.4] <- "41 - 60%"
+core.df2$Prev2[core.df2$Prevalence <= 0.4 &
+                 core.df2$Prevalence > 0.2] <- "21 - 40%"
+core.df2$Prev2[core.df2$Prevalence <= 0.2 &
+                 core.df2$Prevalence >= 0.05 ] <- "5 - 20%"
+core.df2$Prev2[core.df2$Prevalence < 0.05] <- "< 5%"
+core.df2$Prev2[core.df2$Prevalence == 0] <- " "
+
+#order prevalence factors
+core.df2$Prev2 <- factor(core.df2$Prev2,
+                         levels = c("81 - 100%", "61 - 80%", "41 - 60%", 
+                                    "21 - 40%", "5 - 20%", "< 5%", " "))
+
+#order categories
+labs <- unique(core.df2$Label)
+labs <- labs[c(1:2,4,5,3,6)]
+
+core.df2$Label <- factor(core.df2$Label,
+                         levels = labs)
+
+#prepare average abundances to printed over tiles (need to end up character vectors)
+for (i in 2:3){
+  core.df2[,i] <- core.df2[,i]*100
+  core.df2[,i] <- round(core.df2[,i], digits = 1)
+  core.df2[,i] <- as.character(core.df2[,i])
+  core.df2[,i] <- paste0(core.df2[,i], "%")
+}
+
+#plot (all )
+ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
+  geom_tile() +
+  geom_text(aes(label = AvgRelAbundanceAll), color = "white", size = 4) +
+  scale_fill_manual(values = c("#004d4d",
+                               "#006767", 
+                               "#008080",
+                               "#009a9a",
+                               "#00b3b3",
+                               "#00cdcd",
+                               "white")) +
+  labs(fill = "Prevalence",
+       x = "",
+       y = "Core Phylotypes") + 
+  theme(axis.text.y = element_text(face = "italic"),
+        axis.text.x = element_text(angle = 60, hjust = 1,
+                                   face = "italic"))
+ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_PrevAndAvgAbu_Eug.pdf")
+
+
+#plot (without average relative abundance)
+ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
+  geom_tile() +
+  scale_fill_manual(values = c("#004d4d",
+                               "#006767", 
+                               "#008080",
+                               "#009a9a",
+                               "#00b3b3",
+                               "#00cdcd",
+                               "white")) +
+  labs(fill = "Prevalence",
+       x = "",
+       y = "Core Phylotypes") + 
+  theme(axis.text.y = element_text(face = "italic"),
+        axis.text.x = element_text(angle = 60, hjust = 1,
+                                   face = "italic"))
+ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev_Eug.pdf")
+
+
 ##Gilliamella and Snodgrassella in Apis and Bombus####
 #others have found higher abundance of these 2 in bombus than in apis, do I?
 myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
