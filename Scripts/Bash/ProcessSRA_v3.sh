@@ -2,12 +2,16 @@
 
 #USAGE: bash ProcessSRA.sh <list of SRR samples> <SRA repo> <Batch Name> <czid metadata> <Czid Project name>
 
+#Script that runs from downloading a RNASeq sample from the Sequence Reads Archive, unpacking said sample,
+#and then uploading the fastq file directly to CZID.
+
 #NOTES
 #logging in to CZ ID must be completed before the script is commenced using the below command
 # > czid login
 # or
 # > czid login --persistent
 
+#check the user is actively logged into CZID
 echo "Have you logged into CZID?"
 read reply
 if [[ $reply == y* ]]; then
@@ -18,11 +22,14 @@ else
 	exit
 fi
 
+#note the number of samples that have been input
 tot=$(wc -l $1 | awk '{print$1}')
+#set a counter
 count=1
 
 echo "Beginning to process batch $3. $tot samples ..."
 
+#while iterating through samples...
 while read s; do
 	echo "$count/$tot: Processing $s ... "
 	#download SRA from NCBI
