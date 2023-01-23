@@ -147,7 +147,9 @@ ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
        y = "Core Phylotypes") + 
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(angle = 60, hjust = 1,
-                                                 face = "italic"))
+                                                 face = "italic"),
+        panel.background = element_blank()) +
+  theme_classic()
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_PrevAndAvgAbu.pdf")
 
 
@@ -166,7 +168,9 @@ ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
        y = "Core Phylotypes") + 
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(angle = 60, hjust = 1,
-                                   face = "italic"))
+                                   face = "italic"),
+        panel.background = element_blank()) +
+  theme_classic()
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev.pdf")
 
 ##The same as above ... just with Euglossini in it####
@@ -278,6 +282,7 @@ for (i in 2:3){
 #plot (all )
 ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
   geom_tile() +
+  theme_classic() +
   geom_text(aes(label = AvgRelAbundanceAll), color = "white", size = 4) +
   scale_fill_manual(values = c("#004d4d",
                                "#006767", 
@@ -291,13 +296,16 @@ ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
        y = "Core Phylotypes") + 
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(angle = 60, hjust = 1,
-                                   face = "italic"))
+                                   face = "italic"),
+        panel.background = element_blank())
+  
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_PrevAndAvgAbu_Eug.pdf")
 
 
 #plot (without average relative abundance)
 ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
   geom_tile() +
+  theme_classic() +
   scale_fill_manual(values = c("#004d4d",
                                "#006767", 
                                "#008080",
@@ -310,7 +318,8 @@ ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
        y = "Core Phylotypes") + 
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(angle = 60, hjust = 1,
-                                   face = "italic"))
+                                   face = "italic"),
+        panel.background = element_blank())
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev_Eug.pdf")
 
 
@@ -484,4 +493,5 @@ ggplot(data = apisnod.plot,
         strip.background = element_blank()) +
   guides(alpha = "none")
 ggsave("output/Prokaryote/CorePhylo/SnodvsApi_ByGenus.pdf")
+
 
