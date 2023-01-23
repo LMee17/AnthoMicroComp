@@ -258,6 +258,12 @@ str(low_read)
 #vegan requires microbial hit as columns and samples as rows
 cnt.t <- t(cnt)
 dist <- avgdist(cnt.t, dmethod="bray", sample=low_read, iterations = 10000)
+
+#write up
+d <- as.matrix(dist)
+write.table(d, "output/Viral/Composition_Analysis/BC_DistanceMatrix.tsv",
+            sep = "\t", row.names = T, col.names = T, quote = F)
+
 # The following sampling units were removed because they were below sampling depth: CA_N_007, CA_N_030, SRR11426433, SRR12053407, SRR12053408, SRR12053426, SRR13442822, SRR15496107, SRR3948521, SRR3948533, SRR3948536, SRR3948544, SRR3948562, SRR3948566, SRR3948570, SRR3948575, SRR8754044, SRR8867394
 # calculate the principal coordinates
 pco <- pcoa(dist)

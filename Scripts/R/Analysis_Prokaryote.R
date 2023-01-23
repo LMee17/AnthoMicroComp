@@ -269,6 +269,12 @@ str(low_read)
 cnt.t <- t(cnt)
 dist <- avgdist(cnt.t, dmethod="bray", sample=low_read, iterations = 10000)
 #The following sampling units were removed because they were below sampling depth: CA_N_012, SRR11440494, SRR12053407, SRR12053410, SRR12053413, SRR12053415, SRR12053416, SRR12053423, SRR12053424, SRR12053425, SRR12053426, SRR12053427, SRR12053428, SRR12053429, SRR12053435, SRR12053437, SRR12527935, SRR12527963, SRR2001621, SRR2396653, SRR3383868, SRR3948521, SRR3948548
+
+#write up
+d <- as.matrix(dist)
+write.table(d, "output/Prokaryote/Composition_Analysis/BC_DistanceMatrix.tsv",
+            sep = "\t", row.names = T, col.names = T, quote = F)
+
 # calculate the principal coordinates
 pco <- pcoa(dist)
 
