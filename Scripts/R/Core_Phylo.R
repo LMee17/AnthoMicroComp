@@ -323,6 +323,10 @@ ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev_Eug.pdf")
 
 
+#writeup
+write.table(core.df2, "output/Prokaryote/CorePhylo/CorePhylotypes_dataframe.tsv",
+            sep = "\t", col.names = T, row.names = F, quote = F)
+
 ##Gilliamella and Snodgrassella in Apis and Bombus####
 #others have found higher abundance of these 2 in bombus than in apis, do I?
 myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
