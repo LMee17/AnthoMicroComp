@@ -101,10 +101,13 @@ core.df <- inner_join(core.df, tax, by = c("TaxID" = "ID")) %>%
 core.df$Label <- str_replace(core.df$Label, " ", "\n")
 
 #arrange microbials
-core.df$genus <- factor(core.df$genus, levels = c("Gilliamella","Snodgrassella", 
-                                                  "Lactobacillus: Firm-5","Bifidobacterium", 
-                                                  "Frischella", "Bartonella", "Apibacter", 
-                                                  "Apilactobacillus","Bombilactobacillus", 
+core.df$genus <- factor(core.df$genus, levels = c("Bifidobacterium",
+                                                  "Gilliamella","Snodgrassella", 
+                                                  "Lactobacillus: Firm-5", 
+                                                  "Bombilactobacillus", 
+                                                  "Apilactobacillus",
+                                                  "Apibacter", 
+                                                  "Frischella", "Bartonella",
                                                   "Bombiscardovia"))
 #factorise prevalence
 core.df$Prev2[core.df$Prevalence > 0.8] <- "81 - 100%"
@@ -134,6 +137,7 @@ for (i in 2:3){
 #plot (all )
 ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
   geom_tile() +
+  theme_classic() +
   geom_text(aes(label = AvgRelAbundanceAll), color = "white", size = 4) +
   scale_fill_manual(values = c("#004d4d",
                                  "#006767", 
@@ -148,8 +152,7 @@ ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(angle = 60, hjust = 1,
                                                  face = "italic"),
-        panel.background = element_blank()) +
-  theme_classic()
+        panel.background = element_blank())
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_PrevAndAvgAbu.pdf")
 
 
@@ -241,10 +244,13 @@ core.df2 <- inner_join(core.df2, tax, by = c("TaxID" = "ID")) %>%
 core.df2$Label <- str_replace_all(core.df2$Label, " ", "\n")
 
 #arrange microbials
-core.df2$genus <- factor(core.df2$genus, levels = c("Gilliamella","Snodgrassella", 
-                                                  "Lactobacillus: Firm-5","Bifidobacterium", 
-                                                  "Frischella", "Bartonella", "Apibacter", 
-                                                  "Apilactobacillus","Bombilactobacillus", 
+core.df2$genus <- factor(core.df2$genus, levels = c("Bifidobacterium",
+                                                  "Gilliamella","Snodgrassella", 
+                                                  "Lactobacillus: Firm-5", 
+                                                  "Bombilactobacillus", 
+                                                  "Apilactobacillus",
+                                                  "Apibacter", 
+                                                  "Frischella", "Bartonella",
                                                   "Bombiscardovia"))
 #factorise prevalence
 core.df2$Prev2[core.df2$Prevalence > 0.8] <- "81 - 100%"
@@ -324,6 +330,8 @@ ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev_Eug.pdf")
 
 
 #writeup
+#need to remove \n
+core.df2$Label <- str_replace_all(core.df2$Label, "\n", " ")
 write.table(core.df2, "output/Prokaryote/CorePhylo/CorePhylotypes_dataframe.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 
@@ -343,7 +351,7 @@ cnt.plot <- inner_join(cnt.plot, met, by = c("Sample" = "Sample.ID")) %>%
   select(TaxID, Sample, NoRead, Species, Genus, Sociality)
 cnt.plot <- inner_join(cnt.plot, tax, by = c("TaxID" = "ID")) %>%
   select(TaxID, Sample, NoRead, Species, Genus, Sociality, tax_name)
-
+head(core.df)
 cnt.plot %>%
   subset(tax_name == "Gilliamella" | tax_name == "Snodgrassella") %>%
   subset(Sociality == "Eusocial") %>%
