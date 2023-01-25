@@ -11,7 +11,7 @@ dir.create("output/Prokaryote/Tribal_Descriptives/")
 pro <- read.table("input/Counts/Prokaryote_Filtered_TribeReduced_Raw.tsv")
 
 #sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_RNAOnly_Dec22.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
                   sep = "\t",
                   header = T)
 met <- met[met$Sample.ID %in% names(pro),]
@@ -57,6 +57,7 @@ for (i in 1:length(tribes)){
     select(-species, -kingdom, -superkingdom)
   over50 <- ex.df %>%
     filter(Prevalence >= 0.5) %>%
+    filter(AvgRelAbundance >= 0.01) %>%
     select(genus, AvgRelAbundance ,Prevalence) %>%
     mutate(Tribe = paste(tribes[i])) %>%
     mutate(n = length(samps)) %>%
