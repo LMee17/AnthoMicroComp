@@ -13,7 +13,7 @@ library(ggVennDiagram)
 
 #####Load Necessary Counts and Metadata####
 #Sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_RNAOnly_Dec22.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
                   sep = "\t", header = T)
 
 #Microbial metadata
@@ -42,6 +42,9 @@ tribe.mat <- inner_join(tribe.df, met, by = c("Sample" = "Sample.ID")) %>%
   column_to_rownames("ID")
 tribe.mat <- as.data.frame(tribe.mat)
 
+write.table(tribe.mat, "output/Overlaps/Tribe_Inc.tsv",
+           sep = "\t", col.names = T, row.names = T, quote = F)
+
 upset(tribe.mat, mb.ratio = c(0.55, 0.45),
       sets = c("Osmiini",
                "Augochlorini",
@@ -68,7 +71,8 @@ str(upset.met)
 
 beecore <- c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillus",
              "Gilliamella", "Snodgrassella", "Bifidobacterium", "Frischella",
-             "Bartonella", "Bombiscardovia", "Schmidhempelia", "Apibacter")
+             "Bartonella", "Bombiscardovia", "Schmidhempelia", "Apibacter", 
+             "Bombella", "Parasaccharibacter", "Commensalibacter")
 coreID <- tax %>%
   subset(genus %in% beecore) %>%
   select(ID) %>%
@@ -125,6 +129,17 @@ upset(tribe.mat, mb.ratio = c(0.55, 0.45),
                           active = T,
                           query.name = "Core Phylotypes"))) 
 dev.off()
+
+#are there any species present in all tribes?
+any(rowSums(tribe.mat[1:8]) == length(tribe.mat)-1)
+#no, but 
+tribe.mat %>%
+  select(-Core) %>%
+  mutate(tot = rowSums(.)) %>%
+  arrange(-tot) %>%
+  head(n = 7)
+#
+tax[tax$ID == "TRH5",]
 
 ##Sociality####
 #venn diagrams baby
@@ -188,6 +203,8 @@ ggplot() +
                                "#db6d00", "#6e8049", "#009292"))
 
 ggsave("output/Overlaps/Venn_Socs_AllPro_Labelled.pdf")
+
+soc.venn
 
 ggplot() +
   #region count layer

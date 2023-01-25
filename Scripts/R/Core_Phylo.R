@@ -12,7 +12,7 @@ dir.create("output/Prokaryote/CorePhylo/")
 
 #####Load Necessary Counts and Metadata####
 #Sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_RNAOnly_Dec22.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
                   sep = "\t", header = T)
 
 #Microbial metadata
@@ -29,7 +29,8 @@ pro.rel <- pro.rel[, names(pro.rel) %in% names(pro)]
 #extract the core microbiota phylotype
 beecore <- c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillus",
              "Gilliamella", "Snodgrassella", "Bifidobacterium", "Frischella",
-             "Bartonella", "Bombiscardovia", "Schmidhempelia", "Apibacter")
+             "Bartonella", "Bombiscardovia", "Schmidhempelia", "Apibacter", 
+             "Bombella", "Parasaccharibacter", "Commensalibacter")
 coreID <- tax %>%
   subset(genus %in% beecore) %>%
   select(ID) %>%
@@ -108,6 +109,8 @@ core.df$genus <- factor(core.df$genus, levels = c("Bifidobacterium",
                                                   "Apilactobacillus",
                                                   "Apibacter", 
                                                   "Frischella", "Bartonella",
+                                                  "Commensalibacter", 
+                                                  "Bombella", "Parasaccharibacter",
                                                   "Bombiscardovia"))
 #factorise prevalence
 core.df$Prev2[core.df$Prevalence > 0.8] <- "81 - 100%"
@@ -159,6 +162,7 @@ ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_PrevAndAvgAbu.pdf")
 #plot (without average relative abundance)
 ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
   geom_tile() +
+  theme_classic() +
   scale_fill_manual(values = c("#004d4d",
                                "#006767", 
                                "#008080",
@@ -172,8 +176,7 @@ ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(angle = 60, hjust = 1,
                                    face = "italic"),
-        panel.background = element_blank()) +
-  theme_classic()
+        panel.background = element_blank()) 
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev.pdf")
 
 ##The same as above ... just with Euglossini in it####
@@ -251,8 +254,9 @@ core.df2$genus <- factor(core.df2$genus, levels = c("Bifidobacterium",
                                                   "Apilactobacillus",
                                                   "Apibacter", 
                                                   "Frischella", "Bartonella",
-                                                  "Bombiscardovia"))
-#factorise prevalence
+                                                  "Commensalibacter", 
+                                                  "Bombella", "Parasaccharibacter",
+                                                  "Bombiscardovia"))#factorise prevalence
 core.df2$Prev2[core.df2$Prevalence > 0.8] <- "81 - 100%"
 core.df2$Prev2[core.df2$Prevalence <= 0.8 &
                  core.df2$Prevalence > 0.6] <- "61 - 80%"
@@ -305,7 +309,8 @@ ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
                                    face = "italic"),
         panel.background = element_blank())
   
-ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_PrevAndAvgAbu_Eug.pdf")
+ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_PrevAndAvgAbu_Eug.pdf",
+       height = 15, unit = "cm")
 
 
 #plot (without average relative abundance)
