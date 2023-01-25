@@ -136,7 +136,8 @@ for (i in 2:3){
   core.df[,i] <- as.character(core.df[,i])
   core.df[,i] <- paste0(core.df[,i], "%")
 }
-
+#there is one I need to manually put in for having nany decimal places
+core.df[52,2] <- "0.002%"
 #plot (all )
 ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
   geom_tile() +
@@ -156,6 +157,7 @@ ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
         axis.text.x = element_text(angle = 60, hjust = 1,
                                                  face = "italic"),
         panel.background = element_blank())
+
 ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_PrevAndAvgAbu.pdf")
 
 
@@ -288,6 +290,8 @@ for (i in 2:3){
   core.df2[,i] <- as.character(core.df2[,i])
   core.df2[,i] <- paste0(core.df2[,i], "%")
 }
+#add point with too many decimals
+core.df2[62,2] <- "0.002%"
 
 #plot (all )
 ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
