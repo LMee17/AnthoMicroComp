@@ -326,20 +326,34 @@ levelz <- levelz[c(1:4,6:7,5,8:10)]
 
 hpi$Labels <- factor(hpi$Labels, levels = c(levelz))
 
-#order microbial taxa so core are together
+#order microbial taxa so core are together ? 
 core <- factor(c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillus",
                  "Gilliamella", "Snodgrassella", "Bifidobacterium", "Frischella",
                  "Bartonella", "Apibacter", 
                  "Bombella", "Parasaccharibacter", "Commensalibacter"))
-noncore <- factor(unique(hpi$Taxa[!hpi$Taxa %in% core]))
-noncore <- hpi %>%
-  select(Taxa) %>%
-  unique() %>%
-  subset(!Taxa %in% core) %>%
-  unlist %>% as.vector()
-noncore <- factor(sort(noncore))
+#everything else by bacterial order
+pro.tax <- tax[tax$ID %in% rownames(pro),]
 
-hpi$Taxa <- factor(hpi$Taxa, levels = c(core, noncore))
+bigones <- c("Actinobacteria",  "Bacteroidota", "Firmicutes", "Proteobacteria")
+baclist <- vector(mode = "list", length = length(bigones))
+for (i in 1:length(bigones)){
+  baclist[[i]] <- pro.tax %>%
+    subset(phylum == bigones[i]) %>%
+    select(genus) %>%
+    unlist() %>%
+    as.vector() %>%
+    sort()
+}
+other <- pro.tax %>%
+  subset(!phylum %in% bigones) %>%
+  select(genus) %>%
+  unlist() %>%
+  as.vector() %>%
+  sort()
+
+hpi$Taxa <- factor(hpi$Taxa, levels = c(baclist[[1]], baclist[[2]],
+                                        baclist[[3]], bacllist[[4]],
+                                        noncore))
 
 #factorise prevalence
 hpi$Prev2[hpi$Prevalence > 75] <- "> 75%"
@@ -389,8 +403,8 @@ ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) +
                                "#b66eff",
                                "#d0a1ff",
                                "white")) +
-  labs(x = "Prokaryote Genus",
-       y = "Host Genus",
+  labs(x = "",
+       y = "",
        fill = " ") +
   theme(panel.background = element_blank()) +
   coord_flip() 

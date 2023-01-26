@@ -309,6 +309,25 @@ levelz <- hpi %>%
 
 hpi$Labels <- factor(hpi$Labels, levels = c(levelz))
 
+#order viruses by order
+vir.tax <- tax[tax$ID %in% rownames(vir),]
+
+pisu <- vir.tax %>%
+  subset(phylum == "Pisuviricota") %>%
+  select(family) %>%
+  unlist() %>%
+  as.vector() %>%
+  sort()
+
+other <- vir.tax %>%
+  subset(phylum != "Pisuviricota") %>%
+  select(family) %>%
+  unlist() %>%
+  as.vector() %>%
+  sort()
+
+hpi$Taxa <- factor(hpi$Taxa, levels = c(pisu, other))
+
 #factorise prevalence
 hpi$Prev2[hpi$Prevalence > 75] <- "> 75%"
 hpi$Prev2[hpi$Prevalence <= 75 &
@@ -357,8 +376,8 @@ ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) +
                                "#6fb6ff",
                                "#bcddff",
                                "white")) +
-  labs(x = "Viral Genus",
-       y = "Host Genus",
+  labs(x = " ",
+       y = " ",
        fill = " ") +
   theme(panel.background = element_blank()) +
   coord_flip() 
