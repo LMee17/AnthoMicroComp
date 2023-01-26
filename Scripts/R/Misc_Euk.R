@@ -356,6 +356,31 @@ levelz <- levelz[c(1:4,6,5,7:17)]
 
 hpi$Labels <- factor(hpi$Labels, levels = c(levelz))
 
+#arrange micobial taxa by order, ie all fungus, all tryps, etc
+eu.tax <- tax[tax$ID %in% rownames(euk),]
+
+fungi <- eu.tax %>%
+  subset(kingdom == "Fungi") %>%
+  select(genus) %>%
+  unlist() %>%
+  as.vector() %>%
+  sort()
+tryps <- eu.tax %>%
+  subset(family == "Trypanosomatidae") %>%
+  select(genus) %>%
+  unlist() %>%
+  as.vector() %>%
+  sort()
+other <-  eu.tax %>%
+  subset(family != "Trypanosomatidae") %>%
+  subset(kingdom != "Fungi") %>%
+  select(genus) %>%
+  unlist() %>%
+  as.vector() %>%
+  sort()
+
+hpi$Taxa <- factor(hpi$Taxa, levels = c(fungi, tryps, other))
+
 #factorise prevalence
 hpi$Prev2[hpi$Prevalence > 75] <- "> 75%"
 hpi$Prev2[hpi$Prevalence <= 75 &
@@ -404,8 +429,8 @@ ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) +
                                "#e00000",
                                "#ff6161",
                                "white")) +
-  labs(x = "Eukaryote Genus",
-       y = "Host Genus",
+  labs(x = " ",
+       y = " ",
        fill = " ") +
   theme(panel.background = element_blank()) +
   coord_flip() 
