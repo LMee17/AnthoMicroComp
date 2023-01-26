@@ -351,6 +351,8 @@ levelz <- hpi %>%
   unique() %>%
   select(Labels) %>%
   unlist()
+#have euglossini near corbiculates
+levelz <- levelz[c(1:4,6,5,7:17)]
 
 hpi$Labels <- factor(hpi$Labels, levels = c(levelz))
 
