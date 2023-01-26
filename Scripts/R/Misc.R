@@ -344,6 +344,7 @@ for (i in 1:length(bigones)){
     as.vector() %>%
     sort()
 }
+bacs <- unlist(baclist)
 other <- pro.tax %>%
   subset(!phylum %in% bigones) %>%
   select(genus) %>%
@@ -351,9 +352,7 @@ other <- pro.tax %>%
   as.vector() %>%
   sort()
 
-hpi$Taxa <- factor(hpi$Taxa, levels = c(baclist[[1]], baclist[[2]],
-                                        baclist[[3]], bacllist[[4]],
-                                        noncore))
+hpi$Taxa <- factor(hpi$Taxa, levels = c(bacs, other))
 
 #factorise prevalence
 hpi$Prev2[hpi$Prevalence > 75] <- "> 75%"
