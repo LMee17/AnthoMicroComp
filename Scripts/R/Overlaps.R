@@ -521,3 +521,81 @@ ggplot() +
                                "#d4aa40","#bfff60","red","#ff8000","yellow"))
 
 ggsave("output/Overlaps/Venn_Fams_Top_UnLabelled.pdf")
+
+##venn of all by family
+
+fam.df <- pro %>%
+  rownames_to_column(var = "ID") %>%
+  pivot_longer(-ID)
+names(fam.df)[2:3] <- c("Sample", "Count")
+fam.mat <- inner_join(fam.df, met, by = c("Sample" = "Sample.ID")) %>%
+  select(ID, Sample, Count, Family) %>%
+  group_by(Family, ID) %>%
+  mutate(soc.Count = sum(Count)) %>%
+  select(ID, Family, soc.Count) %>%
+  unique() %>%
+  mutate(soc.Inc = ifelse(soc.Count > 0, 1, 0)) %>%
+  ungroup() %>%
+  select(-soc.Count) %>%
+  pivot_wider(names_from = Family,
+              values_from = soc.Inc) %>%
+  as.data.frame()
+api <- fam.mat %>%
+  filter(Apidae == 1) %>%
+  select(ID) %>%
+  unlist %>%
+  as.vector()
+mega <- fam.mat %>%
+  filter(Megachilidae == 1) %>%
+  select(ID) %>%
+  unlist %>%
+  as.vector()
+hal <- fam.mat %>%
+  filter(Halictidae == 1) %>%
+  select(ID) %>%
+  unlist %>%
+  as.vector()
+and <- fam.mat %>%
+  filter(Andrenidae == 1) %>%
+  select(ID) %>%
+  unlist %>%
+  as.vector()
+fam.plot <- list(Apidae = api,
+                 Megachilidae = mega,
+                 Andrenidae = and,
+                 Halictidae = hal)
+fam.venn <- Venn(fam.plot)
+fam.venn <- process_data(fam.venn)
+
+ggplot() +
+  #region count layer
+  geom_sf(aes(fill = id), data = venn_region(fam.venn), show.legend = FALSE) +
+  #edge layer
+  geom_sf(color="black", size = .5, data = venn_setedge(fam.venn), show.legend = FALSE) + 
+  geom_sf_text(aes(label = name), size = 5, hjust = .4, vjust = -.1,
+               fontface = "bold",
+               data = venn_setlabel(fam.venn)) +
+  geom_sf_label(aes(label = count), fontface = "bold", size = 6,
+                label.size = 0.1, data = venn_region(fam.venn)) +
+  theme_void() +
+  scale_x_continuous(expand = expansion(mult = .25)) +
+  scale_fill_manual(values = c("blue","#4080df","#7f5595","#9f8070","#7faa95",
+                               "#800080","#aa5555","#808080","#7FFFBF","#bf8060",
+                               "#d4aa40","#bfff60","red","#ff8000","yellow"))
+
+ggsave("output/Overlaps/Venn_Fams_AllPro_Labelled.pdf")
+
+ggplot() +
+  #region count layer
+  geom_sf(aes(fill = id), data = venn_region(fam.venn), show.legend = FALSE) +
+  #edge layer
+  geom_sf(color="black", size = .5, data = venn_setedge(fam.venn), show.legend = FALSE) + 
+  geom_sf_label(aes(label = count), fontface = "bold", size = 6,
+                label.size = 0.1, data = venn_region(fam.venn)) +
+  theme_void() +
+  scale_x_continuous(expand = expansion(mult = .25)) +
+  scale_fill_manual(values = c("blue","#4080df","#7f5595","#9f8070","#7faa95",
+                               "#800080","#aa5555","#808080","#7FFFBF","#bf8060",
+                               "#d4aa40","#bfff60","red","#ff8000","yellow"))
+
+ggsave("output/Overlaps/Venn_Fams_AllPro_UnLabelled.pdf")
