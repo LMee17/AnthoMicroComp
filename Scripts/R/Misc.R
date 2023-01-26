@@ -10,7 +10,7 @@ dir.create("output/Prokaryote/Miscellaneous/")
 
 ##Counts and Metadata ####
 #sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_RNAOnly_Dec22.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
                   sep = "\t", header = T)
 #microbial taxa metadata
 tax <- read.table("input/Phylo_Misc/rankedlin_Dec22.tsv", 
@@ -321,15 +321,23 @@ levelz <- hpi %>%
   unique() %>%
   select(Labels) %>%
   unlist()
+#have euglossini near corbiculates
+levelz <- levelz[c(1:4,6:7,5,8:10)]
 
 hpi$Labels <- factor(hpi$Labels, levels = c(levelz))
 
 #order microbial taxa so core are together
 core <- factor(c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillus",
-             "Gilliamella", "Snodgrassella", "Bifidobacterium", "Frischella",
-            "Bartonella", "Apibacter"))
+                 "Gilliamella", "Snodgrassella", "Bifidobacterium", "Frischella",
+                 "Bartonella", "Apibacter", 
+                 "Bombella", "Parasaccharibacter", "Commensalibacter"))
 noncore <- factor(unique(hpi$Taxa[!hpi$Taxa %in% core]))
-
+noncore <- hpi %>%
+  select(Taxa) %>%
+  unique() %>%
+  subset(!Taxa %in% core) %>%
+  unlist %>% as.vector()
+noncore <- factor(sort(noncore))
 
 hpi$Taxa <- factor(hpi$Taxa, levels = c(core, noncore))
 
@@ -347,9 +355,6 @@ hpi$Prev2[hpi$Prevalence == 0] <- " "
   
 hpi$Prev2 <- factor(hpi$Prev2, levels =c("> 75%", "51 - 75%", "31 - 50%",
                                          "11 - 30%", "< 11%", " "))
-#add new lines in labels
-
-
 
 ggplot(data = hpi, aes(x = fct_rev(Taxa), y = Labels, fill = Prev2)) + 
   geom_tile() +
