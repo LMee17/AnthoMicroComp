@@ -68,7 +68,7 @@ scree.NMDS <- function(distmat, kingdom, filename){
 
 ##Load Metadata #####
 #sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_RNAOnly_Dec22.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
                   sep = "\t", header = T)
 #microbial metadata
 taxkey <- read.table("input/Metadata/Taxa_HitKey_Dec22.tsv",
@@ -91,12 +91,13 @@ cnt <- cnt[colSums(cnt)>100]
 write.table(cnt, "input/Counts/Prokaryote_Filtered_Raw.tsv",
             col.names = T, row.names = T, quote = F)
 
-#for PCA / negative binomial regression, I will need a cnt matrix of relative abundances
+#for PCA / dist, I will need a cnt matrix of relative abundances
 cnt.rel <- apply(cnt,2, FUN=function(x){ x / sum(x)})
 
 #write up
 write.table(cnt.rel, "input/Counts/Prokaryote_RelativeAbundance.tsv",
             col.names = T, row.names = T, quote = F)
+
 
 #reduce the counts by tribes = ie keep only tribes that have at least 4 members
 tri.tab <- table(met$Tribe)
@@ -108,6 +109,26 @@ cnt.rel <- cnt.rel[,names(cnt.rel) %in% metdf$Sample.ID]
 
 write.table(cnt, "input/Counts/Prokaryote_Filtered_TribeReduced_Raw.tsv",
             sep = "\t", col.names = T, row.names = T, quote = F)
+
+#write up version with microbial taxa as rownames
+taxlab <- c()
+for(i in 1:nrow(cnt.rel)){
+  lab <- unique(tax$genus[tax$ID == rownames(cnt.rel)[i]])
+  taxlab <- c(taxlab, lab)
+}
+cnt.rel.lab <- cnt.rel
+rownames(cnt.rel.lab) <- taxlab
+#double check
+rownames(cnt) == rownames(cnt.rel)
+cnt.lab <- cnt
+rownames(cnt.lab) <- taxlab
+#write up
+write.table(cnt.lab,
+            "input/Counts/Prokaryote_Filtered_TribeReduced_Raw_MicroTaxaLabelled.tsv",
+            quote = F, sep = "\t", row.names = T, col.names = T)
+write.table(cnt.rel.lab,
+            "input/Counts/Prokaryote_Filtered_TribeReduced_RelAb_MicroTaxaLabelled.tsv",
+            quote = F, sep = "\t", row.names = T, col.names = T)
 
 #sample metadata
 #keep only the samples that are in the table
@@ -155,11 +176,11 @@ myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
 
 #set up explanatory variables to loop through
 vars <- c("Sociality", "Sociality2", "Sex", "YearCollected", "Month", "LibraryLayout",
-          "LibrarySelection", "Platform_Spec", "Family", "Tribe", "Continent")
+          "LibrarySelection", "Platform_Spec", "Family", "Tribe", "Continent", "Tissue2")
 #and better labels to use
 varslabs <- c("Sociality", "Sociality ", "Sex", "Year Collected", "Month Collected",
               "Library Layout", "Library Selection", "Platform",
-              "Host Family", "Host Tribe", "Continent")
+              "Host Family", "Host Tribe", "Continent", "Tissue Type")
 
 #looking at PC1 and PC2 ... what % of the variance do they represent?
 one <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1])*100, digits = 2)
@@ -448,8 +469,9 @@ for (i in 1:length(vars)){
 #3D Plot
 #A quick exploration of what happens if I bring in another NMDS axis
 #only for the more interesting factors discussed above
-foi <- c("Sociality", "Sociality2", "Family", "Tribe", "Platform_Spec")
-foilabs <- c("Sociality", "Sociality ", "Family", "Tribe", "Sequencing Platform")
+foi <- c("Sociality", "Sociality2", "Family", "Tribe", "Platform_Spec", "Tissue2")
+foilabs <- c("Sociality", "Sociality ", "Family", "Tribe", 
+             "Sequencing Platform", "Tissue Type")
 
 for (i in 1:length(foi)){
   ggplot(data = nmds.plot, 
@@ -555,7 +577,7 @@ multiSIM <- inner_join(multiSIM, disp.df, by = "Variable") %>%
 #dispersal)?
 multiSIM %>%
   subset(Significance == "*" & Dispersion == "NonSig Dispersed") 
-#host family and continent are significant contributors
+ #host family and continent are significant contributors
 
 #write up
 write.table(multiSIM, "output/Prokaryote/Composition_Analysis/Multi_ANOSIM_testResults.tsv",
@@ -638,6 +660,28 @@ write.table(pairSIM.fam,
             col.names = T, row.names = F, quote = F,
             sep = "\t")
 
+#pairwise: Tissue
+cbn <- combn(x = unique(metdf$Tissue2), m = 2)
+pvalue <- c()
+
+for (i in 1:ncol(cbn)){
+  sub <- metdf$Sample.ID[metdf$Tissue2 == cbn[,i]]
+  subcnt <- cnt[names(cnt) %in% sub]
+  submet <- metdf[metdf$Sample.ID %in% names(subcnt),]
+  subdist <- avgdist(t(subcnt), dmethod = "bray", sample = low_read, iterations = 1e4)
+  sim <- anosim(subdist, submet$Tissue2)
+  pvalue <- c(pvalue, sim$signif[1])
+}
+padj <- p.adjust(pvalue, method = "BH")
+
+pairSIM.tis <- cbind.data.frame(t(cbn), pvalue = pvalue, padj = padj)
+pairSIM.tis
+
+write.table(pairSIM.fam, 
+            "output/Prokaryote/Composition_Analysis/PairwiseANOSIM_Continent.tsv",
+            col.names = T, row.names = F, quote = F,
+            sep = "\t")
+
 ##Step Eight: PERMANOVA / Adonis ####
 #with permanovas/ adonis2 (vegan function that is just a permutated anova) I can begin
 #to control what I consider fixed / random variables, nestedness, strata control etc etc.
@@ -711,7 +755,7 @@ write.table(pairwiseAOV.soc,
             "output/Prokaryote/Composition_Analysis/PairwiseAOV_Sociality.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
 
-#sociality
+#family
 cbn <- combn(x=unique(metdf$Family), m = 2)
 pvalue <- c()
 
@@ -733,6 +777,30 @@ pairwiseAOV.fam %>%
 
 write.table(pairwiseAOV.fam, 
             "output/Prokaryote/Composition_Analysis/PairwiseAOV_Family.tsv",
+            row.names = F, col.names = T, quote = F, sep = "\t")
+
+#continent
+cbn <- combn(x=unique(metdf$Continent), m = 2)
+pvalue <- c()
+
+for(i in 1:ncol(cbn)){
+  sub <- metdf$Sample.ID[metdf$Continent == cbn[,i]]
+  subcnt <- cnt[names(cnt) %in% sub]
+  submet <- metdf[metdf$Sample.ID %in% names(subcnt),]
+  subdist <- avgdist(t(subcnt), dmethod = "bray", sample = low_read, iterations = 1e4)
+  test <- adonis2(subdist ~ submet$Continent, 
+                  data = submet, permutations = 9999)
+  pvalue <- c(pvalue, test$`Pr(>F)`[1])
+}
+
+p.adj <- p.adjust(pvalue, method = "BH")
+pairwiseAOV.con <- cbind.data.frame(t(cbn), pvalue=pvalue, padj=p.adj)
+pairwiseAOV.con %>%
+  filter(padj < 0.05)
+#only diff between oceania and europe
+
+write.table(pairwiseAOV.con, 
+            "output/Prokaryote/Composition_Analysis/PairwiseAOV_Continent.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
 
 ###Modellling #####
