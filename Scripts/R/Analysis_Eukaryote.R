@@ -147,11 +147,11 @@ myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
 
 #set up explanatory variables to loop through
 vars <- c("Sociality", "Sociality2", "Sex", "YearCollected", "Month", "LibraryLayout",
-          "LibrarySelection", "Platform_Spec", "Family", "Tribe", "Continent")
+          "LibrarySelection", "Platform_Spec", "Family", "Tribe", "Continent", "Tissue2")
 #and better labels to use
 varslabs <- c("Sociality", "Sociality ", "Sex", "Year Collected", "Month Collected",
               "Library Layout", "Library Selection", "Platform",
-              "Host Family", "Host Tribe", "Continent")
+              "Host Family", "Host Tribe", "Continent", "Tissue Type")
 
 #looking at PC1 and PC2 ... what % of the variance do they represent?
 one <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1])*100, digits = 2)
@@ -451,8 +451,8 @@ for (i in 1:length(vars)){
 #3D Plot
 #A quick exploration of what happens if I bring in another NMDS axis
 #only for the more interesting factors discussed above
-foi <- c("Sociality", "Sociality2", "Family", "Tribe", "Platform_Spec")
-foilabs <- c("Sociality", "Sociality ", "Family", "Tribe", "Sequencing Platform")
+foi <- c("Sociality", "Sociality2", "Family", "Tribe", "Platform_Spec", "Tissue2")
+foilabs <- c("Sociality", "Sociality ", "Family", "Tribe", "Sequencing Platform", "Tissue Type")
 
 for (i in 1:length(foi)){
   ggplot(data = nmds.plot, 
@@ -735,6 +735,30 @@ pairwiseAOV.fam %>%
 
 write.table(pairwiseAOV.fam, 
             "output/Eukaryote/Composition_Analysis/PairwiseAOV_Family.tsv",
+            row.names = F, col.names = T, quote = F, sep = "\t")
+
+#continent
+cbn <- combn(x=unique(metdf$Continent), m = 2)
+pvalue <- c()
+
+for(i in 1:ncol(cbn)){
+  sub <- metdf$Sample.ID[metdf$Continent == cbn[,i]]
+  subcnt <- cnt[names(cnt) %in% sub]
+  submet <- metdf[metdf$Sample.ID %in% names(subcnt),]
+  subdist <- avgdist(t(subcnt), dmethod = "bray", sample = low_read, iterations = 1e4)
+  test <- adonis2(subdist ~ submet$Continent, 
+                  data = submet, permutations = 9999)
+  pvalue <- c(pvalue, test$`Pr(>F)`[1])
+}
+
+p.adj <- p.adjust(pvalue, method = "BH")
+pairwiseAOV.con <- cbind.data.frame(t(cbn), pvalue=pvalue, padj=p.adj)
+pairwiseAOV.con %>%
+  filter(padj < 0.05)
+#only diff between oceania and europe
+
+write.table(pairwiseAOV.con, 
+            "output/Eukaryote/Composition_Analysis/PairwiseAOV_Continent.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
 
 ###Modellling #####

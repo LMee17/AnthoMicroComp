@@ -146,11 +146,11 @@ myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
 
 #set up explanatory variables to loop through
 vars <- c("Sociality", "Sociality2", "Sex", "YearCollected", "Month", "LibraryLayout",
-          "LibrarySelection", "Platform_Spec", "Family", "Tribe", "Continent")
+          "LibrarySelection", "Platform_Spec", "Family", "Tribe", "Continent", "Tissue2")
 #and better labels to use
 varslabs <- c("Sociality", "Sociality ", "Sex", "Year Collected", "Month Collected",
               "Library Layout", "Library Selection", "Platform",
-              "Host Family", "Host Tribe", "Continent")
+              "Host Family", "Host Tribe", "Continent", "Tissue Type")
 
 #looking at PC1 and PC2 ... what % of the variance do they represent?
 one <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1])*100, digits = 2)
@@ -325,8 +325,7 @@ if(any(pro.scree$Dec == "Excellent") == T){
   stopifnot(any(pro.scree$Dec == "Excellent"))
 }
 
-#below 0.05 is excellent so going for 7 dimensions though I could reduce it to 4 as well 
-#as this is still good
+#
 nmds <- metaMDS(dist, k = kval, trymax = 100, trace = F, distances = "bray")
 
 #check the results of this NMDS with a stress plot
@@ -657,10 +656,8 @@ multiAOV <- inner_join(multiAOV, disp.df, by = "Variable") %>%
   select(-Sig)
 
 multiAOV %>%
-  filter(adjP < 0.001) %>%
+  filter(adjP < 0.05) %>%
   arrange(-R2)
-
-#sex and library layout are significantly dispersed so .... false positives
 
 #write up
 write.table(multiAOV, 
@@ -693,7 +690,7 @@ write.table(pairwiseAOV.soc,
             "output/Viral/Composition_Analysis/PairwiseAOV_Sociality.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
 
-#sociality
+#family
 cbn <- combn(x=unique(metdf$Family[!metdf$Family == "Andrenidae"]), m = 2)
 pvalue <- c()
 
@@ -715,6 +712,30 @@ pairwiseAOV.fam %>%
 
 write.table(pairwiseAOV.fam, 
             "output/Viral/Composition_Analysis/PairwiseAOV_Family.tsv",
+            row.names = F, col.names = T, quote = F, sep = "\t")
+
+#continent
+cbn <- combn(x=unique(metdf$Continent), m = 2)
+pvalue <- c()
+
+for(i in 1:ncol(cbn)){
+  sub <- metdf$Sample.ID[metdf$Continent == cbn[,i]]
+  subcnt <- cnt[names(cnt) %in% sub]
+  submet <- metdf[metdf$Sample.ID %in% names(subcnt),]
+  subdist <- avgdist(t(subcnt), dmethod = "bray", sample = low_read, iterations = 1e4)
+  test <- adonis2(subdist ~ submet$Continent, 
+                  data = submet, permutations = 9999)
+  pvalue <- c(pvalue, test$`Pr(>F)`[1])
+}
+
+p.adj <- p.adjust(pvalue, method = "BH")
+pairwiseAOV.con <- cbind.data.frame(t(cbn), pvalue=pvalue, padj=p.adj)
+pairwiseAOV.con %>%
+  filter(padj < 0.05)
+#only diff between oceania and europe
+
+write.table(pairwiseAOV.con, 
+            "output/Viral/Composition_Analysis/PairwiseAOV_Continent.tsv",
             row.names = F, col.names = T, quote = F, sep = "\t")
 
 ###Modellling #####
