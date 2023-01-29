@@ -1,0 +1,2 @@
+TaxID	Sample	NoReads	TotReads	RelAbundance	AvgRelAbundance	Prevalence	Species	Sociality	Sex	Tissue	Location	NucleotideType	Project.Accession	YearCollected	Month	LibraryLayout	LibrarySelection	SequenceInstrument	Platform_Gen	Platform_Spec	Genus	Family	Continent	tax_name	genus	family	order	class	phylum
+TRH788	SRR13442813	124	124	1	1	1	Lasioglossum	Polymorphic	Unknown	whole body	Australia	RNA	PRJNA687066	2017	September	Paired	POLYA	BGISEQ-500	BGISEQ	BGISEQ	Lasioglossum	Halictidae	Oceania	Triatovirus	NA	Triatovirus	Picornavirales	Pisoniviricetes	Pisuviricota
