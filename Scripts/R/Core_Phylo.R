@@ -32,7 +32,7 @@ beecore <- c("Lactobacillus: Firm-5", "Apilactobacillus", "Bombilactobacillus",
              "Bartonella", "Bombiscardovia", "Schmidhempelia", "Apibacter", 
              "Bombella", "Parasaccharibacter", "Commensalibacter")
 coreID <- tax %>%
-  subset(genus %in% beecore) %>%
+  subset(tax$genus %in% beecore) %>%
   select(ID) %>%
   unlist %>% as.vector()
 
@@ -96,6 +96,7 @@ core.df <- core.df %>%
 #add microbiota metadata
 core.df <- inner_join(core.df, tax, by = c("TaxID" = "ID")) %>%
   select(-species, -tax_name, -kingdom, -phylum, -superkingdom) %>%
+  subset(genus %in% beecore) %>%
   unique() %>%
   as.data.frame()
 #add new lines in labels
@@ -132,12 +133,26 @@ core.df$Prev2 <- factor(core.df$Prev2,
 #prepare average abundances to printed over tiles (need to end up character vectors)
 for (i in 2:3){
   core.df[,i] <- core.df[,i]*100
-  core.df[,i] <- round(core.df[,i], digits = 1)
+  core.df[,i] <- round(core.df[,i], digits = 2)
   core.df[,i] <- as.character(core.df[,i])
   core.df[,i] <- paste0(core.df[,i], "%")
 }
-#there is one I need to manually put in for having nany decimal places
-core.df[52,2] <- "0.002%"
+#check if there's any that need fixing
+fixrow <- core.df %>%
+  subset(AvgRelAbundanceAll == "0%" & Prevalence > 0) %>%
+  rownames()
+core.df[c(fixrow), 2] <- "< 0.01%"
+
+#there's a straight up "4%" in bifido/meliponini I wanna fix too
+core.df %>%
+  subset(genus == "Bifidobacterium" & Category == "Meliponini")
+core.df[24,2] <- "4.00%"
+
+#also Frischella and Solitary
+core.df %>%
+  subset(genus == "Frischella" & Category == 'Solitary Species')
+core.df[30,2] <- "0.90%"
+
 #plot (all )
 ggplot(data = core.df, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
   geom_tile() +
@@ -186,8 +201,7 @@ ggsave("output/Prokaryote/CorePhylo/CorePhylos_vs_Cat_Prev.pdf")
 #subset so that only the taxa from the core phylotypes are kept
 core.df2 <- pro %>%
   rownames_to_column(var = "TaxID") %>%
-  pivot_longer(-TaxID) %>%
-  subset(TaxID %in% coreID)
+  pivot_longer(-TaxID)
 #rename variables
 names(core.df2)[2:3] <- c("Sample", "NoReads")
 #add sample metada (just tribe and sociality)
@@ -242,9 +256,11 @@ core.df2 <- core.df2 %>%
   select(TaxID, AvgRelAbundanceAll, AvgRelAbundancePres, Prevalence, Category, Label)
 #add microbiota metadata
 core.df2 <- inner_join(core.df2, tax, by = c("TaxID" = "ID")) %>%
+  filter(TaxID %in% coreID) %>%
   select(-species, -tax_name, -kingdom, -phylum, -superkingdom) %>%
   unique() %>%
   as.data.frame()
+
 #add new lines in labels
 core.df2$Label <- str_replace_all(core.df2$Label, " ", "\n")
 
@@ -286,12 +302,15 @@ core.df2$Label <- factor(core.df2$Label,
 #prepare average abundances to printed over tiles (need to end up character vectors)
 for (i in 2:3){
   core.df2[,i] <- core.df2[,i]*100
-  core.df2[,i] <- round(core.df2[,i], digits = 1)
+  core.df2[,i] <- round(core.df2[,i], digits = 2)
   core.df2[,i] <- as.character(core.df2[,i])
   core.df2[,i] <- paste0(core.df2[,i], "%")
 }
 #add point with too many decimals
-core.df2[62,2] <- "0.002%"
+fixrow <- core.df2 %>%
+  subset(AvgRelAbundanceAll == "0%" & Prevalence > 0) %>%
+  rownames()
+core.df2[c(fixrow), 2] <- "< 0.01%"
 
 #plot (all )
 ggplot(data = core.df2, aes(x = Label, y = fct_rev(genus), fill = Prev2)) +
