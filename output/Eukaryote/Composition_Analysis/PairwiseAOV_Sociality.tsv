@@ -1,4 +1,4 @@
 1	2	pvalue	padj
-Eusocial	Solitary	0.0392	0.1176
-Eusocial	Polymorphic	0.1171	0.17565
-Solitary	Polymorphic	0.593	0.593
+O. Eusocial	Solitary	0.033	0.099
+O. Eusocial	F. Eusocial	0.1279	0.19185
+Solitary	F. Eusocial	0.5948	0.5948
