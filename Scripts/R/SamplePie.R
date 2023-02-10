@@ -1,11 +1,12 @@
 #24th January 2023
+#Updated 10th January 2023: New Social Cat Names
 #Sample pie charts
 
 library(tidyverse)
 
 dir.create("output/SampleStats/")
 
-met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Feb23.tsv",
                   header = T, sep = "\t")
 
 ##Sociality ####
@@ -19,6 +20,8 @@ met %>%
   select(Sociality) %>%
   group_by(Sociality) %>%
   count() %>%
+  mutate(Sociality = factor(Sociality)) %>%
+  mutate(Sociality = fct_relevel(Sociality, c("O. Eusocial", "F. Eusocial", "Solitary"))) %>%
   ggplot(aes(x = "", y = n, fill = Sociality)) +
   geom_bar(stat = "identity", width = 1, colour = "black") +
   coord_polar("y", start = 0) + 

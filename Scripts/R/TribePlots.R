@@ -4,7 +4,7 @@
 library(tidyverse)
 library(ggpubr)
 
-met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Feb23.tsv",
                   header = T, sep = "\t")
 pro <- read.table("input/Counts/Prokaryote_Filtered_TribeReduced_Raw.tsv")
 
@@ -15,11 +15,11 @@ noAssociates <- c(1, 8, 4, 5, 2, 3, 4, 2)
 n <- c(12, 86, 22, 57, 5, 26, 7, 11)
 
 assoc <- data.frame(Tribe = tribes, NoAssoc = noAssociates, Sample_n = n)
-assoc$Sociality <- c("Solitary", "Eusocial", "Polymorphic", "Eusocial", 
-                     rep("Polymorphic",2), "Eusocial", "Solitary")
+assoc$Sociality <- c("Solitary", "O. Eusocial", "F. Eusocial", "O. Eusocial", 
+                     rep("F. Eusocial",2), "O. Eusocial", "Solitary")
 assoc$Sociality <- factor(assoc$Sociality, levels = c("Solitary",
-                                                      "Polymorphic",
-                                                      "Eusocial"))
+                                                      "F. Eusocial",
+                                                      "O. Eusocial"))
 myPal <- 	c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
             "#000000", "#ff6db6", "#6db6ff", "#24ff24", "#00e6e6",
             "#ffb6db", "#b66dff", "#924900", "#b6dbff", "#ffff6d",
@@ -34,7 +34,8 @@ one <- ggplot(assoc, aes(x = Sociality, y = NoAssoc)) +
                                "#005757",
                                "#793c00",
                                "#8686db" )) +
-  labs(y = "Number of Bacterial Associates") +
+  labs(y = "Number of Bacterial Associates",
+       x = "") +
   theme(legend.position = "bottom")+
   guides(guide_legend(nrow = 2))
 ggsave("output/Prokaryote/Tribal_Descriptives/SocialityvNoAssociates.pdf")
