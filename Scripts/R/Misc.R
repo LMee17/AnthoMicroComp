@@ -10,7 +10,7 @@ dir.create("output/Prokaryote/Miscellaneous/")
 
 ##Counts and Metadata ####
 #sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Feb23.tsv",
                   sep = "\t", header = T)
 #microbial taxa metadata
 tax <- read.table("input/Phylo_Misc/rankedlin_Dec22.tsv", 
@@ -102,7 +102,7 @@ pro.Spec.Plot$Genus <- factor(pro.Spec.Plot$Genus,
 ggplot(data = pro.Spec.Plot, aes(x = Genus, y = Total)) +
     geom_boxplot(aes(colour = Sociality)) +
     coord_flip() +
-    scale_colour_manual(values = myPal) +
+    scale_colour_manual(values = myPal[c(2,1,3)]) +
     labs(x = "Host Genus",
          y = "Number of Unique Prokaryote Species") +
     guides(colour = "none")
@@ -120,9 +120,9 @@ pro.Spec.Plot$Tribe <- factor(pro.Spec.Plot$Tribe,
 ggplot(data = pro.Spec.Plot, aes(x = Tribe, y = Total)) +
     geom_boxplot(aes(colour = Sociality)) +
     coord_flip() +
-    scale_colour_manual(values = myPal) +
+    scale_colour_manual(values = myPal[c(2,1,3)]) +
     labs(x = "Host Tribe",
-         y = "Number of Unique Prokaryote Species") +
+         y = "Number of Unique Bacterial Species") +
     guides(colour = "none")
 ggsave("output/Prokaryote/Miscellaneous/Pro_SpeciesRichness_Vs_Genus.pdf")
 
@@ -144,7 +144,8 @@ ggplot(data = pro.Spec.Plot, aes(x = log(Tot), y = Total)) +
     geom_smooth(aes(colour = Sociality), 
                 method = lm, se = FALSE, fullrange = TRUE,
                 linetype = "twodash") +
-    guides(alpha = "none")
+    guides(alpha = "none") +
+  scale_colour_manual(values = myPal[c(2,1,3)])
 ggsave("output/Prokaryote/Miscellaneous/Pro_TotSpec_Vs_TotalReads_BySoc.pdf")
 
 #total number of reads versus number of species (by library selection)
@@ -200,6 +201,12 @@ pro.micro.plot <- inner_join(pro.micro.plot, met, by = c("Sample" = "Sample.ID")
 #differentiate between host and micro - adding host prefix
 names(pro.micro.plot)[c(13,27:30)] <- sub("^", "Host_", names(pro.micro.plot[c(13,27:30)]))
 
+#order sociality
+pro.micro.plot$Sociality <- factor(pro.micro.plot$Sociality,
+                                   levels = c("O. Eusocial",
+                                              "F. Eusocial",
+                                              "Solitary"))
+
 #plot
 #x = bacterial family / order
 #y - abundance
@@ -208,7 +215,7 @@ ggplot(data = pro.micro.plot,
          aes(x = fct_rev(factor(Micro_family)), y = RelAbundance)) +
     geom_bar(aes(fill = Sociality), stat = "identity") +
     labs(y = "Cumulative Relative Abundance",
-         x = "Prokaryote Family") +
+         x = "Bacteria Family") +
     #ylim(0,5)+
     scale_fill_manual(values = myPal) +
     facet_grid(~Sociality) +
@@ -220,7 +227,7 @@ ggplot(data = pro.micro.plot,
          aes(x = fct_rev(factor(Micro_order)), y = RelAbundance)) +
     geom_bar(aes(fill = Sociality), stat = "identity") +
     labs(y = "Cumulative Relative Abundance",
-         x = "Prokaryote Family") +
+         x = "Bacteria Order") +
     scale_fill_manual(values = myPal) +
     facet_grid(~Sociality) +
     coord_flip()
@@ -231,7 +238,7 @@ ggplot(data = pro.micro.plot,
          aes(x = fct_rev(factor(Micro_genus)), y = RelAbundance)) +
     geom_bar(aes(fill = Sociality), stat = "identity") +
     labs(y = "Cumulative Relative Abundance",
-         x = "Prokaryote Family") +
+         x = "Bacteria Genus") +
     #ylim(0,5)+
     scale_fill_manual(values = myPal) +
     facet_grid(~Sociality) +
@@ -314,15 +321,18 @@ hpi$Labels <- str_replace(hpi$Labels, " ", "\n")
 
 #order samples by sociality
 hpi$Labels <- as.character(hpi$Labels)
+hpi$Arrange[hpi$Sociality == "O. Eusocial"] <- 1
+hpi$Arrange[hpi$Sociality == "F. Eusocial"] <- 2
+hpi$Arrange[hpi$Sociality == "Solitary"] <- 3
 levelz <- hpi %>%
-  select(Host_Genus, Sociality, Labels) %>%
+  select(Host_Genus, Labels, Arrange) %>%
   arrange(Labels) %>%
-  arrange(Sociality) %>%
+  arrange(Arrange) %>%
   unique() %>%
   select(Labels) %>%
   unlist()
 #have euglossini near corbiculates
-levelz <- levelz[c(1:4,6:7,5,8:10)]
+levelz <- levelz[c(1:4,7,6,5,8:10)]
 
 hpi$Labels <- factor(hpi$Labels, levels = c(levelz))
 
@@ -432,18 +442,23 @@ soc.inc2 <- inner_join(soc.inc, met, by = c("Sample" = "Sample.ID")) %>%
     group_by(Sociality, Combo) %>%
     count(name = "Count")
   #order factors
+unique(soc.inc2$Combo)
 soc.inc2$Combo <- factor(soc.inc2$Combo,
-                           levels = c("EPS", 
-                                      "PS", "ES", "EP",
-                                      "E", "P", "S"))
+                           levels = c("FOS", 
+                                      "FS", "OS", "FO",
+                                      "O", "F", "S"))
+soc.inc2$Sociality <- factor(soc.inc2$Sociality,
+                             levels = c("O. Eusocial",
+                                        "F. Eusocial", 
+                                        "Solitary"))
 ggplot(data = soc.inc2,
-         aes(x = Sociality, y = Count, fill = (Combo), label = Count))+
+         aes(x = Sociality, y = Count, fill = Combo, label = Count))+
     geom_bar(stat = "identity", colour = "grey") + 
     geom_text(size = 3, 
               position = position_stack(vjust = 0.5)) +
-    scale_fill_manual(labels = c("All Socialities", "Eusocial and Solitary",
-                                 "Eusocial and Polymorphic", "Eusocial only",
-                                 "Polymorphic Only"),
+    scale_fill_manual(labels = c("All Socialities", "O. Eusocial and Solitary",
+                                 "O. Eusocial and F. Eusocial", "O. Eusocial only",
+                                 "F. Eusocial Only"),
                       values = c("#6893b4",
                                  "#42282e",
                                  "#a2ce47",

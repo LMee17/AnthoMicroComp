@@ -21,6 +21,16 @@ myPal <- 	c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
             "#ffb6db", "#b66dff", "#924900", "#b6dbff", "#ffff6d",
             "#9acd32")
 
+pro.n$Sociality <- factor(pro.n$Sociality, levels = c("O. Eusocial",
+                                                      "F. Eusocial",
+                                                      "Solitary"))
+euk.n$Sociality <- factor(euk.n$Sociality, levels = c("O. Eusocial",
+                                                      "F. Eusocial",
+                                                      "Solitary"))
+vir.n$Sociality <- factor(vir.n$Sociality, levels = c("O. Eusocial",
+                                                      "F. Eusocial",
+                                                      "Solitary"))
+
 famPal <- c("#db7093", "#00bfff", "#e6c000", "green")
 conPal <- brewer.pal(6, "Dark2")
 
@@ -36,7 +46,7 @@ cenvs <- vir.n %>%
 all[[1]] <- ggplot(data = vir.n, #check data 
        aes(x = NMDS1, y = NMDS2, colour = vir.n$Sociality)) + #check factor
   geom_point() + 
-  scale_colour_manual(values = myPal[c(2,3)]) + #check colour scheme
+  scale_colour_manual(values = myPal[c(1,3)]) + #check colour scheme
   stat_ellipse(show.legend = FALSE) +
   geom_point(data = cenvs, size = 3, 
              shape = 21, colour = "black", 
@@ -50,7 +60,7 @@ all[[1]] <- ggplot(data = vir.n, #check data
 all2[[1]] <- ggplot(data = vir.n, #check data 
                    aes(x = NMDS1, y = NMDS2, colour = vir.n$Sociality)) + #check factor
   geom_point() + 
-  scale_colour_manual(values = myPal[c(2,3)]) + #check colour scheme
+  scale_colour_manual(values = myPal[c(1,3)]) + #check colour scheme
   guides(fill = "none", colour = "none") +
   theme_classic() +
   theme(strip.background = element_blank())
@@ -101,7 +111,7 @@ all[[3]] <- ggplot(data = euk.n, #check data
   labs(colour = "Sociality") +
   theme_classic() +
   theme(strip.background = element_blank())+
-  theme(legend.position="bottom") +
+  theme(legend.position="right") +
   guides(colour = guide_legend(nrow = 3, byrow = T))
 
 
@@ -112,10 +122,10 @@ all2[[3]] <- ggplot(data = euk.n, #check data
   labs(colour = "Sociality") +
   theme_classic() +
   theme(strip.background = element_blank()) +
-  theme(legend.position="bottom") +
+  theme(legend.position="right") +
   guides(colour = guide_legend(nrow = 3, byrow = T))
 
-
+unique(vir.n$Family)
 #plot 4. viral Family
 cenvf <- vir.n %>%
   group_by(Family) %>%
@@ -125,7 +135,7 @@ cenvf <- vir.n %>%
 all[[4]] <- ggplot(data = vir.n, #check data 
                    aes(x = NMDS1, y = NMDS2, colour = Family)) + #check factor
   geom_point() + 
-  scale_colour_manual(values = famPal[c(1:2,4)]) + #check colour scheme
+  scale_colour_manual(values = famPal[c(2,4)]) + #check colour scheme
   stat_ellipse(show.legend = FALSE) +
   geom_point(data = cenvf, size = 3, 
              shape = 21, colour = "black", 
@@ -139,7 +149,7 @@ all[[4]] <- ggplot(data = vir.n, #check data
 all2[[4]] <- ggplot(data = vir.n, #check data 
                     aes(x = NMDS1, y = NMDS2, colour = Family)) + #check factor
   geom_point() + 
-  scale_colour_manual(values = famPal[c(1:2,4)]) + #check colour scheme
+  scale_colour_manual(values = famPal[c(2,4)]) + #check colour scheme
   guides(fill = "none", colour = "none") +
   theme_classic() +
   theme(strip.background = element_blank())
@@ -191,8 +201,8 @@ all[[6]] <- ggplot(data = euk.n, #check data
   labs(colour = "Family") +
   theme_classic() +
   theme(strip.background = element_blank()) +
-  theme(legend.position="bottom") +
-  guides(colour = guide_legend(nrow = 3, byrow = T))
+  theme(legend.position="right") +
+  guides(colour = guide_legend(nrow = 4, byrow = T))
 
 
 all2[[6]] <- ggplot(data = euk.n, #check data 
@@ -202,10 +212,10 @@ all2[[6]] <- ggplot(data = euk.n, #check data
   labs(colour = "Family") +
   theme_classic() +
   theme(strip.background = element_blank()) +
-  theme(legend.position="bottom") +
-  guides(colour = guide_legend(nrow = 3, byrow = T))
+  theme(legend.position="right") +
+  guides(colour = guide_legend(nrow = 4, byrow = T))
 
-
+unique(vir.n$Continent)
 #plot 4. viral Continent
 cenvc <- vir.n %>%
   group_by(Continent) %>%
@@ -234,6 +244,7 @@ all2[[7]] <- ggplot(data = vir.n, #check data
   theme_classic() +
   theme(strip.background = element_blank())
 
+table(pro.n$Continent)
 #plot 5. prokaryote Continent
 cenpc <- pro.n %>%
   group_by(Continent) %>%
@@ -281,8 +292,8 @@ all[[9]] <- ggplot(data = euk.n, #check data
   labs(colour = "Continent") +
   theme_classic() +
   theme(strip.background = element_blank()) +
-  theme(legend.position="bottom") +
-  guides(colour = guide_legend(nrow = 3, byrow = T))
+  theme(legend.position="right") +
+  guides(colour = guide_legend(nrow = 6, byrow = T))
 
 
 all2[[9]] <- ggplot(data = euk.n, #check data 
@@ -292,19 +303,11 @@ all2[[9]] <- ggplot(data = euk.n, #check data
   labs(colour = "Continent") +
   theme_classic() +
   theme(strip.background = element_blank()) +
-  theme(legend.position="bottom") +
-  guides(colour = guide_legend(nrow = 3, byrow = T))
+  theme(legend.position="right") +
+  guides(colour = guide_legend(nrow = 6, byrow = T))
 
-all.v2 <- all[c(1,4,7,2,5,8,3,6,9)]
-all2.v2 <- all2[c(1,4,7,2,5,8,3,6,9)]
 #arrange
-ggarrange(plotlist = all.v2, heights = c(1,1,1.75))
-ggsave("All_Centroid_Ellipsis_1guide_v2.pdf")
-ggarrange(plotlist = all2.v2, heights = c(1,1,1.75))
-ggsave("All_Simple_1guide_v2.pdf")
-
-#just sociality
-soc <- all[c(1,2,3)]
-ggarrange(plotlist = soc, heights = c(1,1,1.75), ncol = 1)
-
-theme_get()
+ggarrange(plotlist = all, widths = c(1,1,1.65))
+ggsave("All_Centroid_Ellipsis_1guide.pdf")
+ggarrange(plotlist = all2, widths = c(1,1,1.45))
+ggsave("All_PointsOnly_1guide.pdf")

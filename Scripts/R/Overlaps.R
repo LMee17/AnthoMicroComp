@@ -1,4 +1,5 @@
 #20th January 2023
+#Edited Fri 10th Feb 2023: New Social Category Names
 #Overlaps
 
 dir.create("output/Overlaps/")
@@ -13,7 +14,7 @@ library(ggVennDiagram)
 
 #####Load Necessary Counts and Metadata####
 #Sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Feb23.tsv",
                   sep = "\t", header = T)
 
 #Microbial metadata
@@ -157,16 +158,17 @@ soc.mat <- inner_join(tribe.df, met, by = c("Sample" = "Sample.ID")) %>%
   mutate(soc.Inc = ifelse(soc.Count > 0, 1, 0)) %>%
   ungroup() %>%
   select(-soc.Count) %>%
+  mutate(Sociality = str_replace(Sociality, " ", "")) %>%
   pivot_wider(names_from = Sociality,
               values_from = soc.Inc) %>%
   as.data.frame()
 eu <- soc.mat %>%
-  filter(Eusocial == 1) %>%
+  filter(O.Eusocial == 1) %>%
   select(ID) %>%
   unlist %>%
   as.vector()
 po <- soc.mat %>%
-  filter(Polymorphic == 1) %>%
+  filter(F.Eusocial == 1) %>%
   select(ID) %>%
   unlist %>%
   as.vector()
@@ -177,8 +179,8 @@ so <- soc.mat %>%
   as.vector()
 
 soc.plot <- list(Solitary = so,
-                 Eusocial = eu,
-                 Polymorphic = po)
+                 O.Eusocial = eu,
+                 F.Eusocial = po)
 
 ggVennDiagram(soc.plot) +
   scale_x_continuous(expand = expansion(mult = .25))
@@ -203,8 +205,6 @@ ggplot() +
                                "#db6d00", "#6e8049", "#009292"))
 
 ggsave("output/Overlaps/Venn_Socs_AllPro_Labelled.pdf")
-
-soc.venn
 
 ggplot() +
   #region count layer
@@ -312,8 +312,9 @@ topz <- vector(mode = "list", length = length(socs))
 for(i in 1:length(socs)){
   topz[[i]] <- subset(top, Sociality == socs[i]) %>% select(genus) %>% unlist %>% as.vector()
 }
+
 names(topz) <- socs
-topz <- topz[c("Solitary", "Eusocial", "Polymorphic")]
+topz <- topz[c("Solitary", "O. Eusocial", "F. Eusocial")]
 top.venn <- Venn(topz)
 top.venn <- process_data(top.venn)
 

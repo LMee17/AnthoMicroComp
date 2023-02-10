@@ -10,7 +10,7 @@ dir.create("output/Eukaryote/Miscellaneous/")
 
 ##Counts and Metadata ####
 #sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_RNAOnly_Dec22.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Feb23.tsv",
                   sep = "\t", header = T)
 #microbial taxa metadata
 tax <- read.table("input/Phylo_Misc/rankedlin_Dec22.tsv", 
@@ -69,6 +69,10 @@ ggplot(data = euk.Spec.Plot, aes(x = Platform_Spec, y = Total)) +
 ggsave("output/Eukaryote/Miscellaneous/euk_SpeciesRichness_Vs_Platform.pdf")
 
 #what about by sociality / genus / family ? 
+euk.Spec.Plot$Sociality <- factor(euk.Spec.Plot$Sociality,
+                                  levels = c("O. Eusocial",
+                                             "F. Eusocial",
+                                             "Solitary"))
 ggplot(data = euk.Spec.Plot, aes(x = Sociality, y = Total)) +
   geom_boxplot(aes(colour = Sociality)) +
   coord_flip() +
@@ -145,7 +149,8 @@ ggplot(data = euk.Spec.Plot, aes(x = log(Tot), y = Total)) +
   geom_smooth(aes(colour = Sociality), 
               method = lm, se = FALSE, fullrange = TRUE,
               linetype = "twodash") +
-  guides(alpha = "none")
+  guides(alpha = "none") +
+  scale_colour_manual(values = myPal)
 ggsave("output/Eukaryote/Miscellaneous/euk_TotSpec_Vs_TotalReads_BySoc.pdf")
 
 #total number of reads versus number of species (by library selection)
@@ -224,6 +229,12 @@ other.ord <- sort(unique(taxkey$order[!taxkey$kingdom == "Fungi"]))
 ##family
 euk.micro.plot$Micro_family <- factor(euk.micro.plot$Micro_family, 
                                       levels = c(fun.fam, other.fam))
+
+#sociality
+euk.micro.plot$Sociality <- factor(euk.micro.plot$Sociality,
+                                levels = c("O. Eusocial",
+                                           "F. Eusocial",
+                                           "Solitary"))
 
 ggplot(data = euk.micro.plot, 
        aes(x = fct_rev(factor(Micro_family)), y = RelAbundance)) +
@@ -344,10 +355,13 @@ hpi$Labels <- str_replace(hpi$Labels, " ", "\n")
 
 #order samples by sociality
 hpi$Labels <- as.character(hpi$Labels)
+hpi$Arrange[hpi$Sociality == "O. Eusocial"] <- 1
+hpi$Arrange[hpi$Sociality == "F. Eusocial"] <- 2
+hpi$Arrange[hpi$Sociality == "Solitary"] <- 3
 levelz <- hpi %>%
-  select(Host_Genus, Sociality, Labels) %>%
+  select(Host_Genus, Labels, Arrange) %>%
   arrange(Labels) %>%
-  arrange(Sociality) %>%
+  arrange(Arrange) %>%
   unique() %>%
   select(Labels) %>%
   unlist()
@@ -460,17 +474,21 @@ soc.inc2 <- inner_join(soc.inc, met, by = c("Sample" = "Sample.ID")) %>%
   count(name = "Count")
 #order factors
 soc.inc2$Combo <- factor(soc.inc2$Combo,
-                         levels = c("EPS", 
-                                    "PS", "ES", "EP",
-                                    "E", "P", "S"))
+                         levels = c("FOS", 
+                                    "FS", "OS", "FO",
+                                    "O", "F", "S"))
+soc.inc2$Sociality <- factor(soc.inc2$Sociality,
+                             levels = c("O. Eusocial",
+                                        "F. Eusocial", 
+                                        "Solitary"))
 ggplot(data = soc.inc2,
        aes(x = Sociality, y = Count, fill = (Combo), label = Count))+
   geom_bar(stat = "identity", colour = "grey") + 
   geom_text(size = 3, 
             position = position_stack(vjust = 0.5)) +
-  scale_fill_manual(labels = c("All Socialities", "Eusocial and Solitary",
-                               "Eusocial and Polymorphic", "Eusocial only",
-                               "Polymorphic Only"),
+  scale_fill_manual(labels = c("All Socialities", "O. Eusocial and Solitary",
+                               "O. Eusocial and F. Eusocial", "O. Eusocial only",
+                               "F. Eusocial Only"),
                     values = c("#6893b4",
                                "#42282e",
                                "#a2ce47",
