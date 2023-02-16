@@ -174,12 +174,9 @@ myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
            "#9acd32")
 
 #set up explanatory variables to loop through
-vars <- c("Sociality", "Sex", "YearCollected", "Month", "LibraryLayout",
-          "LibrarySelection", "Platform_Spec", "Family", "Tribe", "Continent", "Tissue2")
+vars <- c("Sociality", "Family", "Tribe", "Continent", "Tissue2")
 #and better labels to use
-varslabs <- c("Sociality", "Sex", "Year Collected", "Month Collected",
-              "Library Layout", "Library Selection", "Platform",
-              "Host Family", "Host Tribe", "Continent", "Tissue Type")
+varslabs <- c("Sociality", "Host Family", "Host Tribe", "Continent", "Tissue Type")
 
 #looking at PC1 and PC2 ... what % of the variance do they represent?
 one <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1])*100, digits = 2)
@@ -468,9 +465,9 @@ for (i in 1:length(vars)){
 #3D Plot
 #A quick exploration of what happens if I bring in another NMDS axis
 #only for the more interesting factors discussed above
-foi <- c("Sociality", "Family", "Tribe", "Platform_Spec", "Tissue2")
+foi <- c("Sociality", "Family", "Tribe", "Tissue2")
 foilabs <- c("Sociality", "Family", "Tribe", 
-             "Sequencing Platform", "Tissue Type")
+              "Tissue Type")
 
 for (i in 1:length(foi)){
   ggplot(data = nmds.plot, 
@@ -533,16 +530,7 @@ disp.df %>%
 write.table(disp.df, "output/Prokaryote/Composition_Analysis/VariableDispersion_ANOVA.tsv",
             col.names = T, row.names = F, sep = "\t", quote = F)
 
-#Sociality (1, with three levels) does not have significant differences in group dispersion
-#and nor does Continent, Host Family or Month Collected or Library Selection.
-
 ##Step Seven: PERMANOVA / Adonis ####
-#with permanovas/ adonis2 (vegan function that is just a permutated anova) I can begin
-#to control what I consider fixed / random variables, nestedness, strata control etc etc.
-#(I can do some of these with anosim but it doesn't look as simple / well documented)
-#To start with, I'm going to run through every factor considered in isolation and see
-#what is giving a significant signal, before looking more closely at sociality/location/
-#family(or)tribe
 #it won't work with NA values, so I need to remove
 torem <- vector()
 j <- 1
@@ -581,11 +569,6 @@ multiAOV <- inner_join(multiAOV, disp.df, by = "Variable") %>%
 multiAOV %>%
   filter(adjP < 0.001) %>%
   arrange(-R2)
-
-#write up
-write.table(multiAOV, "output/Prokaryote/Composition_Analysis/Multi_adonis2_results.tsv",
-            row.names = F, col.names = T, quote = F,
-            sep = "\t")
 
 ####Pairwise ####
 #sociality

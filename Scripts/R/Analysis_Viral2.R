@@ -138,12 +138,9 @@ myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
            "#9acd32")
 
 #set up explanatory variables to loop through
-vars <- c("Sociality", "Sex", "YearCollected", "Month", "LibraryLayout",
-          "LibrarySelection", "Platform_Spec", "Family", "Tribe", "Continent", "Tissue2")
+vars <- c("Sociality", "Family", "Tribe", "Continent", "Tissue2")
 #and better labels to use
-varslabs <- c("Sociality", "Sex", "Year Collected", "Month Collected",
-              "Library Layout", "Library Selection", "Platform",
-              "Host Family", "Host Tribe", "Continent", "Tissue Type")
+varslabs <- c("Sociality", "Host Family", "Host Tribe", "Continent", "Tissue Type")
 
 #looking at PC1 and PC2 ... what % of the variance do they represent?
 one <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1])*100, digits = 2)
@@ -506,12 +503,6 @@ write.table(disp.df,
             col.names = T, row.names = F, sep = "\t", quote = F)
 
 ##Step Seven: PERMANOVA / Adonis ####
-#with permanovas/ adonis2 (vegan function that is just a permutated anova) I can begin
-#to control what I consider fixed / random variables, nestedness, strata control etc etc.
-#(I can do some of these with anosim but it doesn't look as simple / well documented)
-#To start with, I'm going to run through every factor considered in isolation and see
-#what is giving a significant signal, before looking more closely at sociality/location/
-#family(or)tribe
 #it won't work with NA values, so I'll need to remove
 torem <- vector()
 j <- 1
@@ -538,9 +529,7 @@ names(multiAOV) <- c("Variable", "DF", "R2", "F", "pvalue")
 multiAOV$adjP <-p.adjust(multiAOV$pvalue, method = "fdr")
 
 multiAOV
-#Quite a few significants but ... nothing is not affected by dispersal other than 
-#year collected
-#considering just the most significant (alpha = 0.001) and the dispersals...
+
 multiAOV <- inner_join(multiAOV, disp.df, by = "Variable") %>%
   select(Variable, DF, R2, 'F', pvalue, adjP, Sig) %>%
   mutate(Significance = ifelse(adjP < 0.05, "*", "")) %>%
@@ -550,12 +539,6 @@ multiAOV <- inner_join(multiAOV, disp.df, by = "Variable") %>%
 multiAOV %>%
   filter(adjP < 0.05) %>%
   arrange(-R2)
-
-#write up
-write.table(multiAOV, 
-            "output/Viral/Composition_Analysis/Multi_adonis2_results.tsv",
-            row.names = F, col.names = T, quote = F,
-            sep = "\t")
 
 ####Pairwise ####
 #sociality
