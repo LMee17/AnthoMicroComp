@@ -33,14 +33,11 @@ getMin <- function(counts){
 
 ##load necessary metadata and taxonomic files####
 #sample metadata 
-met <- read.table("input/Metadata/SampleMetaData_Edit_RNAOnly_Dec22.tsv",
+met <- read.table("input/Metadata/SampleMetaData_PreFiltering_Dec22.tsv",
                   sep = "\t", header = T)
 #eukaryotic tax classifications
 euk <- read.csv("input/Phylo_Misc/Eukaryota_Classifications_Dec22.csv")
 
-#taxonomy
-tax <- read.table("input/Phylo_Misc/rankedlin_Edit_Nov22_v2.tsv",
-                  sep ="\t", header = T)
 #outdated and updated taxonomy terms
 #only including genera names or species I'm interested in, 
 #i.e Apilactobacillus bombintestini
@@ -563,100 +560,6 @@ rownames(cnt) <- euID
 
 #write up
 write.table(cnt, "input/Counts/Eukaryote_RawCounts.tsv",
-            sep = "\t", quote = F,
-            col.names = T, row.names = T)
-
-#Fungus only
-fungus <- euk$Genus[euk$Classification == "Fungus"]
-#continuing with the table
-fun <- filt.df[filt.df$MicroPhylo %in% fungus,]
-
-funID <- taxkey$taxID[taxkey$Class == "eukaryota" &
-                        taxkey$Taxa %in% fungus]
-
-#get column headers ready
-#keeping only samples that have microbes after filtering
-samples <- unique(fun$SampleID)
-
-#record length of samples
-totSam <- length(samples)
-
-#prepare matrix to be populated with counts
-cnt <- matrix(ncol = length(samples), nrow = length(funID))
-
-for (i in 1:length(samples)){
-  print(paste(i, "/", totSam, ": ", samples[i], sep = ""))
-  #iterate through the genera found across all samples, pulling out counts where they're
-  #present, populating with a 0 where absent
-  x <- vector(length = length(funID))
-  y <- subset(filt.df, SampleID == samples[i])
-  for (g in 1:length(funID)){
-    micro <- taxkey$Taxa[taxkey$taxID == funID[g]]
-    if (micro %in% y$MicroPhylo){
-      x[g] <- y$nt_count[y$SampleID == samples[i] & y$MicroPhylo == micro]
-    } else {
-      x[g] <- 0
-    }
-  }
-  #add to count matrix
-  cnt[,i] <- x
-}
-
-
-#convert to dataframe for more amenable editing
-cnt <- as.data.frame(cnt)
-names(cnt) <- samples
-rownames(cnt) <- funID
-
-#write up
-write.table(cnt, "input/Counts/Fungus_RawCounts.tsv",
-            sep = "\t", quote = F,
-            col.names = T, row.names = T)
-
-#Other eukaryotes
-other <- unique(filt.df$MicroPhylo[filt.df$category == "eukaryota" &
-                                     !filt.df$MicroPhylo %in% fungus])
-#continuing with the table
-other.df <- filt.df[filt.df$MicroPhylo %in% other,]
-
-othID <- taxkey$taxID[taxkey$Taxa %in% other]
-
-#get column headers ready
-#keeping only samples that have microbes after filtering
-samples <- unique(other.df$SampleID)
-
-#record length of samples
-totSam <- length(samples)
-
-#prepare matrix to be populated with counts
-cnt <- matrix(ncol = length(samples), nrow = length(othID))
-
-for (i in 1:length(samples)){
-  print(paste(i, "/", totSam, ": ", samples[i], sep = ""))
-  #iterate through the genera found across all samples, pulling out counts where they're
-  #present, populating with a 0 where absent
-  x <- vector(length = length(othID))
-  y <- subset(filt.df, SampleID == samples[i])
-  for (g in 1:length(othID)){
-    micro <- taxkey$Taxa[taxkey$taxID == othID[g]]
-    if (micro %in% y$MicroPhylo){
-      x[g] <- y$nt_count[y$SampleID == samples[i] & y$MicroPhylo == micro]
-    } else {
-      x[g] <- 0
-    }
-  }
-  #add to count matrix
-  cnt[,i] <- x
-}
-
-
-#convert to dataframe for more amenable editing
-cnt <- as.data.frame(cnt)
-names(cnt) <- samples
-rownames(cnt) <- othID
-
-#write up
-write.table(cnt, "input/Counts/OtherEukaryote_RawCounts.tsv",
             sep = "\t", quote = F,
             col.names = T, row.names = T)
 
