@@ -5,7 +5,7 @@
 All scripts in this section are found in `Scripts/Bash/`. 
 
 ### 1.1 Non-_Apis mellifera_ Samples
-CZID.org (Kalantar _et al_ 2020) has different "Host" genome options that the user selects to map their nucleotide sequences against, with the end goal of mining the unmapped reads for microbial identification. CZID has a "Bee" option on hits webpage at the time of writing (February 2023) which aligns given reads against the _Apis mellifera_ genome. For the many non-_A.mellifera_ samples in this study there were a number of preprocessing steps that had to take place. The script `Process_PreMapper_2.sh` runs these processes which essentially consists of:
+CZID.org (Kalantar _et al_ 2020) has different "Host" genome options that the user selects to map their nucleotide sequences against, with the end goal of mining the unmapped reads for microbial identification. CZID has a "Bee" option on its webpage at the time of writing (February 2023) which aligns given reads against the _Apis mellifera_ genome. For the many non-_A.mellifera_ samples in this study there were a number of preprocessing steps that had to take place. The script `Process_PreMapper_2.sh` runs these processes which essentially consists of:
 
 1. Downloading the given SRA sample using `SRA Toolkit` (Katz _et al_ 2022)
 2. Unpacking the sample
@@ -88,9 +88,9 @@ All taxonomic classifications in this analysis were taken from a `.dmp` file fro
 
 `Analysis_Prokaryote2.R` uses `vegan` (Dixon _et al_ 2003) packages to compute dissimilarity matrices, produce NMDS and use PERMANOVA (`adonis2`) to assess the impact of phylogeny, location and social lifestyle on prokaryote (bacterial) community composition. `Analysis_Eukaryote2.R` and `Analysis_Viral2.R` do the same for eukaryotic and viral counts, respectively.
 
-## 2.4 Assessing the Presence of Well Characterised Bee Microbiota and Tribe-Microbe Associations
+### 2.4 Assessing the Presence of Well Characterised Bee Microbiota and Tribe-Microbe Associations
 
-To assess the analysis' ability to detect microbes known to be in certain bee species, the script `Core_Phylo.R` is used. To see if there are candidates for microbes associated with particular tribes, `DescribeTribe.R` identifies microbes found in over 50% of tribal members at an average relative abundance above 0.01%. 
+To assess this approach's ability to detect microbes known to be in certain bee species, the script `Core_Phylo.R` was used. To see if there are candidates for microbes associated with particular tribes, `DescribeTribe.R` identifies microbes found in over 50% of tribal members at an average relative abundance above 0.01%. 
 
 ## Program Versions
 
