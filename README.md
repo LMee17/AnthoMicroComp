@@ -94,11 +94,11 @@ To assess this approach's ability to detect microbes known to be in certain bee 
 
 ## Program Versions
 
-`CZID CLI` v4.1.2
-`CZID Pipeline` v7.1
-`R` v4.2.2
-`SRA Toolkit` v3.0.0
-`vegan` v2.6-4  
+`CZID CLI` v4.1.2 \
+`CZID Pipeline` v7.1 \
+`R` v4.2.2 \
+`SRA Toolkit` v3.0.0 \
+`vegan` v2.6-4  \
 
 ## References
 
