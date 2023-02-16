@@ -1,2 +1,0 @@
-TaxID	Sample	NoReads	TotReads	RelAbundance	AvgRelAbundance	Prevalence	Species	Sociality	Sex	Tissue	Location	NucleotideType	Project.Accession	YearCollected	Month	LibraryLayout	LibrarySelection	SequenceInstrument	Platform_Gen	Platform_Spec	Genus	Tribe	Continent	tax_name	genus	family	order	class	phylum
-TRH13	SRR1503133	171	171	1	1	1	Nomada lathburiana	Solitary	Female	whole body	Germany	RNA	PRJNA252330	2011	April	Paired	CDNA	Illumina HiSeq 2000	Illumina	Illumina HiSeq	Nomada	Nomadini	Europe	Alternaria	Alternaria	Pleosporaceae	Pleosporales	Dothideomycetes	Ascomycota

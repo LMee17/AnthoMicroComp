@@ -1,7 +1,0 @@
-1	2	pvalue	padj
-Apidae	Halictidae	0.964	0.964
-Apidae	Megachilidae	0.394	0.7788
-Apidae	Andrenidae	0.649	0.7788
-Halictidae	Megachilidae	0.6	0.7788
-Halictidae	Andrenidae	0.394	0.7788
-Megachilidae	Andrenidae	0.1	0.6
