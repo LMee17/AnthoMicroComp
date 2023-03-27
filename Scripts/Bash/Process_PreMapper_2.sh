@@ -14,6 +14,10 @@
 #All genomes to be used in the map run should be kept in the directory of genomes (path provided as argument $3)
 #Unmapped reads will be kept in an output directory named after $4
 
+#dependencies
+#SRA toolkit (configured)
+#STAR genome mapper
+
 #take note of how many samples are to be iterated through
 tot=$(wc -l $1 | awk '{print$1}')
 #set counter
