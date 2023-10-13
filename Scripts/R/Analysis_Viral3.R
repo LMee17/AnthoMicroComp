@@ -10,7 +10,6 @@ dir.create("output/Viral/Composition_Analysis/")
 library(tidyverse)
 library(vegan)
 library(ape)
-library(gg3D)
 
 ## Functions ####
 
@@ -53,7 +52,7 @@ scree.NMDS <- function(distmat, kingdom, filename){
 
 ##Load Metadata #####
 #sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Feb23.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Oct23.tsv",
                   sep = "\t", header = T)
 #microbial metadata
 taxkey <- read.table("input/Metadata/Taxa_HitKey_Dec22.tsv",
@@ -101,124 +100,10 @@ write.table(cnt, "input/Counts/Viral_Filtered_FamilyReduced_Raw.tsv",
 metdf <- met[met$Sample.ID %in% colnames(cnt),]
 table(metdf$Sociality)
 #there's no point keeping 1 polymorphic
-metdf <- metdf[!metdf$Sociality == "Polymorphic",]
+metdf <- metdf[!metdf$Sociality == "Social",]
 cnt <- cnt[, names(cnt) %in% metdf$Sample.ID]
 
-##Step Two: Principal Components ####
-#most of these steps assume that rows are samples / sites, not columns
-#using relative abundance data
-rel.t <- t(cnt.rel)
-
-#not using scales as the variables are not on different scales
-pca <- rda(rel.t, scale = FALSE)
-
-# Now plot a bar plot of relative eigenvalues. 
-#This is the percentage variance explained by each axis
-barplot(as.vector(pca$CA$eig)/sum(pca$CA$eig)) 
-# over 25% of variance explained by first PC (would probably expect a good pca to be up
-# to 60 but there is so much noise in this dataset)
-
-# Calculate the percent of variance explained by first two to four axes
-sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1:2]) # 44.7%
-sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1:4]) # 67.8%
-
-#extract the principal coordinates from the pca object
-#prepare plottable dataframe
-tmp <- as.data.frame(pca$CA$u)
-tmp$Sample <- rownames(tmp)
-#add sample metadata
-propc.plot <- merge(tmp, metdf, by.x = "Sample", by.y = "Sample.ID")
-
-#manually set palette
-#colour-blind friendly palette sourced: 
-#https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
-myPal <- c("#db6d00", "#009292", "#3b3bc4", "#bb00bb", "#920000",
-           "#000000", "#ff6db6", "#6db6ff", "#24ff24", "#00e6e6",
-           "#ffb6db", "#b66dff", "#924900", "#b6dbff", "#ffff6d",
-           "#9acd32")
-
-#set up explanatory variables to loop through
-vars <- c("Sociality", "Family", "Tribe", "Continent", "Tissue2")
-#and better labels to use
-varslabs <- c("Sociality", "Host Family", "Host Tribe", "Continent", "Tissue Type")
-
-#looking at PC1 and PC2 ... what % of the variance do they represent?
-one <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1])*100, digits = 2)
-two <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[2])*100, digits = 2)
-
-#run through variables and plot
-for (i in 1:length(vars)){
-  print(vars[i])
-  ggplot(data = propc.plot, 
-         aes(x = PC1, y = PC2, colour = as.factor(propc.plot[,vars[i]]))) +
-    geom_point(size = 2, alpha = 0.75) + 
-    scale_colour_manual(values = myPal) +
-    labs(x = paste("PC1 (", one, "%)", sep = ""),
-         y = paste("PC2 (", two, "%)", sep = ""),
-         colour = paste(varslabs[i])) +
-    theme_classic() +
-    guides(alpha = "none") + 
-    theme(strip.background = element_blank())
-  title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Viral/Composition_Analysis/PCA_PC1PC2_", title, ".pdf", sep = ""))
-}
-
-#looking at pc3 and pc4
-three <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[3])*100, digits = 2)
-four <- round(sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[4])*100, digits = 2)
-
-for (i in 1:length(vars)){
-  ggplot(data = propc.plot, 
-         aes(x = PC3, y = PC4, colour = as.factor(propc.plot[,vars[i]]))) +
-    geom_point() + 
-    scale_colour_manual(values = myPal) +
-    labs(x = paste("PC3 (", three, "%)", sep = ""),
-         y = paste("PC4 (", four, "%)", sep = ""),
-         colour = paste(varslabs[i])) +
-    theme_classic() +
-    theme(strip.background = element_blank())
-  title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Viral/Composition_Analysis/PCA_PC3PC4_", title, ".pdf", sep = ""))
-}
-
-#Looking at three axes at once
-sum((as.vector(pca$CA$eig)/sum(pca$CA$eig))[1:3]) # 58.1%
-#may be worth doing some 3D plots
-for (i in 1:length(vars)){
-  ggplot(data = propc.plot, 
-         aes(x = PC1, y = PC2, z = PC3,
-             colour = as.factor(propc.plot[,vars[i]]))) +
-    scale_colour_manual(values = myPal) +
-    labs(colour = paste(varslabs[i])) +
-    theme_void() +
-    axes_3D() +
-    stat_3D() +
-    labs_3D(labs = c(paste("PC1 (", one, "%)", sep = ""),
-                     paste("PC2 (", two, "%)", sep = ""), 
-                     paste("PC3 (", three, "%)", sep = "")),
-            hjust=c(0,1,1), vjust=c(1, 1, -0.2), angle=c(0, 0, 90))
-  title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Viral/Composition_Analysis/PCA_3D_", 
-               title, ".pdf", sep = ""))
-}
-
-##Step Three: BiPlot ####
-biplot(pca, choices = c(1,2), type = c("text", "points"))
-
-pdf("output/Viral/Composition_Analysis/BiPlot_PC1PC2.pdf")
-  biplot(pca, choices = c(1,2), type = c("text", "points"))
-dev.off()
-#without text
-pdf("output/Viral/Composition_Analysis/BiPlot_PC1PC2_Plain.pdf")
-  biplot(pca, choices = c(1,2), type = c("points"))
-dev.off()
-
-#there's three clear taxa that affect these ordinations (plus a possible fourth)
-vip <- c("TRH788", "TRH777", "TRH778")
-taxkey[taxkey$taxID %in% vip,]
-#Parvoviridae, Iflavirus, Triatovirus
-
-##Step Four: Principal Coordinates Analysis ####
+##Step Two: Produce Distance Matrix ####
 # First step is to calculate a distance matrix. 
 # using avgdist from vegan to rarefy counts to the lowest number of the smallest sample
 # set by sociality (to try and conserve sample number) with 10,000 iterations
@@ -242,74 +127,34 @@ low_read <- inner_join(metdf, readCnts, by = c("Sample.ID" = "Sample")) %>%
   select(Tot) %>%
   as.numeric()
 
-#the lowest # reads is 323
+#the lowest # reads is 111
 str(low_read)
 # Using the Bray-Curtis distance metric
 #vegan requires microbial hit as columns and samples as rows
+
 cnt.t <- t(cnt)
 dist <- avgdist(cnt.t, dmethod="bray", sample=low_read, iterations = 10000)
+# The following sampling units were removed because they were below sampling depth: CA_N_007, CA_N_030, SRR11426433, SRR12053407, SRR12053408, SRR12053426, SRR13442822, SRR15496107, SRR3948521, SRR3948533, SRR3948536, SRR3948544, SRR3948562, SRR3948566, SRR3948570, SRR3948575, SRR8754044, SRR8867394
+
 
 #write up
 d <- as.matrix(dist)
 write.table(d, "output/Viral/Composition_Analysis/BC_DistanceMatrix.tsv",
             sep = "\t", row.names = T, col.names = T, quote = F)
 
-# The following sampling units were removed because they were below sampling depth: CA_N_007, CA_N_030, SRR11426433, SRR12053407, SRR12053408, SRR12053426, SRR13442822, SRR15496107, SRR3948521, SRR3948533, SRR3948536, SRR3948544, SRR3948562, SRR3948566, SRR3948570, SRR3948575, SRR8754044, SRR8867394
-# calculate the principal coordinates
-pco <- pcoa(dist)
-
-# plot the eigenvalues and interpret
-barplot(pco$values$Relative_eig[1:10])
-#again, first eigenvalue explains over 25% of the variance
-
-# Some distance measures may result in negative eigenvalues. 
-# negative eiganvalues need to be corrected
-if (any(pco$values[,"Eigenvalues"] < 0) == TRUE){
-  print("Negative Eigenvalues present")
-  #administer correction
-  pco <-pcoa(dist, correction = "cailliez")
-}
-#a "good" pcoa explains ~ 50% of the variance/distance within 3 axes
-sum((pco$values$Corr_eig / sum(pco$values$Corr_eig))[1:3])*100
-#I'm getting 50 % .... well well
-
-#make the above object more amenable for playing with
-tmp <- as.data.frame(pco$vectors)
-tmp$Sample <- rownames(tmp)
-#add sample metadata
-pco.plot <- merge(tmp, metdf, by.x = "Sample", by.y = "Sample.ID")
-
-#looking at axis1 and axis 2 ... 
-one <- round(pco$values$Corr_eig[1] / sum(pco$values$Corr_eig)*100, digits = 2)
-two <- round(pco$values$Corr_eig[2] / sum(pco$values$Corr_eig)*100, digits = 2)
-
-#run through variables and plot
-for (i in 1:length(vars)){
-  ggplot(data = pco.plot, 
-         aes(x = Axis.1, y = Axis.2, colour = as.factor(pco.plot[,vars[i]]))) +
-    geom_point() + 
-    scale_colour_manual(values = myPal) +
-    labs(x = paste("Axis1 (", one, "%)", sep = ""),
-         y = paste("Axis2 (", two, "%)", sep = ""),
-         colour = paste(varslabs[i])) +
-    theme_classic() +
-    theme(strip.background = element_blank())
-  title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Viral/Composition_Analysis/PCoA_Ax1Ax2_", title, ".pdf", sep = ""))
-}
-
-##Step Five: NonMetric Multidimensional Scaling ####
+##Step Three: NonMetric Multidimensional Scaling ####
 #there's a problem further down the line
-#in the current iteration there are three singletons that fuck with 
+#in the current iteration there are three singletons that mess with 
 #computing dispersions
-#1 f.eusocial, 1 Halictidae and Andrenidae and 1 South American
+#1 social, 1 Halictidae and Andrenidae and 1 South American
 torem <- c()
-torem <- c(metdf$Sample.ID[metdf$Sociality == "F. Eusocial"], torem) #this is also the halictid
+torem <- c(metdf$Sample.ID[metdf$Sociality == "Social"], torem) #this is also the halictid
 torem <- c(metdf$Sample.ID[metdf$Family == "Andrenidae"], torem) #this is also the halictid
 torem <- c(metdf$Sample.ID[metdf$Continent == "South America"], torem) #this is also the halictid
 
 metdf <- metdf[!metdf$Sample.ID %in% torem,]
 cnt <- cnt[, ! names(cnt) %in% torem]
+nrow(metdf)==ncol(cnt)
 
 cnt.t <- t(cnt)
 dist <- avgdist(cnt.t, dmethod="bray", sample=low_read, iterations = 10000)
@@ -329,7 +174,6 @@ if(any(pro.scree$Dec == "Excellent") == T){
   print("Please assess by eye")
   stopifnot(any(pro.scree$Dec == "Excellent"))
 }
-
 
 nmds <- metaMDS(dist, k = kval, trymax = 100, trace = F, distances = "bray")
 
@@ -363,97 +207,13 @@ plot(nmds, display = "sites")
 write.table(nmds.plot, "output/Viral/Composition_Analysis/NMDS_meta.tsv",
             sep = "\t", col.names = T, row.names = F, quote = F)
 
-#run through variables and plot
-for (i in 1:length(vars)){
-  ggplot(data = nmds.plot, 
-         aes(x = NMDS1, y = NMDS2, colour = as.factor(nmds.plot[,vars[i]]))) +
-    geom_point() +
-    scale_colour_manual(values = myPal) +
-    labs(x = "NMDS1",
-         y = "NMDS2",
-         colour = paste(varslabs[i])) +
-    theme_classic() +
-    theme(strip.background = element_blank())
-  title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Viral/Composition_Analysis/NMDS_", title, ".pdf", sep = ""))
-}
-
-#run through variables and plot: with ellipses
-for (i in 1:length(vars)){
-  ggplot(data = nmds.plot, 
-         aes(x = NMDS1, y = NMDS2, colour = as.factor(nmds.plot[,vars[i]]))) +
-    geom_point() + 
-    stat_ellipse() +
-    scale_colour_manual(values = myPal) +
-    labs(x = "NMDS1",
-         y = "NMDS2",
-         colour = paste(varslabs[i])) +
-    theme_classic() +
-    theme(strip.background = element_blank())
-  title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Viral/Composition_Analysis/NMDS_Ellipses_", title, ".pdf", sep = ""))
-}
-
-#run through variables and plot: with polygons
-for (i in 1:length(vars)){
-  ggplot(data = nmds.plot, 
-         aes(x = NMDS1, y = NMDS2, colour = as.factor(nmds.plot[,vars[i]]))) +
-    geom_point() + 
-    stat_ellipse(geom = "polygon",
-                 aes(fill = as.factor(nmds.plot[,vars[i]])),
-                 alpha = 0.1) +
-    scale_colour_manual(values = myPal) +
-    scale_fill_manual(values = myPal) +
-    labs(x = "NMDS1",
-         y = "NMDS2",
-         colour = paste(varslabs[i])) +
-    theme_classic() +
-    theme(strip.background = element_blank()) +
-    guides(fill = "none")
-  title <- gsub(" ", "_", varslabs[i])
-  ggsave(paste("output/Viral/Composition_Analysis/NMDS_Polygons_", title, ".pdf", sep = ""))
-}
-
 #getting centroid plots for these for further exploration
 #to calculate centroids I need more than / equal to 4 samples per group
 #the rarefaction step in producing the matrix removed samples and so I need to 
 #check what I have left for each factor (post distance)
 metdf.pd <- metdf[metdf$Sample.ID %in% labels(dist),]
 
-#sociality#1
-for (i in 1:length(vars)){
-  print(vars[i])
-  if(any(table(metdf.pd[,vars[i]]) < 4)){
-    print("Cannot compute")
-  } else{
-    v <- unname(unlist(vars[i]))
-    print(v)
-    cen <- nmds.plot %>%
-      group_by(across(all_of(v))) %>%
-      summarise(NMDS1 = mean(NMDS1), NMDS2 = mean(NMDS2)) %>%
-      as.data.frame()
-    print(cen)
-    ggplot(data = nmds.plot, 
-           aes(x = NMDS1, y = NMDS2, colour = as.factor(nmds.plot[,vars[i]]))) +
-      geom_point() + 
-      scale_colour_manual(values = myPal) +
-      stat_ellipse(show.legend = FALSE) +
-      geom_point(data = cen, size = 3, 
-                 shape = 21, colour = "black", 
-                 aes(fill = as.factor(cen[,1])),
-                 show.legend = FALSE) + 
-      scale_fill_manual(values = myPal) +
-      labs(colour = paste(varslabs[i])) +
-      theme_classic() +
-      theme(strip.background = element_blank())
-    title <- gsub(" ", "_", varslabs[i])
-    ggsave(paste("output/Viral/Composition_Analysis/NMDS_", title, 
-                 "_CentroidEllipsis.pdf", sep = ""))
-  }
-}
-
-
-##Step Six: Checking Dispersion ####
+##Step Four: Checking Dispersion ####
 #if the dispersion of different groups are very variable I'm likely to have false positive
 #adonis / anosim results, whatever I decide to pursue
 #first need to make sure the # rows and samples in the metadata match those in the 
@@ -469,10 +229,15 @@ table(metdf$Family)
 #run through all variables, run betadisper to compute dispersions from median per
 #levels within that variable, run anova to assess whether differences are significant
 #control for multiple testing
+#set up explanatory variables to loop through
+vars <- c("Sociality", "Family", "Tribe", "Continent")
+#and better labels to use
+varslabs <- c("Sociality", "Host Family", "Host Tribe", "Continent")
 disp.df <- data.frame()
 for (i in 1:length(vars)){
   print(varslabs[i])
   disp.df[i,1] <- paste(varslabs[i])
+  print(disp.df)
   disp <- betadisper(dist, metdf[,vars[i]])
   disp.df[i,2] <- paste(names(disp$group.distances), collapse = ",")
   disp.df[i,3] <- paste(as.numeric(disp$group.distances), collapse = ",")
@@ -502,7 +267,7 @@ write.table(disp.df,
             "output/Viral/Composition_Analysis/VariableDispersion_ANOVA.tsv",
             col.names = T, row.names = F, sep = "\t", quote = F)
 
-##Step Seven: PERMANOVA / Adonis ####
+##Step Five: PERMANOVA / Adonis ####
 #it won't work with NA values, so I'll need to remove
 torem <- vector()
 j <- 1
@@ -618,31 +383,15 @@ write.table(pairwiseAOV.con,
 
 ###Modellling #####
 #set permutations to 9999
+###Modellling #####
+#set permutations to 9999
 p <- 9999
 
-#sociality and tribe
-soc <- adonis2(dist ~ Sociality, 
-                   data = metdf, 
-                   permutations = p)
-soc
-disp <- betadisper(dist, metdf$Sociality)
-anova(disp)
-#family?
-fam <- adonis2(dist ~ Family,
-                   data = metdf,
-                   permutations = p)
-fam
-disp <- betadisper(dist, metdf$Family)
-anova(disp)
-#what about continent?
-con <- adonis2(dist ~ Continent,
-                   data = metdf,
-                   permutations = p)
-con
-
-disp <- betadisper(dist, metdf$Continent)
-anova(disp)
+all <- adonis2(dist ~ Sociality + Continent + Family,
+               data = metdf,
+               permutations = p)
+all
 
 ##SessionLogs####
 writeLines(capture.output(sessionInfo()),
-           "SessionLogs/Analysis_Viral_Jan23.txt")
+           "SessionLogs/Analysis_Viral_Oct23.txt")
