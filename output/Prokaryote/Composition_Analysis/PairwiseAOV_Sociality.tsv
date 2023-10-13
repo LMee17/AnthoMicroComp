@@ -1,4 +1,4 @@
 1	2	pvalue	padj
-O. Eusocial	F. Eusocial	0.0063	0.0189
-O. Eusocial	Solitary	0.5898	0.5898
-F. Eusocial	Solitary	0.3425	0.51375
+O. Eusocial	Social	0.0074	0.0222
+O. Eusocial	Solitary	0.5903	0.5903
+Social	Solitary	0.3439	0.51585

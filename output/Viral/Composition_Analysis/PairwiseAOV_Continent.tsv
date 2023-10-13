@@ -1,11 +1,11 @@
 1	2	pvalue	padj
-Europe	Asia	0.7211	0.8398
-Europe	North America	0.2016	0.369714285714286
-Europe	Africa	0.094	0.313333333333333
-Europe	Oceania	0.8398	0.8398
-Asia	North America	0.2454	0.369714285714286
-Asia	Africa	0.1618	0.369714285714286
-Asia	Oceania	0.0067	0.067
-North America	Africa	0.2588	0.369714285714286
-North America	Oceania	0.8336	0.8398
-Africa	Oceania	0.0537	0.2685
+Europe	Asia	0.7198	0.8426
+Europe	North America	0.2046	0.377571428571429
+Europe	Africa	0.0944	0.314666666666667
+Europe	Oceania	0.8426	0.8426
+Asia	North America	0.2442	0.377571428571429
+Asia	Africa	0.1558	0.377571428571429
+Asia	Oceania	0.008	0.08
+North America	Africa	0.2643	0.377571428571429
+North America	Oceania	0.8393	0.8426
+Africa	Oceania	0.0521	0.2605
