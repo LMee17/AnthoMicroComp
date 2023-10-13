@@ -11,7 +11,7 @@ dir.create("output/Prokaryote/Tribal_Descriptives/")
 pro <- read.table("input/Counts/Prokaryote_Filtered_TribeReduced_Raw.tsv")
 
 #sample metadata
-met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Jan23.tsv",
+met <- read.table("input/Metadata/SampleMetaData_Edit_Final_Oct23.tsv",
                   sep = "\t",
                   header = T)
 met <- met[met$Sample.ID %in% names(pro),]
